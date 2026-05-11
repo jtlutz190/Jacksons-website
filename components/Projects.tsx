@@ -1,118 +1,55 @@
 import FourierDivider from "@/components/FourierDivider";
+import ProjectCard from "@/components/ProjectCard";
+import Section from "@/components/Section";
 
-interface ProjectCard {
-  title: string;
-  status: "placeholder" | "active" | "ongoing";
-  tags: string[];
-  description: string;
-  link?: string;
-  linkLabel?: string;
-}
-
-const projects: ProjectCard[] = [
+const projects = [
   {
     title: "Audio Localization System",
-    status: "placeholder",
-    tags: ["embedded systems", "signal processing", "C", "microphones"],
+    status: "Future flagship project",
     description:
-      "A flagship project-in-progress. The goal: use an array of microphones and embedded signal processing to localize audio sources in space. Involves time-difference-of-arrival estimation, real-time embedded C on a microcontroller, and a fair amount of linear algebra under the hood.",
+      "A planned embedded systems and signal processing project involving microphones, time-delay estimation, and localization of sound sources.",
+    tags: ["Embedded Systems", "Signal Processing", "Microphones", "Localization"],
     link: "#",
-    linkLabel: "details coming",
+    linkLabel: "Placeholder details",
   },
   {
     title: "Math Vault",
-    status: "active",
-    tags: ["math", "visualization", "notes", "analysis", "ODE", "discrete"],
+    status: "External / in progress",
     description:
-      "An externally hosted collection of undergraduate mathematics — handwritten notes, formal proofs, theorems, and worked examples. Topics include Real Analysis, Differential Equations, and Discrete Mathematics. Built for personal reference, but shared for anyone who finds it useful.",
+      "An externally hosted visualization of undergraduate mathematics, including handwritten notes, proofs, theorems, and examples. Topics include Analysis, Differential Equations, and Discrete Math.",
+    tags: ["Analysis", "Differential Equations", "Discrete Math"],
     link: "#",
-    linkLabel: "view vault →",
+    linkLabel: "Placeholder external link",
   },
   {
     title: "1000 Differential Equations",
-    status: "ongoing",
-    tags: ["ODE", "PDE", "math", "long-term"],
+    status: "Long-term project",
     description:
-      "A long-term project: solve, categorize, and understand one thousand differential equations. Less a stunt, more a meditation. Each equation is a small puzzle in dynamics, structure, or method. Somewhere between a mathematical journal and a training log.",
+      "A long-term mathematical collection focused on solving, categorizing, and understanding many different differential equations.",
+    tags: ["Differential Equations", "Mathematical Writing", "Problem Solving"],
     link: "#",
-    linkLabel: "view progress",
+    linkLabel: "Placeholder progress",
   },
   {
-    title: "GitHub",
-    status: "placeholder",
-    tags: ["open source", "code"],
+    title: "General Projects / GitHub",
+    status: "Ongoing",
     description:
-      "The rest of my work lives on GitHub — smaller experiments, utilities, course projects, and works in progress.",
-    link: "#",
-    linkLabel: "github.com/jtlutz →",
+      "A growing collection of code, experiments, notes, and technical projects.",
+    tags: ["Code", "Experiments", "Notes", "Technical Projects"],
+    link: "https://github.com/placeholder",
+    linkLabel: "Placeholder GitHub",
   },
 ];
 
-const statusLabel: Record<ProjectCard["status"], string> = {
-  placeholder: "coming soon",
-  active: "active",
-  ongoing: "ongoing",
-};
-
-const statusColor: Record<ProjectCard["status"], string> = {
-  placeholder: "text-[#4a5568]",
-  active: "text-[#7c9cbf]",
-  ongoing: "text-[#9ca3af]",
-};
-
 export default function Projects() {
   return (
-    <section id="projects" className="py-12">
-      <SectionHeader title="Projects" />
-
-      <div className="mt-8 grid gap-4">
+    <Section id="projects" title="Projects" eyebrow="Work in progress">
+      <div className="grid gap-4 md:grid-cols-2">
         {projects.map((project) => (
-          <article key={project.title} className="card rounded-lg p-5 bg-[#151618]">
-            <div className="flex items-start justify-between gap-4">
-              <h3 className="text-[#e8e9eb] font-medium text-base">{project.title}</h3>
-              <span className={`shrink-0 font-mono text-xs mt-0.5 ${statusColor[project.status]}`}>
-                {statusLabel[project.status]}
-              </span>
-            </div>
-
-            <p className="mt-2 text-sm text-[#9ca3af] leading-relaxed">
-              {project.description}
-            </p>
-
-            <div className="mt-4 flex flex-wrap items-center justify-between gap-3">
-              <div className="flex flex-wrap gap-1.5">
-                {project.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-2 py-0.5 rounded text-xs bg-[#1e2a38] text-[#7c9cbf] font-mono"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-              {project.link && (
-                <a
-                  href={project.link}
-                  className="text-xs text-[#6b7280] hover:text-[#7c9cbf] transition-colors font-mono"
-                >
-                  {project.linkLabel}
-                </a>
-              )}
-            </div>
-          </article>
+          <ProjectCard key={project.title} {...project} />
         ))}
       </div>
-
       <FourierDivider className="mt-14" />
-    </section>
-  );
-}
-
-function SectionHeader({ title }: { title: string }) {
-  return (
-    <div className="flex items-center gap-4">
-      <h2 className="text-lg font-semibold text-[#e8e9eb] tracking-tight">{title}</h2>
-      <div className="flex-1 h-px bg-[#2a2b2f]" />
-    </div>
+    </Section>
   );
 }

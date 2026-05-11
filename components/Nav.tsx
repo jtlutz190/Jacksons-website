@@ -1,5 +1,3 @@
-"use client";
-
 const links = [
   { label: "About", href: "#about" },
   { label: "Projects", href: "#projects" },
@@ -10,22 +8,22 @@ const links = [
 
 export default function Nav() {
   return (
-    <header className="sticky top-0 z-50 border-b border-[#2a2b2f] bg-[#0e0f11]/90 backdrop-blur-sm">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 h-14 flex items-center justify-between">
+    <header className="sticky top-0 z-50 border-b border-border bg-bg/95">
+      <div className="mx-auto flex min-h-16 max-w-5xl flex-col gap-3 px-4 py-3 sm:px-6 md:h-16 md:flex-row md:items-center md:justify-between md:gap-6 md:py-0 lg:px-8">
         <span
-          className="font-mono text-sm text-[#7c9cbf] tracking-wide select-none"
+          className="select-none font-mono text-sm tracking-wide text-accent"
           aria-hidden="true"
         >
           jtl
         </span>
 
         <nav aria-label="Page sections">
-          <ul className="flex items-center gap-1">
+          <ul className="flex flex-wrap items-center gap-1 rounded-md border border-border bg-surface p-1">
             {links.map((link) => (
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className="px-3 py-1.5 rounded text-sm text-[#6b7280] hover:text-[#e8e9eb] hover:bg-[#1c1d20] transition-colors duration-150"
+                  className="block rounded px-3 py-1.5 text-sm text-muted hover:bg-surface-2 hover:text-text"
                 >
                   {link.label}
                 </a>

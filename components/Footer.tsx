@@ -1,25 +1,17 @@
 export default function Footer() {
   return (
-    <footer className="border-t border-[#2a2b2f] mt-12">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 py-8 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <span className="font-mono text-xs text-[#4a5568]">
-          Jackson T. Lutz — beta
-        </span>
-        <span className="font-mono text-[10px] text-[#2a2b2f] select-none" aria-hidden="true">
-          f̂(ξ) = ∫ f(x) e^(−2πiξx) dx
+    <footer className="border-t border-border">
+      <div className="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-8 sm:px-6 md:flex-row md:items-center md:justify-between lg:px-8">
+        <span className="font-mono text-xs text-muted">Jackson T. Lutz - beta</span>
+        <span className="select-none font-mono text-[10px] text-border" aria-hidden="true">
+          hat(f)(xi) = integral f(x)e^(-2pi i xi x) dx
         </span>
         <div className="flex gap-4">
-          <a
-            href="#"
-            className="text-xs text-[#4a5568] hover:text-[#7c9cbf] transition-colors font-mono"
-          >
-            github
+          <a href="https://github.com/placeholder" className="text-xs text-muted hover:text-accent">
+            GitHub placeholder
           </a>
-          <a
-            href="mailto:placeholder@email.com"
-            className="text-xs text-[#4a5568] hover:text-[#7c9cbf] transition-colors font-mono"
-          >
-            email
+          <a href="mailto:placeholder@email.com" className="text-xs text-muted hover:text-accent">
+            Email placeholder
           </a>
         </div>
       </div>
