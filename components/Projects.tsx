@@ -1,4 +1,3 @@
-import FourierDivider from "@/components/FourierDivider";
 import ProjectCard from "@/components/ProjectCard";
 import Section from "@/components/Section";
 
@@ -49,7 +48,6 @@ export default function Projects() {
           <ProjectCard key={project.title} {...project} />
         ))}
       </div>
-      <FourierDivider className="mt-14" />
     </Section>
   );
 }

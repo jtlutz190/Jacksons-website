@@ -33,6 +33,7 @@ html {
 }
 
 body {
+  position: relative;
   min-height: 100vh;
   margin: 0;
   background:
@@ -44,6 +45,35 @@ body {
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+body::before {
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  content: "";
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='900' height='180' viewBox='0 0 900 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 90 C38 40 75 140 112 90 C150 40 188 140 225 90 C263 40 300 140 338 90 C375 40 413 140 450 90 C488 40 525 140 563 90 C600 40 638 140 675 90 C713 40 750 140 788 90 C825 40 863 140 900 90' stroke='%234f7484' stroke-width='1' stroke-opacity='0.22' fill='none'/%3E%3Cpath d='M0 90 C13 65 25 115 38 90 C50 65 63 115 75 90 C88 65 100 115 112 90 C125 65 138 115 150 90 C163 65 175 115 188 90 C200 65 213 115 225 90 C238 65 250 115 263 90 C275 65 288 115 300 90 C313 65 325 115 338 90 C350 65 363 115 375 90 C388 65 400 115 413 90 C425 65 438 115 450 90 C463 65 475 115 488 90 C500 65 513 115 525 90 C538 65 550 115 563 90 C575 65 588 115 600 90 C613 65 625 115 638 90 C650 65 663 115 675 90 C688 65 700 115 713 90 C725 65 738 115 750 90 C763 65 775 115 788 90 C800 65 813 115 825 90 C838 65 850 115 863 90 C875 65 888 115 900 90' stroke='%238ab4c6' stroke-width='0.6' stroke-opacity='0.14' fill='none'/%3E%3C/svg%3E");
+  background-position: center 10rem;
+  background-repeat: repeat-y;
+  background-size: min(92vw, 900px) auto;
+  opacity: 0.5;
+}
+
+body::after {
+  position: fixed;
+  right: max(1.5rem, calc((100vw - 72rem) / 2));
+  bottom: 2rem;
+  z-index: -1;
+  pointer-events: none;
+  max-width: 22rem;
+  content: "x(t) = sum a_n sin(n omega t)   hat(f)(xi) = integral f(x)e^(-2pi i xi x) dx";
+  color: rgba(138, 180, 198, 0.1);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  line-height: 1.9;
+  text-align: right;
 }
 
 a {
@@ -65,20 +95,6 @@ section[id] {
 
 .profile-card {
   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
-}
-
-.profile-card::before {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  content: "";
-  background:
-    linear-gradient(120deg, rgba(138, 180, 198, 0.08), transparent 34%),
-    radial-gradient(circle at 80% 20%, rgba(139, 124, 191, 0.08), transparent 16rem);
-}
-
-.profile-card > * {
-  position: relative;
 }
 
 ::selection {

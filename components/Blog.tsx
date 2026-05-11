@@ -1,4 +1,3 @@
-import FourierDivider from "@/components/FourierDivider";
 import Section from "@/components/Section";
 import WritingCard from "@/components/WritingCard";
 
@@ -36,7 +35,6 @@ export default function Blog() {
           <WritingCard key={post.title} {...post} />
         ))}
       </div>
-      <FourierDivider className="mt-14" />
     </Section>
   );
 }

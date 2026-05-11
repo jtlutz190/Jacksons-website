@@ -1,4 +1,3 @@
-import FourierDivider from "@/components/FourierDivider";
 import Section from "@/components/Section";
 import SkillGroup from "@/components/SkillGroup";
 
@@ -39,7 +38,6 @@ export default function Skills() {
           <SkillGroup key={group.title} {...group} />
         ))}
       </div>
-      <FourierDivider className="mt-14" />
     </Section>
   );
 }
