@@ -3,21 +3,21 @@ import Section from "@/components/Section";
 
 export default function Hero() {
   return (
-    <Section id="about" className="pt-12 sm:pt-16" labelledBy="profile-title">
-      <article className="profile-card overflow-hidden rounded-lg border border-border bg-surface">
-        <div className="relative h-44 border-b border-border bg-surface-2 sm:h-56 lg:h-64">
+    <Section id="about" className="pt-0 sm:pt-0" labelledBy="profile-title">
+      <article className="relative left-1/2 w-screen -translate-x-1/2">
+        <div className="relative h-52 border-b border-border bg-surface-2 sm:h-64 lg:h-80">
           <Image
             src="/images/kc-skyline.jpg"
             alt="Kansas City skyline at dusk"
             fill
             priority
-            sizes="(min-width: 1024px) 1024px, 100vw"
+            sizes="100vw"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-bg/55 via-bg/5 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/28 to-bg/5" />
         </div>
 
-        <div className="relative z-10 px-5 pb-6 sm:px-8 sm:pb-8">
+        <div className="relative z-10 mx-auto max-w-5xl px-4 pb-10 sm:px-6 sm:pb-14 lg:px-8">
           <div className="-mt-16 flex flex-col gap-5 sm:-mt-20 sm:flex-row sm:items-end sm:justify-between">
             <Image
               src="/images/jackson-profile.jpg"
@@ -25,7 +25,7 @@ export default function Hero() {
               width={320}
               height={320}
               priority
-              className="relative z-20 size-32 rounded-full border-4 border-surface bg-surface-2 object-cover object-[50%_40%] shadow-2xl sm:size-40"
+              className="relative z-20 size-32 rounded-full border-4 border-bg bg-surface-2 object-cover object-[50%_40%] shadow-2xl sm:size-40"
             />
 
             <div className="flex flex-wrap gap-3 sm:mb-3">

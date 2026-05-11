@@ -54,26 +54,26 @@ body::before {
   pointer-events: none;
   content: "";
   background-image:
-    url("data:image/svg+xml,%3Csvg width='900' height='180' viewBox='0 0 900 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 90 C38 40 75 140 112 90 C150 40 188 140 225 90 C263 40 300 140 338 90 C375 40 413 140 450 90 C488 40 525 140 563 90 C600 40 638 140 675 90 C713 40 750 140 788 90 C825 40 863 140 900 90' stroke='%234f7484' stroke-width='1' stroke-opacity='0.22' fill='none'/%3E%3Cpath d='M0 90 C13 65 25 115 38 90 C50 65 63 115 75 90 C88 65 100 115 112 90 C125 65 138 115 150 90 C163 65 175 115 188 90 C200 65 213 115 225 90 C238 65 250 115 263 90 C275 65 288 115 300 90 C313 65 325 115 338 90 C350 65 363 115 375 90 C388 65 400 115 413 90 C425 65 438 115 450 90 C463 65 475 115 488 90 C500 65 513 115 525 90 C538 65 550 115 563 90 C575 65 588 115 600 90 C613 65 625 115 638 90 C650 65 663 115 675 90 C688 65 700 115 713 90 C725 65 738 115 750 90 C763 65 775 115 788 90 C800 65 813 115 825 90 C838 65 850 115 863 90 C875 65 888 115 900 90' stroke='%238ab4c6' stroke-width='0.6' stroke-opacity='0.14' fill='none'/%3E%3C/svg%3E");
-  background-position: center 10rem;
+    url("data:image/svg+xml,%3Csvg width='1200' height='920' viewBox='0 0 1200 920' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%238ab4c6' fill-opacity='0.10' font-family='JetBrains Mono, monospace' font-size='17'%3E%3Ctext x='72' y='112'%3Ee%5E(i*pi)+1=0%3C/text%3E%3Ctext x='776' y='184'%3Chat(f)(xi)=int f(x)e%5E(-2pi i xi x) dx%3C/text%3E%3Ctext x='116' y='378'%3CAv=lambda v%3C/text%3E%3Ctext x='824' y='488'%3Cdx/dt = Ax%3C/text%3E%3Ctext x='190' y='670'%3Cdiv F = rho%3C/text%3E%3Ctext x='710' y='778'%3Cx(t)=sum a_n sin(n omega t)%3C/text%3E%3C/g%3E%3Cg fill='none'%3E%3Cpath d='M0 244 C50 194 100 294 150 244 C200 194 250 294 300 244 C350 194 400 294 450 244 C500 194 550 294 600 244 C650 194 700 294 750 244 C800 194 850 294 900 244 C950 194 1000 294 1050 244 C1100 194 1150 294 1200 244' stroke='%234f7484' stroke-width='1' stroke-opacity='0.22'/%3E%3Cpath d='M0 612 C50 562 100 662 150 612 C200 562 250 662 300 612 C350 562 400 662 450 612 C500 562 550 662 600 612 C650 562 700 662 750 612 C800 562 850 662 900 612 C950 562 1000 662 1050 612 C1100 562 1150 662 1200 612' stroke='%238ab4c6' stroke-width='0.7' stroke-opacity='0.14'/%3E%3C/g%3E%3C/svg%3E");
+  background-position: center 5rem;
   background-repeat: repeat-y;
-  background-size: min(92vw, 900px) auto;
-  opacity: 0.5;
+  background-size: min(110vw, 1200px) auto;
+  opacity: 0.68;
 }
 
 body::after {
   position: fixed;
-  right: max(1.5rem, calc((100vw - 72rem) / 2));
-  bottom: 2rem;
+  inset: 0;
   z-index: -1;
   pointer-events: none;
-  max-width: 22rem;
-  content: "x(t) = sum a_n sin(n omega t)   hat(f)(xi) = integral f(x)e^(-2pi i xi x) dx";
-  color: rgba(138, 180, 198, 0.1);
-  font-family: var(--font-mono);
-  font-size: 0.72rem;
-  line-height: 1.9;
-  text-align: right;
+  content: "";
+  background-image:
+    url("data:image/svg+xml,%3Csvg width='960' height='760' viewBox='0 0 960 760' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%23b8c2cc' fill-opacity='0.055' font-family='JetBrains Mono, monospace' font-size='14'%3E%3Ctext x='620' y='88'%3Clim h-%3E0 (f(x+h)-f(x))/h%3C/text%3E%3Ctext x='78' y='204'%3Cgrad phi = 0%3C/text%3E%3Ctext x='690' y='330'%3Cy'' + omega%5E2 y = 0%3C/text%3E%3Ctext x='146' y='484'%3Clambda_n = n%5E2*pi%5E2/L%5E2%3C/text%3E%3Ctext x='540' y='648'%3CL = T - V%3C/text%3E%3C/g%3E%3C/svg%3E");
+  background-position:
+    calc(50% - 18rem) 8rem,
+    calc(50% + 20rem) 24rem;
+  background-repeat: repeat-y;
+  background-size: min(95vw, 960px) auto;
 }
 
 a {
@@ -91,10 +91,6 @@ section[id] {
 
 .card:hover {
   border-color: #4f7484;
-}
-
-.profile-card {
-  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.22);
 }
 
 ::selection {
