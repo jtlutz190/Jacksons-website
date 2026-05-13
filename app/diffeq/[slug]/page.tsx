@@ -157,9 +157,6 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
               <span className="mt-2 block text-lg font-medium text-text">
                 #{formatEntryNumber(previousEntry.number)}
               </span>
-              <span className="mt-1 block text-sm text-soft">
-                {previousEntry.category}
-              </span>
             </Link>
           ) : (
             <div className="hidden sm:block" />
@@ -175,9 +172,6 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
               </span>
               <span className="mt-2 block text-lg font-medium text-text">
                 #{formatEntryNumber(nextEntry.number)}
-              </span>
-              <span className="mt-1 block text-sm text-soft">
-                {nextEntry.category}
               </span>
             </Link>
           ) : null}
