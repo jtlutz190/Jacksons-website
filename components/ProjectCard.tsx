@@ -17,8 +17,8 @@ export default function ProjectCard({
   linkLabel,
   featuredLink = false,
 }: ProjectCardProps) {
-  return (
-    <article className="card rounded-lg bg-surface p-5">
+  const cardContent = (
+    <>
       <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
         <h3 className="text-lg font-medium text-text">{title}</h3>
         <span className="w-fit rounded border border-border bg-bg px-2 py-1 font-mono text-xs text-accent">
@@ -39,18 +39,32 @@ export default function ProjectCard({
         ))}
       </div>
 
-      {link ? (
+      {link && !featuredLink ? (
         <a
           href={link}
-          className={
-            featuredLink
-              ? "mt-5 inline-flex min-h-10 w-fit items-center rounded-md border border-text bg-text px-4 text-sm font-semibold text-bg hover:border-accent hover:bg-accent"
-              : "mt-5 inline-flex text-sm font-medium text-accent hover:text-text"
-          }
+          className="mt-5 inline-flex text-sm font-medium text-accent hover:text-text"
         >
           {linkLabel ?? "Placeholder link"}
         </a>
       ) : null}
+    </>
+  );
+
+  if (link && featuredLink) {
+    return (
+      <a
+        href={link}
+        className="card block rounded-lg bg-surface p-5 no-underline transition-colors hover:bg-surface-2 focus:outline-none focus:ring-2 focus:ring-accent-dim focus:ring-offset-2 focus:ring-offset-bg"
+        aria-label={`${title}: ${linkLabel ?? "Open project"}`}
+      >
+        {cardContent}
+      </a>
+    );
+  }
+
+  return (
+    <article className="card rounded-lg bg-surface p-5">
+      {cardContent}
     </article>
   );
 }
