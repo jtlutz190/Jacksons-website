@@ -30,6 +30,7 @@ html {
     radial-gradient(circle at 18% 0%, rgba(79, 116, 132, 0.14), transparent 28rem),
     linear-gradient(180deg, #0d0f12 0%, #101318 52%, #0d0f12 100%);
   color: #edf2f7;
+  overflow-x: clip;
 }
 
 body {
@@ -43,8 +44,16 @@ body {
   color: #edf2f7;
   font-family: var(--font-sans);
   line-height: 1.6;
+  overflow-x: clip;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
+}
+
+@supports not (overflow: clip) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
 }
 
 body::before {
