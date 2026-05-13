@@ -93,6 +93,23 @@ section[id] {
   scroll-margin-top: 96px;
 }
 
+.tagline-glow {
+  position: relative;
+  isolation: isolate;
+}
+
+.tagline-glow::before {
+  position: absolute;
+  inset: -0.55rem -0.9rem;
+  z-index: -1;
+  content: "";
+  background:
+    radial-gradient(ellipse at 30% 50%, rgba(237, 242, 247, 0.2), transparent 62%),
+    radial-gradient(ellipse at 70% 50%, rgba(138, 180, 198, 0.28), transparent 68%);
+  filter: blur(10px);
+  opacity: 0.86;
+}
+
 .latex-inline .katex,
 .latex-display-inline .katex {
   color: inherit;

@@ -54,7 +54,7 @@ export default function Hero() {
             >
               Jackson T. Lutz
             </h1>
-            <p className="mt-3 font-mono text-sm text-accent">
+            <p className="tagline-glow mt-3 w-fit font-mono text-sm text-accent">
               Seeking what is true, building what is useful.
             </p>
 
