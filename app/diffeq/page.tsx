@@ -50,6 +50,29 @@ export default function DiffeqArchivePage() {
           <h1 className="mt-3 text-4xl font-semibold tracking-tight text-text sm:text-5xl">
             1000 Ordinary Differential Equations
           </h1>
+          <figure className="mt-8 border-l-2 border-accent-dim pl-5">
+            <blockquote className="font-serif text-2xl leading-9 text-text drop-shadow-[0_0_18px_rgba(237,242,247,0.12)] sm:text-3xl sm:leading-10">
+              &ldquo;Once you learn the concept of a differential equation, you
+              see differential equations all over, no matter what you do.&rdquo;
+            </blockquote>
+            <figcaption className="mt-3 font-mono text-xs uppercase tracking-[0.18em] text-accent">
+              &mdash; Gian-Carlo Rota
+            </figcaption>
+          </figure>
+          <div className="mt-6 space-y-4 text-base leading-7 text-soft">
+            <p>
+              Differential equations have been at the pique of my interest in
+              math ever since I discovered them. In order to show my love for
+              differential equations, I have documented one thousand
+              differential equation problems, solutions, their behaviors, and
+              important takeaways.
+            </p>
+            <p className="text-sm leading-6 text-muted">
+              Problems are adapted from textbooks, course materials, and
+              generative AI. All solutions and explanations are done by me
+              unless noted otherwise.
+            </p>
+          </div>
           <p className="mt-5 text-base leading-7 text-soft">
             A handwritten and computational archive of one thousand ODEs,
             organized by structure, method, and mathematical idea.
