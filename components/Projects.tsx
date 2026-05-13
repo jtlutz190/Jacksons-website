@@ -22,12 +22,17 @@ const projects = [
   },
   {
     title: "1000 Differential Equations",
-    status: "Long-term project",
+    status: "Long-term mathematical archive",
     description:
-      "A long-term mathematical collection focused on solving, categorizing, and understanding many different differential equations.",
-    tags: ["Differential Equations", "Mathematical Writing", "Problem Solving"],
-    link: "#",
-    linkLabel: "Placeholder progress",
+      "A handwritten and computational archive of one thousand ordinary differential equations, organized by structure, method, and mathematical idea.",
+    tags: [
+      "Differential Equations",
+      "ODEs",
+      "Mathematical Writing",
+      "Problem Solving",
+    ],
+    link: "/diffeq",
+    linkLabel: "Browse archive",
   },
   {
     title: "General Projects / GitHub",

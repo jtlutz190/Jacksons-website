@@ -1,0 +1,140 @@
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import {
+  diffeqEntries,
+  formatEntryNumber,
+} from "@/data/diffeqEntries";
+
+interface DiffeqEntryPageProps {
+  params: Promise<{
+    slug: string;
+  }>;
+}
+
+export async function generateStaticParams() {
+  return diffeqEntries.map((entry) => ({
+    slug: entry.slug,
+  }));
+}
+
+export async function generateMetadata({ params }: DiffeqEntryPageProps) {
+  const { slug } = await params;
+  const entry = diffeqEntries.find((candidate) => candidate.slug === slug);
+
+  if (!entry) {
+    return {
+      title: "Differential Equation Entry | Jackson T. Lutz",
+    };
+  }
+
+  return {
+    title: `#${formatEntryNumber(entry.number)} ${entry.title} | Jackson T. Lutz`,
+    description: entry.takeaway,
+  };
+}
+
+export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) {
+  const { slug } = await params;
+  const entry = diffeqEntries.find((candidate) => candidate.slug === slug);
+
+  if (!entry) {
+    notFound();
+  }
+
+  return (
+    <main className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
+      <Link
+        href="/diffeq"
+        className="font-mono text-xs uppercase tracking-[0.18em] text-accent hover:text-text"
+      >
+        Back to archive
+      </Link>
+
+      <article className="py-12">
+        <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
+          Completed entry
+        </p>
+        <h1 className="mt-3 text-4xl font-semibold tracking-tight text-text sm:text-5xl">
+          #{formatEntryNumber(entry.number)} — {entry.title}
+        </h1>
+
+        <div className="mt-8 grid gap-4 md:grid-cols-2">
+          <div className="card rounded-lg bg-surface p-5">
+            <dl className="space-y-5 text-sm leading-6">
+              <div>
+                <dt className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
+                  Equation
+                </dt>
+                <dd className="mt-1 font-mono text-lg text-text">
+                  {entry.equation}
+                </dd>
+              </div>
+              <div>
+                <dt className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
+                  Classification
+                </dt>
+                <dd className="mt-1 text-soft">{entry.classification}</dd>
+              </div>
+              <div>
+                <dt className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
+                  Method
+                </dt>
+                <dd className="mt-1 text-soft">{entry.method}</dd>
+              </div>
+              <div>
+                <dt className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
+                  Typed Solution Pattern
+                </dt>
+                <dd className="mt-1 font-mono text-text">y = ∫ f(x) dx + C</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div className="card rounded-lg bg-surface p-5">
+            <h2 className="text-lg font-medium text-text">Takeaway</h2>
+            <p className="mt-3 text-sm leading-6 text-soft">{entry.takeaway}</p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {entry.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded bg-tag px-2.5 py-1 font-mono text-xs text-accent"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <section className="mt-8" aria-labelledby="handwritten-work-title">
+          <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <h2
+              id="handwritten-work-title"
+              className="text-2xl font-semibold tracking-tight text-text"
+            >
+              Handwritten Work
+            </h2>
+            <a
+              href={entry.pdf}
+              className="inline-flex min-h-10 w-fit items-center rounded-md border border-accent-dim bg-accent-dim/20 px-4 text-sm font-medium text-text hover:border-accent hover:bg-accent-dim/30"
+            >
+              Download full PDF
+            </a>
+          </div>
+
+          <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-border bg-bg">
+            <Image
+              src={entry.preview}
+              alt={`Handwritten work preview for #${formatEntryNumber(entry.number)} ${entry.title}`}
+              fill
+              priority
+              sizes="(min-width: 1024px) 896px, 100vw"
+              className="object-cover"
+            />
+          </div>
+        </section>
+      </article>
+    </main>
+  );
+}
