@@ -36,11 +36,16 @@ export async function generateMetadata({ params }: DiffeqEntryPageProps) {
 
 export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) {
   const { slug } = await params;
-  const entry = diffeqEntries.find((candidate) => candidate.slug === slug);
+  const entryIndex = diffeqEntries.findIndex((candidate) => candidate.slug === slug);
+  const entry = diffeqEntries[entryIndex];
 
   if (!entry) {
     notFound();
   }
+
+  const previousEntry = entryIndex > 0 ? diffeqEntries[entryIndex - 1] : null;
+  const nextEntry =
+    entryIndex < diffeqEntries.length - 1 ? diffeqEntries[entryIndex + 1] : null;
 
   return (
     <main className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
@@ -133,6 +138,47 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
             </object>
           </div>
         </section>
+
+        <nav
+          className="mt-8 grid gap-4 sm:grid-cols-2"
+          aria-label="Differential equation entry navigation"
+        >
+          {previousEntry ? (
+            <Link
+              href={`/diffeq/${previousEntry.slug}`}
+              className="card rounded-lg bg-surface p-4 text-left hover:bg-surface-2"
+            >
+              <span className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
+                &larr; Previous
+              </span>
+              <span className="mt-2 block text-lg font-medium text-text">
+                #{formatEntryNumber(previousEntry.number)}
+              </span>
+              <span className="mt-1 block text-sm text-soft">
+                {previousEntry.category}
+              </span>
+            </Link>
+          ) : (
+            <div className="hidden sm:block" />
+          )}
+
+          {nextEntry ? (
+            <Link
+              href={`/diffeq/${nextEntry.slug}`}
+              className="card rounded-lg bg-surface p-4 text-left hover:bg-surface-2 sm:text-right"
+            >
+              <span className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
+                Next &rarr;
+              </span>
+              <span className="mt-2 block text-lg font-medium text-text">
+                #{formatEntryNumber(nextEntry.number)}
+              </span>
+              <span className="mt-1 block text-sm text-soft">
+                {nextEntry.category}
+              </span>
+            </Link>
+          ) : null}
+        </nav>
       </article>
     </main>
   );
