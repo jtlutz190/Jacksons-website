@@ -95,9 +95,7 @@ section[id] {
 .equation-trace {
   position: absolute;
   display: inline-block;
-  width: 0;
   max-width: calc(100vw - 2rem);
-  overflow: hidden;
   border-right: 1px solid rgba(237, 242, 247, 0.5);
   color: rgba(237, 242, 247, 0.5);
   font-family: var(--font-mono);
@@ -106,41 +104,21 @@ section[id] {
   white-space: nowrap;
   text-shadow: 0 0 18px rgba(237, 242, 247, 0.1);
   opacity: 0;
-  animation: write-equation 25s linear infinite both;
+  transition: opacity 1.2s ease;
 }
 
-@keyframes write-equation {
-  0% {
-    width: 0;
-    opacity: 0;
-  }
-
-  8% {
-    opacity: 0.5;
-  }
-
-  24% {
-    width: var(--trace-width);
-    opacity: 0.5;
-  }
-
-  34% {
-    width: var(--trace-width);
-    opacity: 0.24;
-  }
-
-  44%,
-  100% {
-    width: var(--trace-width);
-    opacity: 0;
-  }
+.equation-trace[data-phase="writing"] {
+  opacity: 0.5;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .equation-trace {
-    animation: none;
-    opacity: 0;
-  }
+.equation-trace[data-phase="holding"] {
+  opacity: 0.46;
+  border-right-color: transparent;
+}
+
+.equation-trace[data-phase="fading"] {
+  opacity: 0;
+  border-right-color: transparent;
 }
 
 .card {
