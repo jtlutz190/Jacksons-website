@@ -84,6 +84,16 @@ section[id] {
   scroll-margin-top: 96px;
 }
 
+.latex-inline .katex,
+.latex-display-inline .katex {
+  color: inherit;
+  font-size: 1em;
+}
+
+.latex-display-inline .katex {
+  font-size: 1.08em;
+}
+
 .equation-traces {
   position: fixed;
   inset: 0;

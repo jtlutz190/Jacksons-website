@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import Latex from "@/components/Latex";
 import {
   diffeqEntries,
   formatEntryNumber,
@@ -65,8 +66,8 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
                 <dt className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
                   Equation
                 </dt>
-                <dd className="mt-1 font-mono text-lg text-text">
-                  {entry.equation}
+                <dd className="mt-1 text-lg text-text">
+                  <Latex math={entry.equationLatex} className="latex-display-inline" />
                 </dd>
               </div>
               <div>
@@ -85,14 +86,20 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
                 <dt className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
                   Solution
                 </dt>
-                <dd className="mt-1 font-mono text-text">{entry.solution}</dd>
+                <dd className="mt-1 text-text">
+                  <Latex math={entry.solutionLatex} className="latex-display-inline" />
+                </dd>
               </div>
             </dl>
           </div>
 
           <div className="card rounded-lg bg-surface p-5">
             <h2 className="text-lg font-medium text-text">Takeaway</h2>
-            <p className="mt-3 text-sm leading-6 text-soft">{entry.takeaway}</p>
+            <p className="mt-3 text-sm leading-6 text-soft">
+              Direct integration equations of the form{" "}
+              <Latex math="y' = f(x)" className="latex-inline" /> tell us that
+              the slope of the solution changes with respect to x only.
+            </p>
           </div>
         </div>
 

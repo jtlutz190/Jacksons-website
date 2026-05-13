@@ -3,15 +3,20 @@ export interface DiffeqEntry {
   slug: string;
   title: string;
   equation: string;
+  equationLatex: string;
   classification: string;
   method: string;
   category: string;
   solution: string;
+  solutionLatex: string;
   tags: string[];
   takeaway: string;
   pdf: string;
   completed: boolean;
 }
+
+const directIntegrationTakeaway =
+  "Direct integration equations of the form y' = f(x) tell us that the slope of the solution changes with respect to x only.";
 
 export const diffeqEntries: DiffeqEntry[] = [
   {
@@ -19,13 +24,47 @@ export const diffeqEntries: DiffeqEntry[] = [
     slug: "001-direct-integration",
     title: "#001",
     equation: "y' = 2x",
+    equationLatex: "y' = 2x",
     classification: "Direct integration equation",
     method: "Antidifferentiation",
     category: "Direct integration equations",
     solution: "y = x^2 + C",
+    solutionLatex: "y = x^2 + C",
     tags: [],
-    takeaway: "Integrating 2x with respect to x gives y = x^2 + C.",
+    takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/001-direct-integration/work.pdf",
+    completed: true,
+  },
+  {
+    number: 2,
+    slug: "002-direct-integration",
+    title: "#002",
+    equation: "y' = 3x^2",
+    equationLatex: "y' = 3x^2",
+    classification: "Direct integration equation",
+    method: "Antidifferentiation",
+    category: "Direct integration equations",
+    solution: "y = x^3 + C",
+    solutionLatex: "y = x^3 + C",
+    tags: [],
+    takeaway: directIntegrationTakeaway,
+    pdf: "/diffeq/entries/002-direct-integration/work.pdf",
+    completed: true,
+  },
+  {
+    number: 3,
+    slug: "003-direct-integration",
+    title: "#003",
+    equation: "y' = 5x^4 - 2x + 7",
+    equationLatex: "y' = 5x^4 - 2x + 7",
+    classification: "Direct integration equation",
+    method: "Antidifferentiation",
+    category: "Direct integration equations",
+    solution: "y = x^5 - x^2 + 7x + C",
+    solutionLatex: "y = x^5 - x^2 + 7x + C",
+    tags: [],
+    takeaway: directIntegrationTakeaway,
+    pdf: "/diffeq/entries/003-direct-integration/work.pdf",
     completed: true,
   },
 ];

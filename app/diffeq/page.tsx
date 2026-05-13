@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Latex from "@/components/Latex";
 import {
   diffeqEntries,
   diffeqRoadmap,
@@ -13,6 +14,24 @@ export const metadata = {
 
 export default function DiffeqArchivePage() {
   const completedCount = diffeqEntries.filter((entry) => entry.completed).length;
+  const renderRoadmapRange = (range: string) => {
+    const formulas = ["y' = f(x)", "y' = f(y)", "y' = F(y/x)"];
+    const formula = formulas.find((candidate) => range.includes(candidate));
+
+    if (!formula) {
+      return range;
+    }
+
+    const [before, after] = range.split(formula);
+
+    return (
+      <>
+        {before}
+        <Latex math={formula} className="latex-inline" />
+        {after}
+      </>
+    );
+  };
 
   return (
     <main className="mx-auto max-w-5xl px-4 py-10 sm:px-6 lg:px-8">
@@ -75,7 +94,7 @@ export default function DiffeqArchivePage() {
               <h3 className="text-base font-medium text-text">{group.title}</h3>
               <ul className="mt-4 space-y-2 text-sm leading-6 text-soft">
                 {group.ranges.map((range) => (
-                  <li key={range}>{range}</li>
+                  <li key={range}>{renderRoadmapRange(range)}</li>
                 ))}
               </ul>
             </article>
@@ -114,7 +133,9 @@ export default function DiffeqArchivePage() {
                   <dt className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
                     Equation
                   </dt>
-                  <dd className="font-mono text-soft">{entry.equation}</dd>
+                  <dd className="text-soft">
+                    <Latex math={entry.equationLatex} className="latex-inline" />
+                  </dd>
                 </div>
                 <div>
                   <dt className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
@@ -143,7 +164,11 @@ export default function DiffeqArchivePage() {
                 </div>
               ) : null}
 
-              <p className="mt-4 text-sm leading-6 text-muted">{entry.takeaway}</p>
+              <p className="mt-4 text-sm leading-6 text-muted">
+                Direct integration equations of the form{" "}
+                <Latex math="y' = f(x)" className="latex-inline" /> tell us
+                that the slope of the solution changes with respect to x only.
+              </p>
 
               <div className="mt-4 flex flex-wrap gap-3">
                 <Link
