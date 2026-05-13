@@ -9,7 +9,6 @@ export interface DiffeqEntry {
   solution: string;
   tags: string[];
   takeaway: string;
-  preview: string;
   pdf: string;
   completed: boolean;
 }
@@ -26,7 +25,6 @@ export const diffeqEntries: DiffeqEntry[] = [
     solution: "y = x^2 + C",
     tags: [],
     takeaway: "Integrating 2x with respect to x gives y = x^2 + C.",
-    preview: "/diffeq/entries/001-direct-integration/001.png",
     pdf: "/diffeq/entries/001-direct-integration/work.pdf",
     completed: true,
   },

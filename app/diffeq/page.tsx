@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import {
   diffeqEntries,
@@ -100,32 +99,30 @@ export default function DiffeqArchivePage() {
           </div>
         </div>
 
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {diffeqEntries.map((entry) => (
-            <article key={entry.slug} className="card rounded-lg bg-surface p-5">
-              <div className="relative aspect-[4/3] overflow-hidden rounded border border-border bg-bg">
-                <Image
-                  src={entry.preview}
-                  alt={`Preview for #${formatEntryNumber(entry.number)}`}
-                  fill
-                  sizes="(min-width: 768px) 50vw, 100vw"
-                  className="object-cover"
-                />
+            <article key={entry.slug} className="card rounded-lg bg-surface p-4">
+              <div className="aspect-[4/3] overflow-hidden rounded border border-border bg-bg">
+                <object
+                  data={`${entry.pdf}#toolbar=0&navpanes=0&scrollbar=0`}
+                  type="application/pdf"
+                  className="h-full w-full"
+                  aria-label={`Preview for #${formatEntryNumber(entry.number)}`}
+                >
+                  <div className="flex h-full items-center justify-center p-4 text-center text-sm text-muted">
+                    PDF preview unavailable
+                  </div>
+                </object>
               </div>
 
-              <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
-                <div>
-                  <p className="font-mono text-xs text-accent">{entry.category}</p>
-                  <h3 className="mt-1 text-lg font-medium text-text">
-                    #{formatEntryNumber(entry.number)}
-                  </h3>
-                </div>
-                <span className="w-fit rounded border border-border bg-bg px-2 py-1 font-mono text-xs text-accent">
-                  Completed
-                </span>
+              <div className="mt-4">
+                <p className="font-mono text-xs text-accent">{entry.category}</p>
+                <h3 className="mt-1 text-lg font-medium text-text">
+                  #{formatEntryNumber(entry.number)}
+                </h3>
               </div>
 
-              <dl className="mt-4 space-y-3 text-sm leading-6">
+              <dl className="mt-3 space-y-2 text-sm leading-6">
                 <div>
                   <dt className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
                     Equation
@@ -159,9 +156,9 @@ export default function DiffeqArchivePage() {
                 </div>
               ) : null}
 
-              <p className="mt-5 text-sm leading-6 text-muted">{entry.takeaway}</p>
+              <p className="mt-4 text-sm leading-6 text-muted">{entry.takeaway}</p>
 
-              <div className="mt-5 flex flex-wrap gap-3">
+              <div className="mt-4 flex flex-wrap gap-3">
                 <Link
                   href={`/diffeq/${entry.slug}`}
                   className="inline-flex min-h-10 items-center rounded-md border border-accent-dim bg-accent-dim/20 px-4 text-sm font-medium text-text hover:border-accent hover:bg-accent-dim/30"

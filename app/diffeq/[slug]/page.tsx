@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import {
@@ -113,15 +112,18 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
             </a>
           </div>
 
-          <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-border bg-bg">
-            <Image
-              src={entry.preview}
-              alt={`Handwritten work preview for #${formatEntryNumber(entry.number)}`}
-              fill
-              priority
-              sizes="(min-width: 1024px) 896px, 100vw"
-              className="object-cover"
-            />
+          <div className="aspect-[4/3] overflow-hidden rounded-lg border border-border bg-bg">
+            <object
+              data={entry.pdf}
+              type="application/pdf"
+              className="h-full w-full"
+              aria-label={`Handwritten work for #${formatEntryNumber(entry.number)}`}
+            >
+              <div className="flex h-full items-center justify-center p-4 text-center text-sm text-muted">
+                PDF preview unavailable. Use the download link above to view the
+                handwritten work.
+              </div>
+            </object>
           </div>
         </section>
       </article>
