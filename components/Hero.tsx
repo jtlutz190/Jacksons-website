@@ -46,7 +46,7 @@ export default function Hero() {
 
           <div className="mt-5 max-w-3xl">
             <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
-              AMEP student
+              AMEP student | UW-Madison 2029 | 3.598 GPA
             </p>
             <h1
               id="profile-title"
