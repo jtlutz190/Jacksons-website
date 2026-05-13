@@ -106,7 +106,7 @@ export default function DiffeqArchivePage() {
               <div className="relative aspect-[4/3] overflow-hidden rounded border border-border bg-bg">
                 <Image
                   src={entry.preview}
-                  alt={`Preview for #${formatEntryNumber(entry.number)} ${entry.title}`}
+                  alt={`Preview for #${formatEntryNumber(entry.number)}`}
                   fill
                   sizes="(min-width: 768px) 50vw, 100vw"
                   className="object-cover"
@@ -115,11 +115,9 @@ export default function DiffeqArchivePage() {
 
               <div className="mt-5 flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
                 <div>
-                  <p className="font-mono text-xs text-accent">
-                    #{formatEntryNumber(entry.number)}
-                  </p>
+                  <p className="font-mono text-xs text-accent">{entry.category}</p>
                   <h3 className="mt-1 text-lg font-medium text-text">
-                    {entry.title}
+                    #{formatEntryNumber(entry.number)}
                   </h3>
                 </div>
                 <span className="w-fit rounded border border-border bg-bg px-2 py-1 font-mono text-xs text-accent">
@@ -148,16 +146,18 @@ export default function DiffeqArchivePage() {
                 </div>
               </dl>
 
-              <div className="mt-5 flex flex-wrap gap-2">
-                {entry.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="rounded bg-tag px-2.5 py-1 font-mono text-xs text-accent"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
+              {entry.tags.length > 0 ? (
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {entry.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded bg-tag px-2.5 py-1 font-mono text-xs text-accent"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              ) : null}
 
               <p className="mt-5 text-sm leading-6 text-muted">{entry.takeaway}</p>
 

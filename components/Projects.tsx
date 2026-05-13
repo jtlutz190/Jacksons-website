@@ -32,7 +32,8 @@ const projects = [
       "Problem Solving",
     ],
     link: "/diffeq",
-    linkLabel: "Browse archive",
+    linkLabel: "View archive",
+    featuredLink: true,
   },
   {
     title: "General Projects / GitHub",

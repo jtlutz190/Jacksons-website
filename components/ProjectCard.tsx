@@ -5,6 +5,7 @@ interface ProjectCardProps {
   tags: string[];
   link?: string;
   linkLabel?: string;
+  featuredLink?: boolean;
 }
 
 export default function ProjectCard({
@@ -14,6 +15,7 @@ export default function ProjectCard({
   tags,
   link,
   linkLabel,
+  featuredLink = false,
 }: ProjectCardProps) {
   return (
     <article className="card rounded-lg bg-surface p-5">
@@ -40,7 +42,11 @@ export default function ProjectCard({
       {link ? (
         <a
           href={link}
-          className="mt-5 inline-flex text-sm font-medium text-accent hover:text-text"
+          className={
+            featuredLink
+              ? "mt-5 inline-flex min-h-10 w-fit items-center rounded-md border border-text bg-text px-4 text-sm font-semibold text-bg hover:border-accent hover:bg-accent"
+              : "mt-5 inline-flex text-sm font-medium text-accent hover:text-text"
+          }
         >
           {linkLabel ?? "Placeholder link"}
         </a>

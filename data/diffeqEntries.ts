@@ -5,6 +5,8 @@ export interface DiffeqEntry {
   equation: string;
   classification: string;
   method: string;
+  category: string;
+  solution: string;
   tags: string[];
   takeaway: string;
   preview: string;
@@ -16,13 +18,14 @@ export const diffeqEntries: DiffeqEntry[] = [
   {
     number: 1,
     slug: "001-direct-integration",
-    title: "Direct Integration ODE",
-    equation: "dy/dx = f(x)",
-    classification: "First-order directly integrable ordinary differential equation",
-    method: "Antidifferentiation / direct integration",
-    tags: ["first-order", "direct integration", "antiderivative", "beginner"],
-    takeaway:
-      "When y' depends only on x, the solution is an antiderivative plus a constant.",
+    title: "#001",
+    equation: "y' = 2x",
+    classification: "Direct integration equation",
+    method: "Antidifferentiation",
+    category: "Direct integration equations",
+    solution: "y = x^2 + C",
+    tags: [],
+    takeaway: "Integrating 2x with respect to x gives y = x^2 + C.",
     preview: "/diffeq/entries/001-direct-integration/preview.png",
     pdf: "/diffeq/entries/001-direct-integration/work.pdf",
     completed: true,

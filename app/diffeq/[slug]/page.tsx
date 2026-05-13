@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: DiffeqEntryPageProps) {
   }
 
   return {
-    title: `#${formatEntryNumber(entry.number)} ${entry.title} | Jackson T. Lutz`,
+    title: `#${formatEntryNumber(entry.number)} | Jackson T. Lutz`,
     description: entry.takeaway,
   };
 }
@@ -53,10 +53,10 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
 
       <article className="py-12">
         <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
-          Completed entry
+          {entry.category}
         </p>
         <h1 className="mt-3 text-4xl font-semibold tracking-tight text-text sm:text-5xl">
-          #{formatEntryNumber(entry.number)} — {entry.title}
+          #{formatEntryNumber(entry.number)}
         </h1>
 
         <div className="mt-8 grid gap-4 md:grid-cols-2">
@@ -84,9 +84,9 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
               </div>
               <div>
                 <dt className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
-                  Typed Solution Pattern
+                  Solution
                 </dt>
-                <dd className="mt-1 font-mono text-text">y = ∫ f(x) dx + C</dd>
+                <dd className="mt-1 font-mono text-text">{entry.solution}</dd>
               </div>
             </dl>
           </div>
@@ -94,16 +94,6 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
           <div className="card rounded-lg bg-surface p-5">
             <h2 className="text-lg font-medium text-text">Takeaway</h2>
             <p className="mt-3 text-sm leading-6 text-soft">{entry.takeaway}</p>
-            <div className="mt-5 flex flex-wrap gap-2">
-              {entry.tags.map((tag) => (
-                <span
-                  key={tag}
-                  className="rounded bg-tag px-2.5 py-1 font-mono text-xs text-accent"
-                >
-                  {tag}
-                </span>
-              ))}
-            </div>
           </div>
         </div>
 
@@ -126,7 +116,7 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
           <div className="relative aspect-[4/3] overflow-hidden rounded-lg border border-border bg-bg">
             <Image
               src={entry.preview}
-              alt={`Handwritten work preview for #${formatEntryNumber(entry.number)} ${entry.title}`}
+              alt={`Handwritten work preview for #${formatEntryNumber(entry.number)}`}
               fill
               priority
               sizes="(min-width: 1024px) 896px, 100vw"
