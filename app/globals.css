@@ -157,12 +157,12 @@ section[id] {
 }
 
 .card {
-  border: 1px solid #2b333d;
+  border: 1px solid rgba(237, 242, 247, 0.42);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.16);
 }
 
 .card:hover {
-  border-color: #4f7484;
+  border-color: rgba(237, 242, 247, 0.74);
 }
 
 ::selection {

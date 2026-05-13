@@ -28,12 +28,12 @@ const skillGroups = [
 export default function Skills() {
   return (
     <Section id="skills" title="Skills" eyebrow="Beta portfolio">
-      <p className="mb-6 max-w-2xl text-sm leading-6 text-soft">
+      <p className="mb-6 max-w-2xl text-sm leading-6 text-text">
         This is a learning-oriented portfolio, so the language here is
         intentionally modest. Some areas are active study rather than claimed
         mastery.
       </p>
-      <div className="grid gap-4 sm:grid-cols-2">
+      <div className="space-y-3">
         {skillGroups.map((group) => (
           <SkillGroup key={group.title} {...group} />
         ))}

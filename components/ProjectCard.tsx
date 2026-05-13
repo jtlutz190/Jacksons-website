@@ -26,7 +26,7 @@ export default function ProjectCard({
         </span>
       </div>
 
-      <p className="mt-4 text-sm leading-6 text-soft">{description}</p>
+      <p className="mt-4 text-sm leading-6 text-text">{description}</p>
 
       <div className="mt-5 flex flex-wrap gap-2">
         {tags.map((tag) => (
@@ -49,7 +49,7 @@ export default function ProjectCard({
       ) : null}
 
       {link && featuredLink ? (
-        <span className="mt-5 inline-flex w-fit rounded border border-border bg-bg px-3 py-1.5 font-mono text-xs uppercase tracking-[0.12em] text-muted">
+        <span className="mt-5 inline-flex w-fit rounded border border-text/45 bg-bg px-3 py-1.5 font-mono text-xs uppercase tracking-[0.12em] text-text">
           Click to access
         </span>
       ) : null}

@@ -52,28 +52,12 @@ const equations = [
     size: "0.82rem",
   },
   {
-    text: "nabla dot E = rho/epsilon0",
-    top: "39%",
-    left: "9%",
-    delay: 15400,
-    opacity: 0.52,
-    size: "0.92rem",
-  },
-  {
     text: "F(s) = int_0^inf f(t)e^(-st)dt",
     top: "58%",
     left: "70%",
     delay: 18100,
     opacity: 0.28,
     size: "0.78rem",
-  },
-  {
-    text: "lambda v = Av",
-    top: "86%",
-    left: "68%",
-    delay: 20700,
-    opacity: 0.6,
-    size: "0.94rem",
   },
   {
     text: "theta'' + sin(theta) = 0",
@@ -84,14 +68,6 @@ const equations = [
     size: "0.84rem",
   },
   {
-    text: "sum a_n sin(n*pi*x/L)",
-    top: "12%",
-    left: "39%",
-    delay: 4200,
-    opacity: 0.44,
-    size: "0.8rem",
-  },
-  {
     text: "x' = Ax",
     top: "73%",
     left: "4%",
@@ -100,28 +76,12 @@ const equations = [
     size: "1rem",
   },
   {
-    text: "dQ/dt = k(Q_in - Q)",
-    top: "35%",
-    left: "33%",
-    delay: 13600,
-    opacity: 0.34,
-    size: "0.86rem",
-  },
-  {
     text: "V = IR",
     top: "63%",
     left: "53%",
     delay: 18900,
     opacity: 0.74,
     size: "0.98rem",
-  },
-  {
-    text: "y = C e^(kx)",
-    top: "91%",
-    left: "29%",
-    delay: 22100,
-    opacity: 0.42,
-    size: "0.88rem",
   },
 ];
 

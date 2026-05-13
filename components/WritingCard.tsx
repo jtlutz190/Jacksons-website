@@ -17,7 +17,7 @@ export default function WritingCard({ title, description }: WritingCardProps) {
           placeholder
         </a>
       </div>
-      <p className="mt-3 text-sm leading-6 text-soft">{description}</p>
+      <p className="mt-3 text-sm leading-6 text-text">{description}</p>
     </article>
   );
 }
