@@ -13,6 +13,22 @@ export interface DiffeqEntry {
   takeaway: string;
   pdf: string;
   completed: boolean;
+  graph?: DiffeqGraph;
+}
+
+export interface DiffeqGraph {
+  xMin: number;
+  xMax: number;
+  yMin: number;
+  yMax: number;
+  curves: DiffeqGraphCurve[];
+}
+
+export interface DiffeqGraphCurve {
+  label: string;
+  latex: string;
+  stroke: "solution" | "derivative";
+  points: Array<[number, number]>;
 }
 
 const directIntegrationTakeaway =
@@ -34,6 +50,54 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/001-direct-integration/work.pdf",
     completed: true,
+    graph: {
+      xMin: -3,
+      xMax: 3,
+      yMin: -6,
+      yMax: 9,
+      curves: [
+        {
+          label: "y",
+          latex: "y = x^2",
+          stroke: "solution",
+          points: [
+            [-3, 9],
+            [-2.5, 6.25],
+            [-2, 4],
+            [-1.5, 2.25],
+            [-1, 1],
+            [-0.5, 0.25],
+            [0, 0],
+            [0.5, 0.25],
+            [1, 1],
+            [1.5, 2.25],
+            [2, 4],
+            [2.5, 6.25],
+            [3, 9],
+          ],
+        },
+        {
+          label: "y'",
+          latex: "y' = 2x",
+          stroke: "derivative",
+          points: [
+            [-3, -6],
+            [-2.5, -5],
+            [-2, -4],
+            [-1.5, -3],
+            [-1, -2],
+            [-0.5, -1],
+            [0, 0],
+            [0.5, 1],
+            [1, 2],
+            [1.5, 3],
+            [2, 4],
+            [2.5, 5],
+            [3, 6],
+          ],
+        },
+      ],
+    },
   },
   {
     number: 2,

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import DiffeqGraph from "@/components/DiffeqGraph";
 import Latex from "@/components/Latex";
 import {
   diffeqEntries,
@@ -107,6 +108,8 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
             </p>
           </div>
         </div>
+
+        {entry.graph ? <DiffeqGraph graph={entry.graph} /> : null}
 
         <section className="mt-8" aria-labelledby="handwritten-work-title">
           <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
