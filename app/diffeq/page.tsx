@@ -102,20 +102,7 @@ export default function DiffeqArchivePage() {
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {diffeqEntries.map((entry) => (
             <article key={entry.slug} className="card rounded-lg bg-surface p-4">
-              <div className="aspect-[4/3] overflow-hidden rounded border border-border bg-bg">
-                <object
-                  data={`${entry.pdf}#toolbar=0&navpanes=0&scrollbar=0`}
-                  type="application/pdf"
-                  className="h-full w-full"
-                  aria-label={`Preview for #${formatEntryNumber(entry.number)}`}
-                >
-                  <div className="flex h-full items-center justify-center p-4 text-center text-sm text-muted">
-                    PDF preview unavailable
-                  </div>
-                </object>
-              </div>
-
-              <div className="mt-4">
+              <div>
                 <p className="font-mono text-xs text-accent">{entry.category}</p>
                 <h3 className="mt-1 text-lg font-medium text-text">
                   #{formatEntryNumber(entry.number)}
