@@ -4,21 +4,17 @@ import Section from "@/components/Section";
 const projects = [
   {
     title: "Audio Localization System",
-    status: "Future flagship project",
+    status: "Work in progress",
     description:
       "A planned embedded systems and signal processing project involving microphones, time-delay estimation, and localization of sound sources.",
     tags: ["Embedded Systems", "Signal Processing", "Microphones", "Localization"],
-    link: "#",
-    linkLabel: "Placeholder details",
   },
   {
     title: "Math Vault",
-    status: "External / in progress",
+    status: "Work in progress",
     description:
       "An externally hosted visualization of undergraduate mathematics, including handwritten notes, proofs, theorems, and examples. Topics include Analysis, Differential Equations, and Discrete Math.",
     tags: ["Analysis", "Differential Equations", "Discrete Math"],
-    link: "#",
-    linkLabel: "Placeholder external link",
   },
   {
     title: "1000 Differential Equations",
@@ -37,12 +33,10 @@ const projects = [
   },
   {
     title: "General Projects / GitHub",
-    status: "Ongoing",
+    status: "Work in progress",
     description:
       "A growing collection of code, experiments, notes, and technical projects.",
     tags: ["Code", "Experiments", "Notes", "Technical Projects"],
-    link: "https://github.com/placeholder",
-    linkLabel: "Placeholder GitHub",
   },
 ];
 

@@ -47,6 +47,12 @@ export default function ProjectCard({
           {linkLabel ?? "Placeholder link"}
         </a>
       ) : null}
+
+      {link && featuredLink ? (
+        <span className="mt-5 inline-flex w-fit rounded border border-border bg-bg px-3 py-1.5 font-mono text-xs uppercase tracking-[0.12em] text-muted">
+          Click to access
+        </span>
+      ) : null}
     </>
   );
 
