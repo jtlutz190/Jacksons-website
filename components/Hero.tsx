@@ -25,7 +25,7 @@ export default function Hero() {
               width={320}
               height={320}
               priority
-              className="relative z-20 size-32 rounded-full border-4 border-bg bg-surface-2 object-cover object-[50%_40%] shadow-2xl sm:size-40"
+              className="relative z-20 size-32 rounded-full border-4 border-text bg-surface-2 object-cover object-[50%_40%] shadow-2xl sm:size-40"
             />
 
             <div className="flex flex-wrap gap-3 sm:mb-3">
