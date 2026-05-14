@@ -16,7 +16,7 @@ const projects = [
     description:
       "An externally hosted visualization of undergraduate mathematics, including handwritten notes, proofs, theorems, and examples. Topics include Analysis, Differential Equations, and Discrete Math.",
     tags: ["Analysis", "Differential Equations", "Discrete Math"],
-    accentClass: "card-violet",
+    accentClass: "card-cobalt",
   },
   {
     title: "1000 Differential Equations",
@@ -32,7 +32,7 @@ const projects = [
     link: "/diffeq",
     linkLabel: "View archive",
     featuredLink: true,
-    accentClass: "card-gold",
+    accentClass: "card-cobalt",
   },
   {
     title: "General Projects / GitHub",
@@ -40,7 +40,7 @@ const projects = [
     description:
       "A growing collection of code, experiments, notes, and technical projects.",
     tags: ["Code", "Experiments", "Notes", "Technical Projects"],
-    accentClass: "card-mint",
+    accentClass: "card-cobalt",
   },
 ];
 

@@ -23,7 +23,7 @@ export default function ProjectCard({
     <>
       <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
         <h3 className="text-lg font-medium text-text">{title}</h3>
-        <span className="w-fit rounded border border-border bg-bg px-2 py-1 font-mono text-xs text-gold">
+        <span className="w-fit rounded border border-cobalt/30 bg-cobalt/10 px-2 py-1 font-mono text-xs text-cyan">
           {status}
         </span>
       </div>
@@ -51,7 +51,7 @@ export default function ProjectCard({
       ) : null}
 
       {link && featuredLink ? (
-        <span className="mt-5 inline-flex w-fit rounded border border-gold/55 bg-gold/10 px-3 py-1.5 font-mono text-xs uppercase tracking-[0.12em] text-text">
+        <span className="mt-5 inline-flex w-fit rounded border border-cyan/45 bg-cyan/10 px-3 py-1.5 font-mono text-xs uppercase tracking-[0.12em] text-text">
           Click to access
         </span>
       ) : null}

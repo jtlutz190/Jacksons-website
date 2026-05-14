@@ -11,7 +11,7 @@ export default function SkillGroup({
 }: SkillGroupProps) {
   return (
     <article className={`card ${accentClass} flex flex-col gap-4 rounded-lg bg-surface px-5 py-4 sm:flex-row sm:items-center sm:justify-between`}>
-      <h3 className="shrink-0 font-mono text-xs uppercase tracking-[0.18em] text-gold sm:w-52">
+      <h3 className="shrink-0 font-mono text-xs uppercase tracking-[0.18em] text-cyan sm:w-52">
         {title}
       </h3>
       <ul className="flex flex-wrap gap-2 sm:justify-end">

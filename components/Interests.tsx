@@ -6,19 +6,19 @@ const interests = [
     title: "Reading",
     description:
       "Books are part of the notebook too: math, ideas, and whatever helps the world feel more legible.",
-    accentClass: "card-gold",
+    accentClass: "card-mint",
   },
   {
     title: "Bodybuilding",
     description:
       "A steady practice in patience, consistency, and measurable progress.",
-    accentClass: "card-coral",
+    accentClass: "card-mint",
   },
   {
     title: "Music",
     description:
       "Listening, patterns, structure, texture. Signals show up everywhere once you start noticing.",
-    accentClass: "card-cobalt",
+    accentClass: "card-mint",
   },
   {
     title: "Visual math / TikTok content",

@@ -17,7 +17,7 @@ export default function WritingCard({
         </h3>
         <a
           href="#"
-          className="w-fit font-mono text-xs text-gold hover:text-text"
+          className="w-fit font-mono text-xs text-cyan hover:text-text"
         >
           placeholder
         </a>

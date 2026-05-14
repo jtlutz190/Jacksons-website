@@ -66,7 +66,7 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
         </h1>
 
         <div className="mt-8 grid gap-4 md:grid-cols-2">
-          <div className="card card-gold rounded-lg bg-surface p-5">
+          <div className="card card-plain rounded-lg bg-surface p-5">
             <dl className="space-y-5 text-sm leading-6">
               <div>
                 <dt className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
@@ -99,7 +99,7 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
             </dl>
           </div>
 
-          <div className="card card-mint rounded-lg bg-surface p-5">
+          <div className="card card-plain rounded-lg bg-surface p-5">
             <h2 className="text-lg font-medium text-text">Takeaway</h2>
             <p className="mt-3 text-sm leading-6 text-soft">
               Direct integration equations of the form{" "}
@@ -121,7 +121,7 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
             </h2>
             <a
               href={entry.pdf}
-              className="inline-flex min-h-10 w-fit items-center rounded-md border border-gold/50 bg-gold/15 px-4 text-sm font-medium text-text hover:border-gold hover:bg-gold/20"
+              className="inline-flex min-h-10 w-fit items-center rounded-md border border-cobalt/45 bg-cobalt/10 px-4 text-sm font-medium text-text hover:border-cobalt hover:bg-cobalt/15"
             >
               Download full PDF
             </a>
@@ -149,7 +149,7 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
           {previousEntry ? (
             <Link
               href={`/diffeq/${previousEntry.slug}`}
-              className="card card-cobalt rounded-lg bg-surface p-4 text-left hover:bg-surface-2"
+              className="card card-plain rounded-lg bg-surface p-4 text-left hover:bg-surface-2"
             >
               <span className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
                 &larr; Previous
@@ -165,7 +165,7 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
           {nextEntry ? (
             <Link
               href={`/diffeq/${nextEntry.slug}`}
-              className="card card-coral rounded-lg bg-surface p-4 text-left hover:bg-surface-2 sm:text-right"
+              className="card card-plain rounded-lg bg-surface p-4 text-left hover:bg-surface-2 sm:text-right"
             >
               <span className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
                 Next &rarr;

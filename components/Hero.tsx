@@ -15,7 +15,7 @@ export default function Hero() {
             className="object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/34 to-bg/10" />
-          <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-cobalt via-gold to-coral" />
+          <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-cobalt via-cyan to-violet" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-5xl px-4 pb-10 sm:px-6 sm:pb-14 lg:px-8">
@@ -32,7 +32,7 @@ export default function Hero() {
             <div className="flex flex-wrap gap-3 sm:mb-3">
               <a
                 href="/Jackson_Lutz_CV_placeholder.pdf"
-                className="inline-flex min-h-10 items-center rounded-md border border-gold/50 bg-gold/15 px-4 text-sm font-medium text-text hover:border-gold hover:bg-gold/20"
+                className="inline-flex min-h-10 items-center rounded-md border border-cyan/45 bg-cyan/10 px-4 text-sm font-medium text-text hover:border-cyan hover:bg-cyan/15"
               >
                 CV placeholder
               </a>
