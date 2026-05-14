@@ -30,4 +30,50 @@ export const diffeqGraphFunctions: Record<string, DiffeqGraphFunction> = {
 
   entry010Solution: (x) => -(1 / 3) * Math.exp(-3 * x),
   entry010Derivative: (x) => Math.exp(-3 * x),
+
+  entry011Solution: (x) => -Math.cos(x),
+  entry011Derivative: (x) => Math.sin(x),
+
+  entry012Solution: (x) => 4 * Math.sin(x),
+  entry012Derivative: (x) => 4 * Math.cos(x),
+
+  entry013Solution: (x) => 3 * Math.tan(x),
+  entry013Derivative: (x) => 3 / Math.cos(x) ** 2,
+
+  entry014Solution: (x) => -2 / Math.sin(x),
+  entry014Derivative: (x) => (2 * Math.cos(x)) / Math.sin(x) ** 2,
+
+  entry015Solution: (x) => x ** 4 / 4 + Math.exp(x),
+  entry015Derivative: (x) => x ** 3 + Math.exp(x),
+
+  entry016Solution: (x) => x ** 2 + Math.cos(x),
+  entry016Derivative: (x) => 2 * x - Math.sin(x),
+
+  entry017Solution: (x) => x ** 3 / 3 + 3 * Math.sin(x) - 4 * Math.exp(x),
+  entry017Derivative: (x) => x ** 2 + 3 * Math.cos(x) - 4 * Math.exp(x),
+
+  entry018Solution: (x) => Math.log(Math.abs(x)),
+  entry018Derivative: (x) => 1 / x,
+
+  entry019Solution: (x) => (3 / 2) * Math.log(Math.abs(2 * x + 1)),
+  entry019Derivative: (x) => 3 / (2 * x + 1),
+
+  entry020Solution: (x) => (1 / 2) * Math.log(Math.abs(x ** 2 + 1)),
+  entry020Derivative: (x) => x / (x ** 2 + 1),
+
+  entry021Solution: (x) => Math.log(Math.abs(x ** 2 + 5)),
+  entry021Derivative: (x) => (2 * x) / (x ** 2 + 5),
+
+  entry022Solution: (x) => Math.atan(x),
+  entry022Derivative: (x) => 1 / (1 + x ** 2),
+
+  entry023Solution: (x) => (Math.abs(x) > 1 ? null : Math.asin(x)),
+  entry023Derivative: (x) =>
+    Math.abs(x) >= 1 ? null : 1 / Math.sqrt(1 - x ** 2),
+
+  entry024Solution: (x) => (1 / 3) * Math.exp(x ** 3),
+  entry024Derivative: (x) => x ** 2 * Math.exp(x ** 3),
+
+  entry025Solution: (x) => Math.sin(x ** 2),
+  entry025Derivative: (x) => 2 * x * Math.cos(x ** 2),
 };
