@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <Section id="about" className="pt-0 sm:pt-0" labelledBy="profile-title">
       <article className="relative left-1/2 w-screen -translate-x-1/2">
-        <div className="relative h-52 border-b border-border bg-surface-2 sm:h-64 lg:h-80">
+        <div className="notebook-rule relative h-52 border-b border-cobalt/30 bg-surface-2 sm:h-64 lg:h-80">
           <Image
             src="/images/kc-skyline.jpg"
             alt="Kansas City skyline at dusk"
@@ -14,7 +14,8 @@ export default function Hero() {
             sizes="100vw"
             className="object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/28 to-bg/5" />
+          <div className="absolute inset-0 bg-gradient-to-t from-bg via-bg/34 to-bg/10" />
+          <div className="absolute inset-x-0 bottom-0 h-1 bg-gradient-to-r from-cobalt via-gold to-coral" />
         </div>
 
         <div className="relative z-10 mx-auto max-w-5xl px-4 pb-10 sm:px-6 sm:pb-14 lg:px-8">
@@ -25,19 +26,19 @@ export default function Hero() {
               width={320}
               height={320}
               priority
-              className="relative z-20 size-32 rounded-full border-4 border-text bg-surface-2 object-cover object-[50%_40%] shadow-2xl sm:size-40"
+              className="relative z-20 size-32 rounded-full border-4 border-text bg-surface-2 object-cover object-[50%_40%] shadow-2xl shadow-cobalt/15 sm:size-40"
             />
 
             <div className="flex flex-wrap gap-3 sm:mb-3">
               <a
                 href="/Jackson_Lutz_CV_placeholder.pdf"
-                className="inline-flex min-h-10 items-center rounded-md border border-accent-dim bg-accent-dim/20 px-4 text-sm font-medium text-text hover:border-accent hover:bg-accent-dim/30"
+                className="inline-flex min-h-10 items-center rounded-md border border-gold/50 bg-gold/15 px-4 text-sm font-medium text-text hover:border-gold hover:bg-gold/20"
               >
                 CV placeholder
               </a>
               <a
                 href="https://github.com/placeholder"
-                className="inline-flex min-h-10 items-center rounded-md border border-border bg-bg px-4 text-sm font-medium text-soft hover:border-accent-dim hover:text-text"
+                className="inline-flex min-h-10 items-center rounded-md border border-cobalt/45 bg-cobalt/10 px-4 text-sm font-medium text-soft hover:border-cobalt hover:text-text"
               >
                 Projects / GitHub
               </a>

@@ -5,6 +5,7 @@ const skillGroups = [
   {
     title: "Programming",
     skills: ["Python", "Embedded C", "MATLAB"],
+    accentClass: "card-cobalt",
   },
   {
     title: "Technical / math",
@@ -14,14 +15,17 @@ const skillGroups = [
       "Signal Processing - learning",
       "Embedded Systems - learning",
     ],
+    accentClass: "card-gold",
   },
   {
     title: "Tools",
     skills: ["GitHub", "LaTeX", "Obsidian", "VS Code", "PlatformIO"],
+    accentClass: "card-mint",
   },
   {
     title: "Engineering / hardware",
     skills: ["Microcontrollers / hardware tools", "Placeholder group"],
+    accentClass: "card-coral",
   },
 ];
 

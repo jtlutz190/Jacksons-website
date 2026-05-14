@@ -6,6 +6,14 @@ import {
   formatEntryNumber,
 } from "@/data/diffeqEntries";
 
+const cardAccentClasses = [
+  "card-cobalt",
+  "card-gold",
+  "card-mint",
+  "card-coral",
+  "card-violet",
+];
+
 export const metadata = {
   title: "1000 Ordinary Differential Equations | Jackson T. Lutz",
   description:
@@ -79,16 +87,16 @@ export default function DiffeqArchivePage() {
           </p>
         </div>
 
-        <div className="mt-8 max-w-xl rounded-lg border border-border bg-surface p-5">
+        <div className="notebook-rule mt-8 max-w-xl rounded-lg border border-gold/35 bg-surface p-5">
           <div className="flex items-center justify-between gap-4">
-            <p className="font-mono text-sm text-accent">
+            <p className="font-mono text-sm text-gold">
               Progress: {completedCount} / 1000 completed
             </p>
             <p className="text-sm text-muted">Only completed entries are listed below.</p>
           </div>
           <div className="mt-4 h-2 overflow-hidden rounded-full bg-bg">
             <div
-              className="h-full rounded-full bg-accent"
+              className="h-full rounded-full bg-gradient-to-r from-cobalt via-mint to-gold"
               style={{ width: `${(completedCount / 1000) * 100}%` }}
             />
           </div>
@@ -107,13 +115,16 @@ export default function DiffeqArchivePage() {
             >
               Roadmap
             </h2>
-            <div className="h-px flex-1 bg-border" />
+            <div className="section-divider h-px flex-1" />
           </div>
         </div>
 
         <div className="grid gap-4 md:grid-cols-2">
-          {diffeqRoadmap.map((group) => (
-            <article key={group.title} className="card rounded-lg bg-surface p-5">
+          {diffeqRoadmap.map((group, index) => (
+            <article
+              key={group.title}
+              className={`card ${cardAccentClasses[index % cardAccentClasses.length]} rounded-lg bg-surface p-5`}
+            >
               <h3 className="text-base font-medium text-text">{group.title}</h3>
               <ul className="mt-4 space-y-2 text-sm leading-6 text-soft">
                 {group.ranges.map((range) => (
@@ -137,18 +148,18 @@ export default function DiffeqArchivePage() {
             >
               Entries
             </h2>
-            <div className="h-px flex-1 bg-border" />
+            <div className="section-divider h-px flex-1" />
           </div>
         </div>
 
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {diffeqEntries.map((entry) => (
+          {diffeqEntries.map((entry, index) => (
             <article key={entry.slug}>
               <Link
                 href={`/diffeq/${entry.slug}`}
-                className="card flex min-h-24 flex-col justify-between rounded-md bg-surface p-3 hover:bg-surface-2"
+                className={`card ${cardAccentClasses[index % cardAccentClasses.length]} flex min-h-24 flex-col justify-between rounded-md bg-surface p-3 hover:bg-surface-2`}
               >
-                <h3 className="font-mono text-sm font-semibold text-accent">
+                <h3 className="font-mono text-sm font-semibold text-gold">
                   #{formatEntryNumber(entry.number)}
                 </h3>
                 <p className="mt-3 text-base leading-6 text-text">

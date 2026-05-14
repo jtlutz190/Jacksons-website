@@ -8,80 +8,40 @@ const equations = [
     top: "17%",
     left: "7%",
     delay: 0,
-    opacity: 0.7,
+    opacity: 0.48,
     size: "1rem",
   },
   {
     text: "dy/dx + p(x)y = q(x)",
     top: "31%",
     left: "63%",
-    delay: 2400,
-    opacity: 0.46,
+    delay: 9000,
+    opacity: 0.34,
     size: "0.88rem",
   },
   {
     text: "x(t) = c1 e^(lambda t)",
     top: "79%",
     left: "10%",
-    delay: 5200,
-    opacity: 0.58,
+    delay: 19000,
+    opacity: 0.4,
     size: "0.95rem",
   },
   {
     text: "L[y''] + omega^2 y = 0",
     top: "47%",
     left: "55%",
-    delay: 7600,
-    opacity: 0.38,
+    delay: 31000,
+    opacity: 0.3,
     size: "0.86rem",
   },
   {
     text: "Y(s) = L{y(t)}",
     top: "68%",
     left: "37%",
-    delay: 10200,
-    opacity: 0.62,
-    size: "0.9rem",
-  },
-  {
-    text: "int e^x dx = e^x + C",
-    top: "22%",
-    left: "73%",
-    delay: 12800,
-    opacity: 0.32,
-    size: "0.82rem",
-  },
-  {
-    text: "F(s) = int_0^inf f(t)e^(-st)dt",
-    top: "58%",
-    left: "70%",
-    delay: 18100,
-    opacity: 0.28,
-    size: "0.78rem",
-  },
-  {
-    text: "theta'' + sin(theta) = 0",
-    top: "54%",
-    left: "18%",
-    delay: 23200,
+    delay: 43000,
     opacity: 0.36,
-    size: "0.84rem",
-  },
-  {
-    text: "x' = Ax",
-    top: "73%",
-    left: "4%",
-    delay: 9100,
-    opacity: 0.68,
-    size: "1rem",
-  },
-  {
-    text: "V = IR",
-    top: "63%",
-    left: "53%",
-    delay: 18900,
-    opacity: 0.74,
-    size: "0.98rem",
+    size: "0.9rem",
   },
 ];
 
@@ -153,7 +113,7 @@ export default function AnimatedEquations() {
           await wait(1300);
 
           updateTrace(index, { text: "", phase: "idle" });
-          await wait(randomBetween(8000, 15000));
+          await wait(randomBetween(26000, 46000));
         }
       };
 

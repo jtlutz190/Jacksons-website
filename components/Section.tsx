@@ -39,7 +39,7 @@ export default function Section({
             >
               {title}
             </h2>
-            <div className="h-px flex-1 bg-border" />
+            <div className="section-divider h-px flex-1" />
           </div>
         </div>
       ) : null}

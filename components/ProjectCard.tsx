@@ -6,6 +6,7 @@ interface ProjectCardProps {
   link?: string;
   linkLabel?: string;
   featuredLink?: boolean;
+  accentClass?: string;
 }
 
 export default function ProjectCard({
@@ -16,12 +17,13 @@ export default function ProjectCard({
   link,
   linkLabel,
   featuredLink = false,
+  accentClass = "card-blue",
 }: ProjectCardProps) {
   const cardContent = (
     <>
       <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
         <h3 className="text-lg font-medium text-text">{title}</h3>
-        <span className="w-fit rounded border border-border bg-bg px-2 py-1 font-mono text-xs text-accent">
+        <span className="w-fit rounded border border-border bg-bg px-2 py-1 font-mono text-xs text-gold">
           {status}
         </span>
       </div>
@@ -32,7 +34,7 @@ export default function ProjectCard({
         {tags.map((tag) => (
           <span
             key={tag}
-            className="rounded bg-tag px-2.5 py-1 font-mono text-xs text-accent"
+            className="color-chip rounded px-2.5 py-1 font-mono text-xs"
           >
             {tag}
           </span>
@@ -49,7 +51,7 @@ export default function ProjectCard({
       ) : null}
 
       {link && featuredLink ? (
-        <span className="mt-5 inline-flex w-fit rounded border border-text/45 bg-bg px-3 py-1.5 font-mono text-xs uppercase tracking-[0.12em] text-text">
+        <span className="mt-5 inline-flex w-fit rounded border border-gold/55 bg-gold/10 px-3 py-1.5 font-mono text-xs uppercase tracking-[0.12em] text-text">
           Click to access
         </span>
       ) : null}
@@ -60,7 +62,7 @@ export default function ProjectCard({
     return (
       <a
         href={link}
-        className="card block rounded-lg bg-surface p-5 no-underline transition-colors hover:bg-surface-2 focus:outline-none focus:ring-2 focus:ring-accent-dim focus:ring-offset-2 focus:ring-offset-bg"
+        className={`card ${accentClass} block rounded-lg bg-surface p-5 no-underline transition-colors hover:bg-surface-2 focus:outline-none focus:ring-2 focus:ring-accent-dim focus:ring-offset-2 focus:ring-offset-bg`}
         aria-label={`${title}: ${linkLabel ?? "Open project"}`}
       >
         {cardContent}
@@ -69,7 +71,7 @@ export default function ProjectCard({
   }
 
   return (
-    <article className="card rounded-lg bg-surface p-5">
+    <article className={`card ${accentClass} rounded-lg bg-surface p-5`}>
       {cardContent}
     </article>
   );

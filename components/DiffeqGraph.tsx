@@ -3,6 +3,7 @@
 import { useEffect, useId, useMemo, useState } from "react";
 import type { PointerEvent, WheelEvent } from "react";
 import type { DiffeqGraph as DiffeqGraphData } from "@/data/diffeqEntries";
+import { diffeqGraphFunctions } from "@/data/diffeqGraphFunctions";
 import Latex from "@/components/Latex";
 
 interface DiffeqGraphProps {
@@ -25,6 +26,8 @@ interface DragState {
   graphY: number;
   view: ViewBox;
 }
+
+type Segment = Array<[number, number]>;
 
 const curveColors = {
   solution: "#1d4ed8",
@@ -62,6 +65,67 @@ function createTicks(min: number, max: number, targetCount: number) {
   return ticks;
 }
 
+function clampRangeToView(
+  [rangeMin, rangeMax]: [number, number],
+  { xMin, xMax }: ViewBox,
+) {
+  const start = Math.max(rangeMin, xMin);
+  const end = Math.min(rangeMax, xMax);
+
+  return start < end ? ([start, end] as [number, number]) : null;
+}
+
+function sampleSegments({
+  functionId,
+  ranges,
+  view,
+  samples = 260,
+}: {
+  functionId: string;
+  ranges?: Array<[number, number]>;
+  view: ViewBox;
+  samples?: number;
+}) {
+  const fn = diffeqGraphFunctions[functionId];
+
+  if (!fn) {
+    return [];
+  }
+
+  const sampleRanges = ranges
+    ? ranges.flatMap((range) => {
+        const clamped = clampRangeToView(range, view);
+        return clamped ? [clamped] : [];
+      })
+    : [[view.xMin, view.xMax] as [number, number]];
+
+  return sampleRanges.flatMap(([start, end]) => {
+    let segment: Segment = [];
+    const segments: Segment[] = [];
+
+    for (let index = 0; index <= samples; index += 1) {
+      const x = start + ((end - start) * index) / samples;
+      const y = fn(x);
+
+      if (y === null || !Number.isFinite(y) || Math.abs(y) > 1000000) {
+        if (segment.length > 1) {
+          segments.push(segment);
+        }
+        segment = [];
+        continue;
+      }
+
+      segment.push([Number(x.toFixed(5)), Number(y.toFixed(5))]);
+    }
+
+    if (segment.length > 1) {
+      segments.push(segment);
+    }
+
+    return segments;
+  });
+}
+
 export default function DiffeqGraph({ graph }: DiffeqGraphProps) {
   const clipPathId = useId();
   const [view, setView] = useState<ViewBox>({
@@ -86,6 +150,18 @@ export default function DiffeqGraph({ graph }: DiffeqGraphProps) {
 
   const xTicks = useMemo(() => createTicks(view.xMin, view.xMax, 8), [view]);
   const yTicks = useMemo(() => createTicks(view.yMin, view.yMax, 6), [view]);
+  const sampledCurves = useMemo(
+    () =>
+      graph.curves.map((curve) => ({
+        ...curve,
+        segments: sampleSegments({
+          functionId: curve.functionId,
+          ranges: curve.ranges,
+          view,
+        }),
+      })),
+    [graph.curves, view],
+  );
 
   const scaleX = (x: number) =>
     padding + ((x - view.xMin) / (view.xMax - view.xMin)) * plotWidth;
@@ -295,7 +371,7 @@ export default function DiffeqGraph({ graph }: DiffeqGraphProps) {
             )}
 
             <g clipPath={`url(#${clipPathId})`}>
-              {graph.curves.flatMap((curve) =>
+              {sampledCurves.flatMap((curve) =>
                 curve.segments.map((segment, index) => (
                   <polyline
                     key={`${curve.label}-${index}`}

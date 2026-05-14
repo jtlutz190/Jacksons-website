@@ -28,13 +28,12 @@ export interface DiffeqGraphCurve {
   label: string;
   latex: string;
   stroke: "solution" | "derivative";
-  segments: Array<Array<[number, number]>>;
+  functionId: string;
+  ranges?: Array<[number, number]>;
 }
 
 const directIntegrationTakeaway =
   "Direct integration equations of the form y' = f(x) tell us that the slope of the solution changes with respect to x only.";
-
-type DiffeqFunction = (x: number) => number | null;
 
 interface DirectIntegrationGraphConfig {
   xMin: number;
@@ -43,43 +42,9 @@ interface DirectIntegrationGraphConfig {
   yMax: number;
   solutionLatex: string;
   derivativeLatex: string;
-  solution: DiffeqFunction;
-  derivative: DiffeqFunction;
+  solutionFunctionId: string;
+  derivativeFunctionId: string;
   ranges?: Array<[number, number]>;
-  samples?: number;
-}
-
-function sampleSegments(
-  fn: DiffeqFunction,
-  ranges: Array<[number, number]>,
-  samples = 220,
-) {
-  const segments: Array<Array<[number, number]>> = [];
-
-  ranges.forEach(([start, end]) => {
-    let segment: Array<[number, number]> = [];
-
-    for (let index = 0; index <= samples; index += 1) {
-      const x = start + ((end - start) * index) / samples;
-      const y = fn(x);
-
-      if (y === null || !Number.isFinite(y) || Math.abs(y) > 1000000) {
-        if (segment.length > 1) {
-          segments.push(segment);
-        }
-        segment = [];
-        continue;
-      }
-
-      segment.push([Number(x.toFixed(5)), Number(y.toFixed(5))]);
-    }
-
-    if (segment.length > 1) {
-      segments.push(segment);
-    }
-  });
-
-  return segments;
 }
 
 function directIntegrationGraph({
@@ -89,13 +54,10 @@ function directIntegrationGraph({
   yMax,
   solutionLatex,
   derivativeLatex,
-  solution,
-  derivative,
+  solutionFunctionId,
+  derivativeFunctionId,
   ranges,
-  samples,
 }: DirectIntegrationGraphConfig): DiffeqGraph {
-  const graphRanges = ranges ?? [[xMin * 2, xMax * 2]];
-
   return {
     xMin,
     xMax,
@@ -106,13 +68,15 @@ function directIntegrationGraph({
         label: "y",
         latex: solutionLatex,
         stroke: "solution",
-        segments: sampleSegments(solution, graphRanges, samples),
+        functionId: solutionFunctionId,
+        ranges,
       },
       {
         label: "y'",
         latex: derivativeLatex,
         stroke: "derivative",
-        segments: sampleSegments(derivative, graphRanges, samples),
+        functionId: derivativeFunctionId,
+        ranges,
       },
     ],
   };
@@ -141,8 +105,8 @@ export const diffeqEntries: DiffeqEntry[] = [
       yMax: 9,
       solutionLatex: "y = x^2",
       derivativeLatex: "y' = 2x",
-      solution: (x) => x ** 2,
-      derivative: (x) => 2 * x,
+      solutionFunctionId: "entry001Solution",
+      derivativeFunctionId: "entry001Derivative",
     }),
   },
   {
@@ -167,8 +131,8 @@ export const diffeqEntries: DiffeqEntry[] = [
       yMax: 30,
       solutionLatex: "y = x^3",
       derivativeLatex: "y' = 3x^2",
-      solution: (x) => x ** 3,
-      derivative: (x) => 3 * x ** 2,
+      solutionFunctionId: "entry002Solution",
+      derivativeFunctionId: "entry002Derivative",
     }),
   },
   {
@@ -193,8 +157,8 @@ export const diffeqEntries: DiffeqEntry[] = [
       yMax: 90,
       solutionLatex: "y = x^5 - x^2 + 7x",
       derivativeLatex: "y' = 5x^4 - 2x + 7",
-      solution: (x) => x ** 5 - x ** 2 + 7 * x,
-      derivative: (x) => 5 * x ** 4 - 2 * x + 7,
+      solutionFunctionId: "entry003Solution",
+      derivativeFunctionId: "entry003Derivative",
     }),
   },
   {
@@ -219,8 +183,8 @@ export const diffeqEntries: DiffeqEntry[] = [
       yMax: 18,
       solutionLatex: "y = -\\frac{1}{x}",
       derivativeLatex: "y' = x^{-2}",
-      solution: (x) => -1 / x,
-      derivative: (x) => x ** -2,
+      solutionFunctionId: "entry004Solution",
+      derivativeFunctionId: "entry004Derivative",
       ranges: [
         [-10, -0.05],
         [0.05, 10],
@@ -249,8 +213,8 @@ export const diffeqEntries: DiffeqEntry[] = [
       yMax: 42,
       solutionLatex: "y = \\frac{8}{3}x^{3/2}",
       derivativeLatex: "y' = 4\\sqrt{x}",
-      solution: (x) => (x < 0 ? null : (8 / 3) * x ** 1.5),
-      derivative: (x) => (x < 0 ? null : 4 * Math.sqrt(x)),
+      solutionFunctionId: "entry005Solution",
+      derivativeFunctionId: "entry005Derivative",
       ranges: [[0, 12]],
     }),
   },
@@ -276,8 +240,8 @@ export const diffeqEntries: DiffeqEntry[] = [
       yMax: 12,
       solutionLatex: "y = 2\\sqrt{x}",
       derivativeLatex: "y' = \\frac{1}{\\sqrt{x}}",
-      solution: (x) => (x < 0 ? null : 2 * Math.sqrt(x)),
-      derivative: (x) => (x <= 0 ? null : 1 / Math.sqrt(x)),
+      solutionFunctionId: "entry006Solution",
+      derivativeFunctionId: "entry006Derivative",
       ranges: [[0.03, 18]],
     }),
   },
@@ -303,8 +267,8 @@ export const diffeqEntries: DiffeqEntry[] = [
       yMax: 60,
       solutionLatex: "y = 2x^3 - 4\\ln|x|",
       derivativeLatex: "y' = 6x^2 - 4x^{-1}",
-      solution: (x) => 2 * x ** 3 - 4 * Math.log(Math.abs(x)),
-      derivative: (x) => 6 * x ** 2 - 4 / x,
+      solutionFunctionId: "entry007Solution",
+      derivativeFunctionId: "entry007Derivative",
       ranges: [
         [-6, -0.05],
         [0.05, 6],
@@ -333,8 +297,8 @@ export const diffeqEntries: DiffeqEntry[] = [
       yMax: 22,
       solutionLatex: "y = e^x",
       derivativeLatex: "y' = e^x",
-      solution: (x) => Math.exp(x),
-      derivative: (x) => Math.exp(x),
+      solutionFunctionId: "entry008Solution",
+      derivativeFunctionId: "entry008Derivative",
     }),
   },
   {
@@ -359,8 +323,8 @@ export const diffeqEntries: DiffeqEntry[] = [
       yMax: 120,
       solutionLatex: "y = e^{2x}",
       derivativeLatex: "y' = 2e^{2x}",
-      solution: (x) => Math.exp(2 * x),
-      derivative: (x) => 2 * Math.exp(2 * x),
+      solutionFunctionId: "entry009Solution",
+      derivativeFunctionId: "entry009Derivative",
     }),
   },
   {
@@ -385,8 +349,8 @@ export const diffeqEntries: DiffeqEntry[] = [
       yMax: 430,
       solutionLatex: "y = -\\frac{1}{3}e^{-3x}",
       derivativeLatex: "y' = e^{-3x}",
-      solution: (x) => -(1 / 3) * Math.exp(-3 * x),
-      derivative: (x) => Math.exp(-3 * x),
+      solutionFunctionId: "entry010Solution",
+      derivativeFunctionId: "entry010Derivative",
     }),
   },
 ];
