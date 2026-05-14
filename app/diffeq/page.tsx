@@ -12,7 +12,42 @@ const cardAccentClasses = [
   "card-mint",
   "card-coral",
   "card-violet",
+  "card-rose",
+  "card-lime",
+  "card-cyan",
 ];
+
+function getChapterAccentClass(entryNumber: number) {
+  if (entryNumber <= 100) {
+    return cardAccentClasses[0];
+  }
+
+  if (entryNumber <= 280) {
+    return cardAccentClasses[1];
+  }
+
+  if (entryNumber <= 460) {
+    return cardAccentClasses[2];
+  }
+
+  if (entryNumber <= 610) {
+    return cardAccentClasses[3];
+  }
+
+  if (entryNumber <= 760) {
+    return cardAccentClasses[4];
+  }
+
+  if (entryNumber <= 900) {
+    return cardAccentClasses[5];
+  }
+
+  if (entryNumber <= 970) {
+    return cardAccentClasses[6];
+  }
+
+  return cardAccentClasses[7];
+}
 
 export const metadata = {
   title: "1000 Ordinary Differential Equations | Jackson T. Lutz",
@@ -153,11 +188,11 @@ export default function DiffeqArchivePage() {
         </div>
 
         <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {diffeqEntries.map((entry, index) => (
+          {diffeqEntries.map((entry) => (
             <article key={entry.slug}>
               <Link
                 href={`/diffeq/${entry.slug}`}
-                className={`card ${cardAccentClasses[index % cardAccentClasses.length]} flex min-h-24 flex-col justify-between rounded-md bg-surface p-3 hover:bg-surface-2`}
+                className={`card ${getChapterAccentClass(entry.number)} flex min-h-24 flex-col justify-between rounded-md bg-surface p-3 hover:bg-surface-2`}
               >
                 <h3 className="font-mono text-sm font-semibold text-gold">
                   #{formatEntryNumber(entry.number)}

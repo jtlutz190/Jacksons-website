@@ -177,10 +177,10 @@ section[id] {
 .card::before {
   position: absolute;
   inset: 0 auto 0 0;
-  width: 3px;
+  width: 4px;
   content: "";
   background: var(--card-accent, #8ab4c6);
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .card > * {
@@ -215,7 +215,19 @@ section[id] {
 }
 
 .card-violet {
-  --card-accent: #b59cff;
+  --card-accent: #a78bfa;
+}
+
+.card-rose {
+  --card-accent: #f43f8a;
+}
+
+.card-lime {
+  --card-accent: #a3e635;
+}
+
+.card-cyan {
+  --card-accent: #22d3ee;
 }
 
 .notebook-rule {
@@ -230,8 +242,7 @@ section[id] {
 }
 
 .section-divider {
-  background: linear-gradient(90deg, #7aa7ff, #72d6b1 34%, #f4c76b 68%, #ff8a7a);
-  opacity: 0.72;
+  background: rgba(237, 242, 247, 0.64);
 }
 
 .ink-highlight {
