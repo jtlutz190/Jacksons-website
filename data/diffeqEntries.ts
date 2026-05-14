@@ -28,11 +28,95 @@ export interface DiffeqGraphCurve {
   label: string;
   latex: string;
   stroke: "solution" | "derivative";
-  points: Array<[number, number]>;
+  segments: Array<Array<[number, number]>>;
 }
 
 const directIntegrationTakeaway =
   "Direct integration equations of the form y' = f(x) tell us that the slope of the solution changes with respect to x only.";
+
+type DiffeqFunction = (x: number) => number | null;
+
+interface DirectIntegrationGraphConfig {
+  xMin: number;
+  xMax: number;
+  yMin: number;
+  yMax: number;
+  solutionLatex: string;
+  derivativeLatex: string;
+  solution: DiffeqFunction;
+  derivative: DiffeqFunction;
+  ranges?: Array<[number, number]>;
+  samples?: number;
+}
+
+function sampleSegments(
+  fn: DiffeqFunction,
+  ranges: Array<[number, number]>,
+  samples = 220,
+) {
+  const segments: Array<Array<[number, number]>> = [];
+
+  ranges.forEach(([start, end]) => {
+    let segment: Array<[number, number]> = [];
+
+    for (let index = 0; index <= samples; index += 1) {
+      const x = start + ((end - start) * index) / samples;
+      const y = fn(x);
+
+      if (y === null || !Number.isFinite(y) || Math.abs(y) > 1000000) {
+        if (segment.length > 1) {
+          segments.push(segment);
+        }
+        segment = [];
+        continue;
+      }
+
+      segment.push([Number(x.toFixed(5)), Number(y.toFixed(5))]);
+    }
+
+    if (segment.length > 1) {
+      segments.push(segment);
+    }
+  });
+
+  return segments;
+}
+
+function directIntegrationGraph({
+  xMin,
+  xMax,
+  yMin,
+  yMax,
+  solutionLatex,
+  derivativeLatex,
+  solution,
+  derivative,
+  ranges,
+  samples,
+}: DirectIntegrationGraphConfig): DiffeqGraph {
+  const graphRanges = ranges ?? [[xMin * 2, xMax * 2]];
+
+  return {
+    xMin,
+    xMax,
+    yMin,
+    yMax,
+    curves: [
+      {
+        label: "y",
+        latex: solutionLatex,
+        stroke: "solution",
+        segments: sampleSegments(solution, graphRanges, samples),
+      },
+      {
+        label: "y'",
+        latex: derivativeLatex,
+        stroke: "derivative",
+        segments: sampleSegments(derivative, graphRanges, samples),
+      },
+    ],
+  };
+}
 
 export const diffeqEntries: DiffeqEntry[] = [
   {
@@ -50,54 +134,16 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/001-direct-integration/work.pdf",
     completed: true,
-    graph: {
+    graph: directIntegrationGraph({
       xMin: -3,
       xMax: 3,
       yMin: -6,
       yMax: 9,
-      curves: [
-        {
-          label: "y",
-          latex: "y = x^2",
-          stroke: "solution",
-          points: [
-            [-3, 9],
-            [-2.5, 6.25],
-            [-2, 4],
-            [-1.5, 2.25],
-            [-1, 1],
-            [-0.5, 0.25],
-            [0, 0],
-            [0.5, 0.25],
-            [1, 1],
-            [1.5, 2.25],
-            [2, 4],
-            [2.5, 6.25],
-            [3, 9],
-          ],
-        },
-        {
-          label: "y'",
-          latex: "y' = 2x",
-          stroke: "derivative",
-          points: [
-            [-3, -6],
-            [-2.5, -5],
-            [-2, -4],
-            [-1.5, -3],
-            [-1, -2],
-            [-0.5, -1],
-            [0, 0],
-            [0.5, 1],
-            [1, 2],
-            [1.5, 3],
-            [2, 4],
-            [2.5, 5],
-            [3, 6],
-          ],
-        },
-      ],
-    },
+      solutionLatex: "y = x^2",
+      derivativeLatex: "y' = 2x",
+      solution: (x) => x ** 2,
+      derivative: (x) => 2 * x,
+    }),
   },
   {
     number: 2,
@@ -114,6 +160,16 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/002-direct-integration/work.pdf",
     completed: true,
+    graph: directIntegrationGraph({
+      xMin: -3,
+      xMax: 3,
+      yMin: -30,
+      yMax: 30,
+      solutionLatex: "y = x^3",
+      derivativeLatex: "y' = 3x^2",
+      solution: (x) => x ** 3,
+      derivative: (x) => 3 * x ** 2,
+    }),
   },
   {
     number: 3,
@@ -130,6 +186,16 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/003-direct-integration/work.pdf",
     completed: true,
+    graph: directIntegrationGraph({
+      xMin: -2,
+      xMax: 2,
+      yMin: -60,
+      yMax: 90,
+      solutionLatex: "y = x^5 - x^2 + 7x",
+      derivativeLatex: "y' = 5x^4 - 2x + 7",
+      solution: (x) => x ** 5 - x ** 2 + 7 * x,
+      derivative: (x) => 5 * x ** 4 - 2 * x + 7,
+    }),
   },
   {
     number: 4,
@@ -146,6 +212,20 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/004-direct-integration/work.pdf",
     completed: true,
+    graph: directIntegrationGraph({
+      xMin: -5,
+      xMax: 5,
+      yMin: -8,
+      yMax: 18,
+      solutionLatex: "y = -\\frac{1}{x}",
+      derivativeLatex: "y' = x^{-2}",
+      solution: (x) => -1 / x,
+      derivative: (x) => x ** -2,
+      ranges: [
+        [-10, -0.05],
+        [0.05, 10],
+      ],
+    }),
   },
   {
     number: 5,
@@ -162,6 +242,17 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/005-direct-integration/work.pdf",
     completed: true,
+    graph: directIntegrationGraph({
+      xMin: -0.5,
+      xMax: 6,
+      yMin: -1,
+      yMax: 42,
+      solutionLatex: "y = \\frac{8}{3}x^{3/2}",
+      derivativeLatex: "y' = 4\\sqrt{x}",
+      solution: (x) => (x < 0 ? null : (8 / 3) * x ** 1.5),
+      derivative: (x) => (x < 0 ? null : 4 * Math.sqrt(x)),
+      ranges: [[0, 12]],
+    }),
   },
   {
     number: 6,
@@ -178,6 +269,17 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/006-direct-integration/work.pdf",
     completed: true,
+    graph: directIntegrationGraph({
+      xMin: -0.5,
+      xMax: 9,
+      yMin: -1,
+      yMax: 12,
+      solutionLatex: "y = 2\\sqrt{x}",
+      derivativeLatex: "y' = \\frac{1}{\\sqrt{x}}",
+      solution: (x) => (x < 0 ? null : 2 * Math.sqrt(x)),
+      derivative: (x) => (x <= 0 ? null : 1 / Math.sqrt(x)),
+      ranges: [[0.03, 18]],
+    }),
   },
   {
     number: 7,
@@ -194,6 +296,20 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/007-direct-integration/work.pdf",
     completed: true,
+    graph: directIntegrationGraph({
+      xMin: -3,
+      xMax: 3,
+      yMin: -40,
+      yMax: 60,
+      solutionLatex: "y = 2x^3 - 4\\ln|x|",
+      derivativeLatex: "y' = 6x^2 - 4x^{-1}",
+      solution: (x) => 2 * x ** 3 - 4 * Math.log(Math.abs(x)),
+      derivative: (x) => 6 * x ** 2 - 4 / x,
+      ranges: [
+        [-6, -0.05],
+        [0.05, 6],
+      ],
+    }),
   },
   {
     number: 8,
@@ -210,6 +326,16 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/008-direct-integration/work.pdf",
     completed: true,
+    graph: directIntegrationGraph({
+      xMin: -3,
+      xMax: 3,
+      yMin: -1,
+      yMax: 22,
+      solutionLatex: "y = e^x",
+      derivativeLatex: "y' = e^x",
+      solution: (x) => Math.exp(x),
+      derivative: (x) => Math.exp(x),
+    }),
   },
   {
     number: 9,
@@ -226,6 +352,16 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/009-direct-integration/work.pdf",
     completed: true,
+    graph: directIntegrationGraph({
+      xMin: -2,
+      xMax: 2,
+      yMin: -1,
+      yMax: 120,
+      solutionLatex: "y = e^{2x}",
+      derivativeLatex: "y' = 2e^{2x}",
+      solution: (x) => Math.exp(2 * x),
+      derivative: (x) => 2 * Math.exp(2 * x),
+    }),
   },
   {
     number: 10,
@@ -242,6 +378,16 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/010-direct-integration/work.pdf",
     completed: true,
+    graph: directIntegrationGraph({
+      xMin: -2,
+      xMax: 2,
+      yMin: -150,
+      yMax: 430,
+      solutionLatex: "y = -\\frac{1}{3}e^{-3x}",
+      derivativeLatex: "y' = e^{-3x}",
+      solution: (x) => -(1 / 3) * Math.exp(-3 * x),
+      derivative: (x) => Math.exp(-3 * x),
+    }),
   },
 ];
 

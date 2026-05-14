@@ -141,72 +141,20 @@ export default function DiffeqArchivePage() {
           </div>
         </div>
 
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
           {diffeqEntries.map((entry) => (
-            <article key={entry.slug} className="card rounded-lg bg-surface p-4">
-              <div>
-                <p className="font-mono text-xs text-accent">{entry.category}</p>
-                <h3 className="mt-1 text-lg font-medium text-text">
+            <article key={entry.slug}>
+              <Link
+                href={`/diffeq/${entry.slug}`}
+                className="card flex min-h-24 flex-col justify-between rounded-md bg-surface p-3 hover:bg-surface-2"
+              >
+                <h3 className="font-mono text-sm font-semibold text-accent">
                   #{formatEntryNumber(entry.number)}
                 </h3>
-              </div>
-
-              <dl className="mt-3 space-y-2 text-sm leading-6">
-                <div>
-                  <dt className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
-                    Equation
-                  </dt>
-                  <dd className="text-soft">
-                    <Latex math={entry.equationLatex} className="latex-inline" />
-                  </dd>
-                </div>
-                <div>
-                  <dt className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
-                    Classification
-                  </dt>
-                  <dd className="text-soft">{entry.classification}</dd>
-                </div>
-                <div>
-                  <dt className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
-                    Method
-                  </dt>
-                  <dd className="text-soft">{entry.method}</dd>
-                </div>
-              </dl>
-
-              {entry.tags.length > 0 ? (
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {entry.tags.map((tag) => (
-                    <span
-                      key={tag}
-                      className="rounded bg-tag px-2.5 py-1 font-mono text-xs text-accent"
-                    >
-                      {tag}
-                    </span>
-                  ))}
-                </div>
-              ) : null}
-
-              <p className="mt-4 text-sm leading-6 text-muted">
-                Direct integration equations of the form{" "}
-                <Latex math="y' = f(x)" className="latex-inline" /> tell us
-                that the slope of the solution changes with respect to x only.
-              </p>
-
-              <div className="mt-4 flex flex-wrap gap-3">
-                <Link
-                  href={`/diffeq/${entry.slug}`}
-                  className="inline-flex min-h-10 items-center rounded-md border border-accent-dim bg-accent-dim/20 px-4 text-sm font-medium text-text hover:border-accent hover:bg-accent-dim/30"
-                >
-                  View Entry
-                </Link>
-                <a
-                  href={entry.pdf}
-                  className="inline-flex min-h-10 items-center rounded-md border border-border bg-bg px-4 text-sm font-medium text-soft hover:border-accent-dim hover:text-text"
-                >
-                  Download Handwritten PDF
-                </a>
-              </div>
+                <p className="mt-3 text-base leading-6 text-text">
+                  <Latex math={entry.equationLatex} className="latex-inline" />
+                </p>
+              </Link>
             </article>
           ))}
         </div>
