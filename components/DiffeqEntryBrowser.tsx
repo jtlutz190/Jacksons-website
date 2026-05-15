@@ -62,7 +62,7 @@ function FeaturedBadge({ compact = false }: { compact?: boolean }) {
           : "inline-flex items-center gap-2 rounded-full border border-gold bg-gold/15 px-3 py-1.5 font-mono text-xs uppercase tracking-[0.14em] text-gold"
       }
     >
-      <span aria-hidden="true">★</span>
+      <span aria-hidden="true">{"\u2605"}</span>
       Featured
     </span>
   );
@@ -114,6 +114,7 @@ interface DiffeqEntryBrowserProps {
 }
 
 export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps) {
+  const [filtersOpen, setFiltersOpen] = useState(false);
   const [activeMethodTags, setActiveMethodTags] = useState<MethodTag[]>([]);
   const [activeConceptTags, setActiveConceptTags] = useState<ConceptTag[]>([]);
 
@@ -170,7 +171,11 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
           </div>
         </div>
 
-        <details className="overflow-hidden rounded-lg border border-border bg-surface">
+        <details
+          open={filtersOpen}
+          onToggle={(event) => setFiltersOpen(event.currentTarget.open)}
+          className="overflow-hidden rounded-lg border border-border bg-surface"
+        >
           <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-text marker:hidden">
             <span>
               <span className="block text-lg font-medium">Filter entries</span>
@@ -180,7 +185,9 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
                   : `${activeTags.length} active tag${activeTags.length === 1 ? "" : "s"}`}
               </span>
             </span>
-            <span className="font-mono text-sm text-muted">Open</span>
+            <span className="font-mono text-sm text-muted">
+              {filtersOpen ? "Close" : "Open"}
+            </span>
           </summary>
 
           <div className="border-t border-border p-5">
@@ -251,9 +258,6 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
             </h2>
             <div className="section-divider h-px flex-1" />
           </div>
-          <p className="mt-3 text-sm text-muted">
-            Showing {filteredEntries.length} of {entries.length} completed entries.
-          </p>
         </div>
 
         {filteredEntries.length > 0 ? (

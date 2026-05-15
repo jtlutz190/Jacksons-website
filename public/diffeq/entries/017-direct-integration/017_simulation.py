@@ -1,5 +1,5 @@
-import numpy as np
-import plotly.graph_objects as go
+﻿import numpy as np
+import matplotlib.pyplot as plt
 
 x = np.linspace(-3, 3, 800)
 
@@ -7,24 +7,13 @@ with np.errstate(divide="ignore", invalid="ignore", over="ignore"):
     y = x**3/3 + 3*np.sin(x) - 4*np.exp(x)
     y_prime = x**2 + 3*np.cos(x) - 4*np.exp(x)
 
-fig = go.Figure()
-fig.add_trace(go.Scatter(x=x, y=y, mode="lines", name='y = x^3/3 + 3sin(x) - 4e^x + C'))
-fig.add_trace(
-    go.Scatter(
-        x=x,
-        y=y_prime,
-        mode="lines",
-        name="y' = x^2 + 3cos(x) - 4e^x",
-        line=dict(dash="dash"),
-    )
-)
-
-fig.update_layout(
-    title="Entry #017: solution and derivative",
-    xaxis_title="x",
-    yaxis_title="value",
-    template="plotly_white",
-    hovermode="x unified",
-)
-
-fig.show()
+plt.figure(figsize=(8, 5))
+plt.plot(x, y, label="y = x^3/3 + 3sin(x) - 4e^x + C", linewidth=2)
+plt.plot(x, y_prime, label="y' = x^2 + 3cos(x) - 4e^x", linewidth=2, linestyle="--")
+plt.title("Entry #017: solution and derivative")
+plt.xlabel("x")
+plt.ylabel("value")
+plt.grid(True, alpha=0.35)
+plt.legend()
+plt.tight_layout()
+plt.show()
