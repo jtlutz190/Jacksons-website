@@ -123,44 +123,45 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
           </div>
         </div>
 
-        {entry.graph ? <DiffeqGraph graph={entry.graph} /> : null}
+        {!entry.simulation && entry.graph ? <DiffeqGraph graph={entry.graph} /> : null}
 
         {entry.simulation ? (
-          <section className="mt-8" aria-labelledby="simulation-title">
-            <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-              <div>
-                <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
+          <details className="mt-8 overflow-hidden rounded-lg border border-border bg-surface">
+            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-text marker:hidden">
+              <span>
+                <span className="block font-mono text-xs uppercase tracking-[0.18em] text-accent">
                   Computational simulation
-                </p>
-                <h2
-                  id="simulation-title"
-                  className="mt-2 text-2xl font-semibold tracking-tight text-text"
-                >
+                </span>
+                <span className="mt-2 block text-2xl font-semibold tracking-tight">
                   {entry.simulation.title}
-                </h2>
-              </div>
+                </span>
+              </span>
+              <span className="font-mono text-sm text-muted">Open</span>
+            </summary>
+
+            <div className="border-t border-border p-5">
               <a
                 href={entry.simulation.downloadPath}
                 download
-                className="inline-flex min-h-10 w-fit items-center rounded-md border border-mint/45 bg-mint/10 px-4 text-sm font-medium text-text hover:border-mint hover:bg-mint/15"
+                className="mb-4 inline-flex min-h-10 w-fit items-center rounded-md border border-mint/45 bg-mint/10 px-4 text-sm font-medium text-text hover:border-mint hover:bg-mint/15"
               >
                 Download .py file
               </a>
-            </div>
 
-            <div className="overflow-hidden rounded-lg border border-border bg-[#071018]">
-              {simulationCode ? (
-                <pre className="max-h-[38rem] overflow-x-auto overflow-y-auto p-4 text-xs leading-6 text-soft sm:text-sm">
-                  <code>{simulationCode}</code>
-                </pre>
-              ) : (
-                <div className="p-4 text-sm text-muted">
-                  Simulation code preview unavailable. Use the download link to
-                  view the {entry.simulation.language} file.
-                </div>
-              )}
+              <div className="overflow-hidden rounded-lg border border-border bg-[#071018]">
+                {simulationCode ? (
+                  <pre className="max-h-[38rem] overflow-x-auto overflow-y-auto p-4 text-xs leading-6 text-soft sm:text-sm">
+                    <code>{simulationCode}</code>
+                  </pre>
+                ) : (
+                  <div className="p-4 text-sm text-muted">
+                    Simulation code preview unavailable. Use the download link
+                    to view the {entry.simulation.language} file.
+                  </div>
+                )}
+              </div>
             </div>
-          </section>
+          </details>
         ) : null}
 
         <section className="mt-8" aria-labelledby="handwritten-work-title">

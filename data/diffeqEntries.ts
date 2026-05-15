@@ -106,7 +106,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     pdf: "/diffeq/entries/001-direct-integration/work.pdf",
     completed: true,
     simulation: {
-      title: "Python Simulation",
+      title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/001-direct-integration/001_simulation.py",
     },
