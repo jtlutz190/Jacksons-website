@@ -99,11 +99,11 @@ export default function DiffeqArchivePage() {
           </figure>
           <div className="mt-6 space-y-4 text-base leading-7 text-soft">
             <p>
-              Differential equations have been at the pique of my interest in
-              math ever since I discovered them. In order to show my love for
-              differential equations, I have documented one thousand
-              differential equation problems, solutions, their behaviors, and
-              important takeaways.
+              Differential equations have become one of the central threads of
+              my mathematical interests. To study them seriously, I&apos;m
+              building a long-term archive of 1,000 ordinary differential
+              equations, including solutions, classifications, graphical
+              behavior, computational experiments, and key takeaways.
             </p>
             <p className="text-sm leading-6 text-muted">
               Problems are adapted from textbooks, course materials, and
