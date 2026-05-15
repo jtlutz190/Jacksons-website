@@ -17,6 +17,33 @@ const cardAccentClasses = [
   "card-cyan",
 ];
 
+const demonstratedSkills = [
+  {
+    skill: "Mathematical modeling",
+    evidence: "Classification by ODE type and solution method",
+  },
+  {
+    skill: "Technical writing",
+    evidence: "Takeaways and explanations for each entry",
+  },
+  {
+    skill: "Computational thinking",
+    evidence: "Graphs, derivative checks, numerical simulation",
+  },
+  {
+    skill: "Python / MATLAB",
+    evidence: "Code-backed plots and simulations",
+  },
+  {
+    skill: "Web development",
+    evidence: "Interactive searchable archive",
+  },
+  {
+    skill: "Long-term execution",
+    evidence: "1,000-entry roadmap with progress tracking",
+  },
+];
+
 function getChapterAccentClass(entryNumber: number) {
   if (entryNumber <= 100) {
     return cardAccentClasses[0];
@@ -116,10 +143,20 @@ export default function DiffeqArchivePage() {
               unless noted otherwise.
             </p>
           </div>
-          <p className="mt-5 text-base leading-7 text-soft">
-            A handwritten and computational archive of one thousand ODEs,
-            organized by structure, method, and mathematical idea.
-          </p>
+          <div className="mt-5 max-w-3xl">
+            <h2 className="text-lg font-semibold tracking-tight text-text">
+              What this project demonstrates:
+            </h2>
+            <p className="mt-3 text-base leading-7 text-soft">
+              This archive is a long-term technical project combining
+              differential equations, mathematical writing, computational
+              visualization, and web development. Each entry includes
+              classification, solution method, verification, graphical behavior,
+              and eventually Python/MATLAB simulation code. The goal is not just
+              to solve ODEs, but to build a searchable, computationally enriched
+              reference system.
+            </p>
+          </div>
         </div>
 
         <div className="notebook-rule mt-8 max-w-xl rounded-lg border border-gold/35 bg-surface p-5">
@@ -203,6 +240,51 @@ export default function DiffeqArchivePage() {
               </Link>
             </article>
           ))}
+        </div>
+      </section>
+
+      <section className="py-10" aria-labelledby="skills-title">
+        <div className="mb-8">
+          <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
+            Capabilities
+          </p>
+          <div className="mt-2 flex items-center gap-4">
+            <h2
+              id="skills-title"
+              className="text-2xl font-semibold tracking-tight text-text"
+            >
+              Skills Demonstrated
+            </h2>
+            <div className="section-divider h-px flex-1" />
+          </div>
+        </div>
+
+        <div className="overflow-hidden rounded-lg border border-border">
+          <table className="w-full border-collapse text-left text-sm">
+            <thead className="bg-surface text-text">
+              <tr>
+                <th scope="col" className="px-4 py-3 font-semibold">
+                  Skill
+                </th>
+                <th scope="col" className="px-4 py-3 font-semibold">
+                  Evidence in archive
+                </th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-border bg-bg text-soft">
+              {demonstratedSkills.map((item) => (
+                <tr key={item.skill}>
+                  <th
+                    scope="row"
+                    className="px-4 py-3 font-medium text-text"
+                  >
+                    {item.skill}
+                  </th>
+                  <td className="px-4 py-3">{item.evidence}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
         </div>
       </section>
     </main>
