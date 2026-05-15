@@ -37,6 +37,7 @@ export interface DiffeqSimulation {
   title: string;
   language: "Python" | "MATLAB";
   downloadPath: string;
+  imagePath?: string;
 }
 
 const directIntegrationTakeaway =
@@ -109,6 +110,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/001-direct-integration/001_simulation.py",
+      imagePath: "/diffeq/entries/001-direct-integration/001_simulation.png",
     },
     graph: directIntegrationGraph({
       xMin: -3,

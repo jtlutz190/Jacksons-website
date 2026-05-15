@@ -140,6 +140,16 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
             </summary>
 
             <div className="border-t border-border p-5">
+              {entry.simulation.imagePath ? (
+                <div className="mb-5 overflow-hidden rounded-lg border border-border bg-white">
+                  <img
+                    src={entry.simulation.imagePath}
+                    alt={`Simulation plot for #${formatEntryNumber(entry.number)}`}
+                    className="h-auto w-full"
+                  />
+                </div>
+              ) : null}
+
               <a
                 href={entry.simulation.downloadPath}
                 download
