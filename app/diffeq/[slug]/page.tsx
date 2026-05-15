@@ -3,7 +3,6 @@ import { notFound } from "next/navigation";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import type { ReactNode } from "react";
-import DiffeqGraph from "@/components/DiffeqGraph";
 import Latex from "@/components/Latex";
 import {
   diffeqEntries,
@@ -123,14 +122,12 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
           </EntrySection>
         </div>
 
-        {entry.graph ? <DiffeqGraph graph={entry.graph} /> : null}
-
         <section className="mt-8" aria-labelledby="code-title">
           <h2
             id="code-title"
             className="text-2xl font-semibold tracking-tight text-text"
           >
-            Code
+            Simulation & Simulation
           </h2>
 
           <details className="mt-5 overflow-hidden rounded-lg border border-border bg-surface">
@@ -147,16 +144,6 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
             </summary>
 
             <div className="border-t border-border p-5">
-              {entry.simulation?.imagePath ? (
-                <div className="mb-5 overflow-hidden rounded-lg border border-border bg-white">
-                  <img
-                    src={entry.simulation.imagePath}
-                    alt={`Simulation plot for #${formatEntryNumber(entry.number)}`}
-                    className="h-auto w-full"
-                  />
-                </div>
-              ) : null}
-
               {entry.simulation ? (
                 <a
                   href={entry.simulation.downloadPath}

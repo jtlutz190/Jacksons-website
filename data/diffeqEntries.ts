@@ -13,82 +13,17 @@ export interface DiffeqEntry {
   takeaway: string;
   pdf: string;
   completed: boolean;
-  graph?: DiffeqGraph;
   simulation?: DiffeqSimulation;
-}
-
-export interface DiffeqGraph {
-  xMin: number;
-  xMax: number;
-  yMin: number;
-  yMax: number;
-  curves: DiffeqGraphCurve[];
-}
-
-export interface DiffeqGraphCurve {
-  label: string;
-  latex: string;
-  stroke: "solution" | "derivative";
-  functionId: string;
-  ranges?: Array<[number, number]>;
 }
 
 export interface DiffeqSimulation {
   title: string;
   language: "Python" | "MATLAB";
   downloadPath: string;
-  imagePath?: string;
 }
 
 const directIntegrationTakeaway =
   "Direct integration equations of the form y' = f(x) tell us that the slope of the solution changes with respect to x only.";
-
-interface DirectIntegrationGraphConfig {
-  xMin: number;
-  xMax: number;
-  yMin: number;
-  yMax: number;
-  solutionLatex: string;
-  derivativeLatex: string;
-  solutionFunctionId: string;
-  derivativeFunctionId: string;
-  ranges?: Array<[number, number]>;
-}
-
-function directIntegrationGraph({
-  xMin,
-  xMax,
-  yMin,
-  yMax,
-  solutionLatex,
-  derivativeLatex,
-  solutionFunctionId,
-  derivativeFunctionId,
-  ranges,
-}: DirectIntegrationGraphConfig): DiffeqGraph {
-  return {
-    xMin,
-    xMax,
-    yMin,
-    yMax,
-    curves: [
-      {
-        label: "y",
-        latex: solutionLatex,
-        stroke: "solution",
-        functionId: solutionFunctionId,
-        ranges,
-      },
-      {
-        label: "y'",
-        latex: derivativeLatex,
-        stroke: "derivative",
-        functionId: derivativeFunctionId,
-        ranges,
-      },
-    ],
-  };
-}
 
 export const diffeqEntries: DiffeqEntry[] = [
   {
@@ -110,18 +45,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/001-direct-integration/001_simulation.py",
-      imagePath: "/diffeq/entries/001-direct-integration/001_simulation.png",
     },
-    graph: directIntegrationGraph({
-      xMin: -3,
-      xMax: 3,
-      yMin: -6,
-      yMax: 9,
-      solutionLatex: "y = x^2",
-      derivativeLatex: "y' = 2x",
-      solutionFunctionId: "entry001Solution",
-      derivativeFunctionId: "entry001Derivative",
-    }),
   },
   {
     number: 2,
@@ -138,16 +62,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/002-direct-integration/work.pdf",
     completed: true,
-    graph: directIntegrationGraph({
-      xMin: -3,
-      xMax: 3,
-      yMin: -30,
-      yMax: 30,
-      solutionLatex: "y = x^3",
-      derivativeLatex: "y' = 3x^2",
-      solutionFunctionId: "entry002Solution",
-      derivativeFunctionId: "entry002Derivative",
-    }),
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/002-direct-integration/002_simulation.py",
+    },
   },
   {
     number: 3,
@@ -164,16 +83,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/003-direct-integration/work.pdf",
     completed: true,
-    graph: directIntegrationGraph({
-      xMin: -2,
-      xMax: 2,
-      yMin: -60,
-      yMax: 90,
-      solutionLatex: "y = x^5 - x^2 + 7x",
-      derivativeLatex: "y' = 5x^4 - 2x + 7",
-      solutionFunctionId: "entry003Solution",
-      derivativeFunctionId: "entry003Derivative",
-    }),
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/003-direct-integration/003_simulation.py",
+    },
   },
   {
     number: 4,
@@ -190,20 +104,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/004-direct-integration/work.pdf",
     completed: true,
-    graph: directIntegrationGraph({
-      xMin: -5,
-      xMax: 5,
-      yMin: -8,
-      yMax: 18,
-      solutionLatex: "y = -\\frac{1}{x}",
-      derivativeLatex: "y' = x^{-2}",
-      solutionFunctionId: "entry004Solution",
-      derivativeFunctionId: "entry004Derivative",
-      ranges: [
-        [-10, -0.05],
-        [0.05, 10],
-      ],
-    }),
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/004-direct-integration/004_simulation.py",
+    },
   },
   {
     number: 5,
@@ -220,17 +125,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/005-direct-integration/work.pdf",
     completed: true,
-    graph: directIntegrationGraph({
-      xMin: -0.5,
-      xMax: 6,
-      yMin: -1,
-      yMax: 42,
-      solutionLatex: "y = \\frac{8}{3}x^{3/2}",
-      derivativeLatex: "y' = 4\\sqrt{x}",
-      solutionFunctionId: "entry005Solution",
-      derivativeFunctionId: "entry005Derivative",
-      ranges: [[0, 12]],
-    }),
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/005-direct-integration/005_simulation.py",
+    },
   },
   {
     number: 6,
@@ -247,17 +146,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/006-direct-integration/work.pdf",
     completed: true,
-    graph: directIntegrationGraph({
-      xMin: -0.5,
-      xMax: 9,
-      yMin: -1,
-      yMax: 12,
-      solutionLatex: "y = 2\\sqrt{x}",
-      derivativeLatex: "y' = \\frac{1}{\\sqrt{x}}",
-      solutionFunctionId: "entry006Solution",
-      derivativeFunctionId: "entry006Derivative",
-      ranges: [[0.03, 18]],
-    }),
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/006-direct-integration/006_simulation.py",
+    },
   },
   {
     number: 7,
@@ -274,20 +167,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/007-direct-integration/work.pdf",
     completed: true,
-    graph: directIntegrationGraph({
-      xMin: -3,
-      xMax: 3,
-      yMin: -40,
-      yMax: 60,
-      solutionLatex: "y = 2x^3 - 4\\ln|x|",
-      derivativeLatex: "y' = 6x^2 - 4x^{-1}",
-      solutionFunctionId: "entry007Solution",
-      derivativeFunctionId: "entry007Derivative",
-      ranges: [
-        [-6, -0.05],
-        [0.05, 6],
-      ],
-    }),
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/007-direct-integration/007_simulation.py",
+    },
   },
   {
     number: 8,
@@ -304,16 +188,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/008-direct-integration/work.pdf",
     completed: true,
-    graph: directIntegrationGraph({
-      xMin: -3,
-      xMax: 3,
-      yMin: -1,
-      yMax: 22,
-      solutionLatex: "y = e^x",
-      derivativeLatex: "y' = e^x",
-      solutionFunctionId: "entry008Solution",
-      derivativeFunctionId: "entry008Derivative",
-    }),
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/008-direct-integration/008_simulation.py",
+    },
   },
   {
     number: 9,
@@ -330,16 +209,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/009-direct-integration/work.pdf",
     completed: true,
-    graph: directIntegrationGraph({
-      xMin: -2,
-      xMax: 2,
-      yMin: -1,
-      yMax: 120,
-      solutionLatex: "y = e^{2x}",
-      derivativeLatex: "y' = 2e^{2x}",
-      solutionFunctionId: "entry009Solution",
-      derivativeFunctionId: "entry009Derivative",
-    }),
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/009-direct-integration/009_simulation.py",
+    },
   },
   {
     number: 10,
@@ -356,16 +230,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/010-direct-integration/work.pdf",
     completed: true,
-    graph: directIntegrationGraph({
-      xMin: -2,
-      xMax: 2,
-      yMin: -150,
-      yMax: 430,
-      solutionLatex: "y = -\\frac{1}{3}e^{-3x}",
-      derivativeLatex: "y' = e^{-3x}",
-      solutionFunctionId: "entry010Solution",
-      derivativeFunctionId: "entry010Derivative",
-    }),
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/010-direct-integration/010_simulation.py",
+    },
   },
   {
     number: 11,
@@ -382,16 +251,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/011-direct-integration/work.pdf",
     completed: true,
-    graph: directIntegrationGraph({
-      xMin: -7,
-      xMax: 7,
-      yMin: -1.5,
-      yMax: 1.5,
-      solutionLatex: "y = -\\cos x",
-      derivativeLatex: "y' = \\sin x",
-      solutionFunctionId: "entry011Solution",
-      derivativeFunctionId: "entry011Derivative",
-    }),
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/011-direct-integration/011_simulation.py",
+    },
   },
   {
     number: 12,
@@ -408,16 +272,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/012-direct-integration/work.pdf",
     completed: true,
-    graph: directIntegrationGraph({
-      xMin: -7,
-      xMax: 7,
-      yMin: -5,
-      yMax: 5,
-      solutionLatex: "y = 4\\sin x",
-      derivativeLatex: "y' = 4\\cos x",
-      solutionFunctionId: "entry012Solution",
-      derivativeFunctionId: "entry012Derivative",
-    }),
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/012-direct-integration/012_simulation.py",
+    },
   },
   {
     number: 13,
@@ -434,21 +293,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/013-direct-integration/work.pdf",
     completed: true,
-    graph: directIntegrationGraph({
-      xMin: -4.5,
-      xMax: 4.5,
-      yMin: -18,
-      yMax: 36,
-      solutionLatex: "y = 3\\tan x",
-      derivativeLatex: "y' = 3\\sec^2 x",
-      solutionFunctionId: "entry013Solution",
-      derivativeFunctionId: "entry013Derivative",
-      ranges: [
-        [-4.5, -1.65],
-        [-1.49, 1.49],
-        [1.65, 4.5],
-      ],
-    }),
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/013-direct-integration/013_simulation.py",
+    },
   },
   {
     number: 14,
@@ -465,22 +314,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/014-direct-integration/work.pdf",
     completed: true,
-    graph: directIntegrationGraph({
-      xMin: -6,
-      xMax: 6,
-      yMin: -30,
-      yMax: 30,
-      solutionLatex: "y = -2\\csc x",
-      derivativeLatex: "y' = 2\\csc x\\cot x",
-      solutionFunctionId: "entry014Solution",
-      derivativeFunctionId: "entry014Derivative",
-      ranges: [
-        [-6, -3.2],
-        [-3.08, -0.08],
-        [0.08, 3.08],
-        [3.2, 6],
-      ],
-    }),
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/014-direct-integration/014_simulation.py",
+    },
   },
   {
     number: 15,
@@ -497,16 +335,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/015-direct-integration/work.pdf",
     completed: true,
-    graph: directIntegrationGraph({
-      xMin: -3,
-      xMax: 3,
-      yMin: -30,
-      yMax: 40,
-      solutionLatex: "y = \\frac{x^4}{4} + e^x",
-      derivativeLatex: "y' = x^3 + e^x",
-      solutionFunctionId: "entry015Solution",
-      derivativeFunctionId: "entry015Derivative",
-    }),
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/015-direct-integration/015_simulation.py",
+    },
   },
   {
     number: 16,
@@ -523,16 +356,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/016-direct-integration/work.pdf",
     completed: true,
-    graph: directIntegrationGraph({
-      xMin: -4,
-      xMax: 4,
-      yMin: -10,
-      yMax: 18,
-      solutionLatex: "y = x^2 + \\cos x",
-      derivativeLatex: "y' = 2x - \\sin x",
-      solutionFunctionId: "entry016Solution",
-      derivativeFunctionId: "entry016Derivative",
-    }),
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/016-direct-integration/016_simulation.py",
+    },
   },
   {
     number: 17,
@@ -549,16 +377,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/017-direct-integration/work.pdf",
     completed: true,
-    graph: directIntegrationGraph({
-      xMin: -3,
-      xMax: 3,
-      yMin: -90,
-      yMax: 15,
-      solutionLatex: "y = \\frac{x^3}{3} + 3\\sin x - 4e^x",
-      derivativeLatex: "y' = x^2 + 3\\cos x - 4e^x",
-      solutionFunctionId: "entry017Solution",
-      derivativeFunctionId: "entry017Derivative",
-    }),
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/017-direct-integration/017_simulation.py",
+    },
   },
   {
     number: 18,
@@ -575,20 +398,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/018-direct-integration/work.pdf",
     completed: true,
-    graph: directIntegrationGraph({
-      xMin: -6,
-      xMax: 6,
-      yMin: -12,
-      yMax: 12,
-      solutionLatex: "y = \\ln|x|",
-      derivativeLatex: "y' = \\frac{1}{x}",
-      solutionFunctionId: "entry018Solution",
-      derivativeFunctionId: "entry018Derivative",
-      ranges: [
-        [-12, -0.05],
-        [0.05, 12],
-      ],
-    }),
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/018-direct-integration/018_simulation.py",
+    },
   },
   {
     number: 19,
@@ -605,20 +419,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/019-direct-integration/work.pdf",
     completed: true,
-    graph: directIntegrationGraph({
-      xMin: -5,
-      xMax: 5,
-      yMin: -12,
-      yMax: 12,
-      solutionLatex: "y = \\frac{3}{2}\\ln|2x + 1|",
-      derivativeLatex: "y' = \\frac{3}{2x + 1}",
-      solutionFunctionId: "entry019Solution",
-      derivativeFunctionId: "entry019Derivative",
-      ranges: [
-        [-10, -0.55],
-        [-0.45, 10],
-      ],
-    }),
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/019-direct-integration/019_simulation.py",
+    },
   },
   {
     number: 20,
@@ -635,16 +440,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/020-direct-integration/work.pdf",
     completed: true,
-    graph: directIntegrationGraph({
-      xMin: -6,
-      xMax: 6,
-      yMin: -2,
-      yMax: 4,
-      solutionLatex: "y = \\frac{1}{2}\\ln|x^2 + 1|",
-      derivativeLatex: "y' = \\frac{x}{x^2 + 1}",
-      solutionFunctionId: "entry020Solution",
-      derivativeFunctionId: "entry020Derivative",
-    }),
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/020-direct-integration/020_simulation.py",
+    },
   },
   {
     number: 21,
@@ -661,16 +461,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/021-direct-integration/work.pdf",
     completed: true,
-    graph: directIntegrationGraph({
-      xMin: -6,
-      xMax: 6,
-      yMin: -2,
-      yMax: 5,
-      solutionLatex: "y = \\ln|x^2 + 5|",
-      derivativeLatex: "y' = \\frac{2x}{x^2 + 5}",
-      solutionFunctionId: "entry021Solution",
-      derivativeFunctionId: "entry021Derivative",
-    }),
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/021-direct-integration/021_simulation.py",
+    },
   },
   {
     number: 22,
@@ -687,16 +482,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/022-direct-integration/work.pdf",
     completed: true,
-    graph: directIntegrationGraph({
-      xMin: -6,
-      xMax: 6,
-      yMin: -2,
-      yMax: 2,
-      solutionLatex: "y = \\arctan x",
-      derivativeLatex: "y' = \\frac{1}{1 + x^2}",
-      solutionFunctionId: "entry022Solution",
-      derivativeFunctionId: "entry022Derivative",
-    }),
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/022-direct-integration/022_simulation.py",
+    },
   },
   {
     number: 23,
@@ -713,17 +503,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/023-direct-integration/work.pdf",
     completed: true,
-    graph: directIntegrationGraph({
-      xMin: -1.2,
-      xMax: 1.2,
-      yMin: -2,
-      yMax: 8,
-      solutionLatex: "y = \\arcsin x",
-      derivativeLatex: "y' = \\frac{1}{\\sqrt{1 - x^2}}",
-      solutionFunctionId: "entry023Solution",
-      derivativeFunctionId: "entry023Derivative",
-      ranges: [[-0.99, 0.99]],
-    }),
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/023-direct-integration/023_simulation.py",
+    },
   },
   {
     number: 24,
@@ -740,16 +524,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/024-direct-integration/work.pdf",
     completed: true,
-    graph: directIntegrationGraph({
-      xMin: -1.5,
-      xMax: 1.5,
-      yMin: -2,
-      yMax: 75,
-      solutionLatex: "y = \\frac{1}{3}e^{x^3}",
-      derivativeLatex: "y' = x^2e^{x^3}",
-      solutionFunctionId: "entry024Solution",
-      derivativeFunctionId: "entry024Derivative",
-    }),
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/024-direct-integration/024_simulation.py",
+    },
   },
   {
     number: 25,
@@ -766,16 +545,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/025-direct-integration/work.pdf",
     completed: true,
-    graph: directIntegrationGraph({
-      xMin: -4,
-      xMax: 4,
-      yMin: -8,
-      yMax: 8,
-      solutionLatex: "y = \\sin(x^2)",
-      derivativeLatex: "y' = 2x\\cos(x^2)",
-      solutionFunctionId: "entry025Solution",
-      derivativeFunctionId: "entry025Derivative",
-    }),
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/025-direct-integration/025_simulation.py",
+    },
   },
 ];
 

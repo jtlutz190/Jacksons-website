@@ -1,11 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = np.linspace(-3, 3, 800)
+x = np.linspace(-0.5, 9, 800)
 
 with np.errstate(divide="ignore", invalid="ignore", over="ignore"):
-    y = x**2
-    y_prime = 2*x
+    y = 2*np.sqrt(x)
+    y_prime = 1/np.sqrt(x)
 
 
 def clean(values, limit=100):
@@ -17,9 +17,9 @@ y = clean(y)
 y_prime = clean(y_prime)
 
 plt.figure(figsize=(8, 5))
-plt.plot(x, y, label="y = x^2 + C", linewidth=2)
-plt.plot(x, y_prime, label="y' = 2x", linewidth=2, linestyle="--")
-plt.title("Entry #001: solution and derivative")
+plt.plot(x, y, label="y = 2sqrt(x) + C", linewidth=2)
+plt.plot(x, y_prime, label="y' = 1/sqrt(x)", linewidth=2, linestyle="--")
+plt.title("Entry #006: solution and derivative")
 plt.xlabel("x")
 plt.ylabel("value")
 plt.grid(True, alpha=0.35)

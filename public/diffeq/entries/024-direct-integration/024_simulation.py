@@ -1,11 +1,11 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-x = np.linspace(-3, 3, 800)
+x = np.linspace(-1.5, 1.5, 800)
 
 with np.errstate(divide="ignore", invalid="ignore", over="ignore"):
-    y = x**2
-    y_prime = 2*x
+    y = (1/3)*np.exp(x**3)
+    y_prime = x**2*np.exp(x**3)
 
 
 def clean(values, limit=100):
@@ -17,9 +17,9 @@ y = clean(y)
 y_prime = clean(y_prime)
 
 plt.figure(figsize=(8, 5))
-plt.plot(x, y, label="y = x^2 + C", linewidth=2)
-plt.plot(x, y_prime, label="y' = 2x", linewidth=2, linestyle="--")
-plt.title("Entry #001: solution and derivative")
+plt.plot(x, y, label="y = (1/3)e^(x^3) + C", linewidth=2)
+plt.plot(x, y_prime, label="y' = x^2e^(x^3)", linewidth=2, linestyle="--")
+plt.title("Entry #024: solution and derivative")
 plt.xlabel("x")
 plt.ylabel("value")
 plt.grid(True, alpha=0.35)
