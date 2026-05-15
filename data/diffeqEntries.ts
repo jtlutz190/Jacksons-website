@@ -14,6 +14,7 @@ export interface DiffeqEntry {
   pdf: string;
   completed: boolean;
   graph?: DiffeqGraph;
+  simulation?: DiffeqSimulation;
 }
 
 export interface DiffeqGraph {
@@ -30,6 +31,12 @@ export interface DiffeqGraphCurve {
   stroke: "solution" | "derivative";
   functionId: string;
   ranges?: Array<[number, number]>;
+}
+
+export interface DiffeqSimulation {
+  title: string;
+  language: "Python" | "MATLAB";
+  downloadPath: string;
 }
 
 const directIntegrationTakeaway =
@@ -98,6 +105,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/001-direct-integration/work.pdf",
     completed: true,
+    simulation: {
+      title: "Python Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/001-direct-integration/001_simulation.py",
+    },
     graph: directIntegrationGraph({
       xMin: -3,
       xMax: 3,
