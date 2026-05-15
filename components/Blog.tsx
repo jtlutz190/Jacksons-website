@@ -5,20 +5,20 @@ const posts = [
   {
     title: "An Introduction to Spectral Graph Theory",
     description:
-      "A placeholder for intuition-heavy mathematical writing that stays understandable to curious people while still giving mathematically knowledgeable readers something real to chew on.",
+      "A planned technical note focused on intuition, examples, and the bridge between graph structure and linear algebra.",
     accentClass: "card-violet",
   },
   {
     title: "Making Fourier Transforms Intuitive",
     description:
-      "A future note connecting signals, frequency, and visual explanation, written for readers who may not remember every detail of undergraduate math.",
+      "A future explainer connecting signals, frequency-domain thinking, and visual reasoning for readers with mixed math backgrounds.",
     accentClass: "card-violet",
   },
   {
     title:
       "Why Does Formal Logic Matter? An Introduction to Ignoring the Law of Excluded Middle",
     description:
-      "A placeholder essay on formal logic, constructive thinking, and why foundations can matter even outside a pure math classroom.",
+      "A draft essay about constructive reasoning, foundations, and why precise assumptions matter outside a pure math classroom.",
     accentClass: "card-violet",
   },
 ];
@@ -27,11 +27,9 @@ export default function Blog() {
   return (
     <Section id="writing" title="Writing" eyebrow="Notes and drafts">
       <p className="mb-6 max-w-3xl text-sm leading-6 text-soft">
-        Placeholder space for intuition-heavy mathematical writing: clear
-        enough for curious readers, useful to employers who may not remember
-        every undergraduate math detail, and still interesting to mathematically
-        knowledgeable readers. Some pieces may connect to visual math or TikTok
-        content.
+        Technical communication is part of the work. This section collects
+        math and engineering notes aimed at making difficult ideas easier to
+        inspect, explain, and reuse.
       </p>
       <div className="grid gap-4">
         {posts.map((post) => (

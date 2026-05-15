@@ -3,9 +3,9 @@ import "katex/dist/katex.min.css";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Jackson T. Lutz",
+  title: "Jackson T. Lutz | Engineering Portfolio",
   description:
-    "Academic portfolio for Jackson T. Lutz, an AMEP student interested in math, electrical engineering, embedded systems, signals, and data science.",
+    "Engineering portfolio for Jackson T. Lutz, a UW-Madison AMEP student interested in applied math, electrical engineering, embedded systems, signal processing, and data science.",
 };
 
 export default function RootLayout({

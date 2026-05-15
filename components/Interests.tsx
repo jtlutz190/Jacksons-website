@@ -21,9 +21,9 @@ const interests = [
     accentClass: "card-mint",
   },
   {
-    title: "Visual math / TikTok content",
+    title: "Visual math",
     description:
-      "Short visual explanations that make mathematical ideas easier to see and remember.",
+      "Short visual explanations that make mathematical ideas easier to see, test, and remember.",
     accentClass: "card-mint",
   },
 ];

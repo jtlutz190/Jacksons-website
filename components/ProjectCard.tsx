@@ -46,13 +46,13 @@ export default function ProjectCard({
           href={link}
           className="mt-5 inline-flex text-sm font-medium text-accent hover:text-text"
         >
-          {linkLabel ?? "Placeholder link"}
+          {linkLabel ?? "Open project"}
         </a>
       ) : null}
 
       {link && featuredLink ? (
         <span className="mt-5 inline-flex w-fit rounded border border-cyan/45 bg-cyan/10 px-3 py-1.5 font-mono text-xs uppercase tracking-[0.12em] text-text">
-          Click to access
+          {linkLabel ?? "Open project"}
         </span>
       ) : null}
     </>

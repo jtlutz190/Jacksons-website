@@ -4,16 +4,17 @@ import SkillGroup from "@/components/SkillGroup";
 const skillGroups = [
   {
     title: "Programming",
-    skills: ["Python", "Embedded C", "MATLAB"],
+    skills: ["Python", "Embedded C", "MATLAB", "TypeScript"],
     accentClass: "card-cyan",
   },
   {
-    title: "Technical / math",
+    title: "Math / engineering",
     skills: [
       "Linear Algebra",
       "Differential Equations",
-      "Signal Processing - learning",
-      "Embedded Systems - learning",
+      "Numerical Methods",
+      "Signal Processing",
+      "Embedded Systems",
     ],
     accentClass: "card-cyan",
   },
@@ -23,19 +24,18 @@ const skillGroups = [
     accentClass: "card-cyan",
   },
   {
-    title: "Engineering / hardware",
-    skills: ["Microcontrollers / hardware tools", "Placeholder group"],
+    title: "Hardware / lab",
+    skills: ["Microcontrollers", "Circuit Fundamentals", "Technical Documentation"],
     accentClass: "card-cyan",
   },
 ];
 
 export default function Skills() {
   return (
-    <Section id="skills" title="Skills" eyebrow="Beta portfolio">
+    <Section id="skills" title="Skills" eyebrow="Tools and foundations">
       <p className="mb-6 max-w-2xl text-sm leading-6 text-text">
-        This is a learning-oriented portfolio, so the language here is
-        intentionally modest. Some areas are active study rather than claimed
-        mastery.
+        A focused snapshot of the technical areas I&apos;m building through
+        coursework, independent projects, and written problem solving.
       </p>
       <div className="space-y-3">
         {skillGroups.map((group) => (

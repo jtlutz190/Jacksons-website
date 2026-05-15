@@ -2,6 +2,13 @@ import Image from "next/image";
 import Section from "@/components/Section";
 
 export default function Hero() {
+  const facts = [
+    { label: "University", value: "UW-Madison" },
+    { label: "Program", value: "AMEP, Class of 2029" },
+    { label: "GPA", value: "3.60" },
+    { label: "Focus", value: "Signals, embedded systems, data" },
+  ];
+
   return (
     <Section id="about" className="pt-0 sm:pt-0" labelledBy="profile-title">
       <article className="relative left-1/2 w-screen -translate-x-1/2">
@@ -31,23 +38,23 @@ export default function Hero() {
 
             <div className="flex flex-wrap gap-3 sm:mb-3">
               <a
-                href="/Jackson_Lutz_CV_placeholder.pdf"
+                href="https://github.com/jtlutz190"
                 className="inline-flex min-h-10 items-center rounded-md border border-cyan/45 bg-cyan/10 px-4 text-sm font-medium text-text hover:border-cyan hover:bg-cyan/15"
               >
-                CV placeholder
+                GitHub profile
               </a>
               <a
-                href="https://github.com/placeholder"
+                href="/diffeq"
                 className="inline-flex min-h-10 items-center rounded-md border border-cobalt/45 bg-cobalt/10 px-4 text-sm font-medium text-soft hover:border-cobalt hover:text-text"
               >
-                Projects / GitHub
+                Differential equations archive
               </a>
             </div>
           </div>
 
-          <div className="mt-5 max-w-3xl">
+          <div className="mt-5 w-full max-w-3xl min-w-0">
             <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
-              AMEP student | UW-Madison 2029 | 3.598 GPA
+              Applied Math, Engineering, and Physics | UW-Madison
             </p>
             <h1
               id="profile-title"
@@ -55,22 +62,39 @@ export default function Hero() {
             >
               Jackson T. Lutz
             </h1>
-            <p className="tagline-glow mt-3 w-fit font-mono text-sm text-accent">
-              Seeking what is true, building what is useful.
+            <p className="tagline-glow mt-3 max-w-full font-mono text-sm leading-6 text-accent">
+              Internship-minded engineering student building technical range.
             </p>
 
-            <p className="mt-5 text-base leading-7 text-soft">
+            <p className="mt-5 max-w-full text-base leading-7 text-soft">
               I&apos;m an AMEP student interested in mathematics, electrical
-              engineering, embedded systems, signals, and data science. This
-              site is a growing notebook for projects, technical writing, and
-              things I&apos;m learning along the way.
+              engineering, embedded systems, signal processing, and data
+              science. This portfolio collects the projects, technical writing,
+              and coursework-driven explorations that show how I learn,
+              document, and build.
             </p>
-            <p className="mt-3 text-sm leading-6 text-muted">
-              AMEP stands for Applied Math, Engineering, and Physics. Current
-              learning areas include MATLAB, embedded C, and signal processing.
-              Over time, this site should support internships, research
-              positions, clubs, and academic or technical networking.
+            <p className="mt-3 max-w-full text-sm leading-6 text-muted">
+              Current learning areas include MATLAB, embedded C, numerical
+              methods, and signal processing. I&apos;m especially interested in
+              internship opportunities where careful math, clear communication,
+              and practical engineering judgment matter.
             </p>
+
+            <dl className="mt-7 grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
+              {facts.map((fact) => (
+                <div
+                  key={fact.label}
+                  className="rounded-md border border-border bg-surface/80 px-4 py-3"
+                >
+                  <dt className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted">
+                    {fact.label}
+                  </dt>
+                  <dd className="mt-1 text-sm font-medium leading-5 text-text">
+                    {fact.value}
+                  </dd>
+                </div>
+              ))}
+            </dl>
           </div>
         </div>
       </article>

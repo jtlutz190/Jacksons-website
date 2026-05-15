@@ -15,12 +15,9 @@ export default function WritingCard({
         <h3 className="max-w-2xl text-base font-medium leading-6 text-text">
           {title}
         </h3>
-        <a
-          href="#"
-          className="w-fit font-mono text-xs text-cyan hover:text-text"
-        >
-          placeholder
-        </a>
+        <span className="w-fit rounded border border-violet/35 bg-violet/10 px-2 py-1 font-mono text-xs text-cyan">
+          Drafting
+        </span>
       </div>
       <p className="mt-3 text-sm leading-6 text-text">{description}</p>
     </article>
