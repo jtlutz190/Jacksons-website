@@ -66,6 +66,15 @@ function TagChips({ tags }: { tags: string[] }) {
   );
 }
 
+function FeaturedBadge() {
+  return (
+    <span className="inline-flex items-center gap-2 rounded-full border border-gold bg-gold/15 px-3 py-1.5 font-mono text-xs uppercase tracking-[0.14em] text-gold">
+      <span aria-hidden="true">★</span>
+      Featured
+    </span>
+  );
+}
+
 export async function generateMetadata({ params }: DiffeqEntryPageProps) {
   const { slug } = await params;
   const entry = diffeqEntries.find((candidate) => candidate.slug === slug);
@@ -114,6 +123,11 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
         <h1 className="mt-3 text-4xl font-semibold tracking-tight text-text sm:text-5xl">
           #{formatEntryNumber(entry.number)}
         </h1>
+        {entry.featured ? (
+          <div className="mt-4">
+            <FeaturedBadge />
+          </div>
+        ) : null}
 
         <div className="mt-10">
           <EntrySection title="Problem">

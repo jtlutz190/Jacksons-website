@@ -53,6 +53,21 @@ function formatTag(tag: string) {
   return tag.replaceAll("-", " ");
 }
 
+function FeaturedBadge({ compact = false }: { compact?: boolean }) {
+  return (
+    <span
+      className={
+        compact
+          ? "inline-flex items-center gap-1 rounded-full border border-gold bg-gold/15 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-gold"
+          : "inline-flex items-center gap-2 rounded-full border border-gold bg-gold/15 px-3 py-1.5 font-mono text-xs uppercase tracking-[0.14em] text-gold"
+      }
+    >
+      <span aria-hidden="true">★</span>
+      Featured
+    </span>
+  );
+}
+
 function LatexText({ math }: { math: string }) {
   const html = useMemo(
     () =>
@@ -247,8 +262,17 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
               <article key={entry.slug}>
                 <Link
                   href={`/diffeq/${entry.slug}`}
-                  className={`card ${getChapterAccentClass(entry.number)} flex min-h-24 flex-col justify-between rounded-md bg-surface p-3 hover:bg-surface-2`}
+                  className={`card ${getChapterAccentClass(entry.number)} ${
+                    entry.featured
+                      ? "border-gold shadow-[0_0_0_1px_rgba(244,199,107,0.48),0_18px_44px_rgba(244,199,107,0.12)]"
+                      : ""
+                  } relative flex min-h-24 flex-col justify-between rounded-md bg-surface p-3 hover:bg-surface-2`}
                 >
+                  {entry.featured ? (
+                    <span className="absolute right-3 top-3">
+                      <FeaturedBadge compact />
+                    </span>
+                  ) : null}
                   <h3 className="font-mono text-sm font-semibold text-gold">
                     #{formatEntryNumber(entry.number)}
                   </h3>

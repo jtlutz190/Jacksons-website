@@ -13,6 +13,7 @@ export interface DiffeqEntry {
   takeaway: string;
   pdf: string;
   completed: boolean;
+  featured?: boolean;
   simulation?: DiffeqSimulation;
 }
 
