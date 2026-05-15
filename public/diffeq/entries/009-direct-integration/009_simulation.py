@@ -1,8 +1,6 @@
 import numpy as np
 import plotly.graph_objects as go
 
-HTML_OUTPUT = "009_simulation.html"
-
 x = np.linspace(-2, 2, 800)
 
 with np.errstate(divide="ignore", invalid="ignore", over="ignore"):
@@ -29,5 +27,4 @@ fig.update_layout(
     hovermode="x unified",
 )
 
-fig.write_html(HTML_OUTPUT, include_plotlyjs="cdn", full_html=True)
 fig.show()

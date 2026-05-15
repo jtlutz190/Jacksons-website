@@ -47,6 +47,25 @@ function EntrySection({
   );
 }
 
+function TagChips({ tags }: { tags: string[] }) {
+  if (tags.length === 0) {
+    return null;
+  }
+
+  return (
+    <ul className="mt-3 flex flex-wrap gap-2">
+      {tags.map((tag) => (
+        <li
+          key={tag}
+          className="color-chip rounded border px-2.5 py-1 font-mono text-xs"
+        >
+          {tag.replaceAll("-", " ")}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export async function generateMetadata({ params }: DiffeqEntryPageProps) {
   const { slug } = await params;
   const entry = diffeqEntries.find((candidate) => candidate.slug === slug);
@@ -103,10 +122,12 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
 
           <EntrySection title="Classification">
             <p>{entry.classification}</p>
+            <TagChips tags={entry.tags.concept} />
           </EntrySection>
 
           <EntrySection title="Method">
             <p>{entry.method}</p>
+            <TagChips tags={entry.tags.method} />
           </EntrySection>
 
           <EntrySection title="Solution">
@@ -127,7 +148,7 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
             id="code-title"
             className="text-2xl font-semibold tracking-tight text-text"
           >
-            Simulation & Simulation
+            Simulation & Code
           </h2>
 
           <details className="mt-5 overflow-hidden rounded-lg border border-border bg-surface">
@@ -145,31 +166,13 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
 
             <div className="border-t border-border p-5">
               {entry.simulation ? (
-                <>
-                  <div className="mb-5 overflow-hidden rounded-lg border border-border bg-white">
-                    <iframe
-                      src={entry.simulation.previewPath}
-                      title={`Interactive simulation preview for #${formatEntryNumber(entry.number)}`}
-                      className="h-[28rem] w-full"
-                    />
-                  </div>
-
-                  <div className="mb-4 flex flex-wrap gap-3">
-                    <a
-                      href={entry.simulation.previewPath}
-                      className="inline-flex min-h-10 w-fit items-center rounded-md border border-cyan/45 bg-cyan/10 px-4 text-sm font-medium text-text hover:border-cyan hover:bg-cyan/15"
-                    >
-                      Open interactive preview
-                    </a>
-                    <a
-                      href={entry.simulation.downloadPath}
-                      download
-                      className="inline-flex min-h-10 w-fit items-center rounded-md border border-mint/45 bg-mint/10 px-4 text-sm font-medium text-text hover:border-mint hover:bg-mint/15"
-                    >
-                      Download .py file
-                    </a>
-                  </div>
-                </>
+                <a
+                  href={entry.simulation.downloadPath}
+                  download
+                  className="mb-4 inline-flex min-h-10 w-fit items-center rounded-md border border-mint/45 bg-mint/10 px-4 text-sm font-medium text-text hover:border-mint hover:bg-mint/15"
+                >
+                  Download .py file
+                </a>
               ) : null}
 
               <div className="overflow-hidden rounded-lg border border-border bg-[#071018]">

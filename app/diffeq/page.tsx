@@ -1,9 +1,9 @@
 import Link from "next/link";
+import DiffeqEntryBrowser from "@/components/DiffeqEntryBrowser";
 import Latex from "@/components/Latex";
 import {
   diffeqEntries,
   diffeqRoadmap,
-  formatEntryNumber,
 } from "@/data/diffeqEntries";
 
 const cardAccentClasses = [
@@ -43,38 +43,6 @@ const demonstratedSkills = [
     evidence: "1,000-entry roadmap with progress tracking",
   },
 ];
-
-function getChapterAccentClass(entryNumber: number) {
-  if (entryNumber <= 100) {
-    return cardAccentClasses[0];
-  }
-
-  if (entryNumber <= 280) {
-    return cardAccentClasses[1];
-  }
-
-  if (entryNumber <= 460) {
-    return cardAccentClasses[2];
-  }
-
-  if (entryNumber <= 610) {
-    return cardAccentClasses[3];
-  }
-
-  if (entryNumber <= 760) {
-    return cardAccentClasses[4];
-  }
-
-  if (entryNumber <= 900) {
-    return cardAccentClasses[5];
-  }
-
-  if (entryNumber <= 970) {
-    return cardAccentClasses[6];
-  }
-
-  return cardAccentClasses[7];
-}
 
 export const metadata = {
   title: "1000 Ordinary Differential Equations | Jackson T. Lutz",
@@ -208,40 +176,7 @@ export default function DiffeqArchivePage() {
         </div>
       </section>
 
-      <section className="py-10" aria-labelledby="entries-title">
-        <div className="mb-8">
-          <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
-            Completed work
-          </p>
-          <div className="mt-2 flex items-center gap-4">
-            <h2
-              id="entries-title"
-              className="text-2xl font-semibold tracking-tight text-text"
-            >
-              Entries
-            </h2>
-            <div className="section-divider h-px flex-1" />
-          </div>
-        </div>
-
-        <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-          {diffeqEntries.map((entry) => (
-            <article key={entry.slug}>
-              <Link
-                href={`/diffeq/${entry.slug}`}
-                className={`card ${getChapterAccentClass(entry.number)} flex min-h-24 flex-col justify-between rounded-md bg-surface p-3 hover:bg-surface-2`}
-              >
-                <h3 className="font-mono text-sm font-semibold text-gold">
-                  #{formatEntryNumber(entry.number)}
-                </h3>
-                <p className="mt-3 text-base leading-6 text-text">
-                  <Latex math={entry.equationLatex} className="latex-inline" />
-                </p>
-              </Link>
-            </article>
-          ))}
-        </div>
-      </section>
+      <DiffeqEntryBrowser entries={diffeqEntries} />
 
       <section className="py-10" aria-labelledby="skills-title">
         <div className="mb-8">

@@ -9,18 +9,75 @@ export interface DiffeqEntry {
   category: string;
   solution: string;
   solutionLatex: string;
-  tags: string[];
+  tags: DiffeqEntryTags;
   takeaway: string;
   pdf: string;
   completed: boolean;
   simulation?: DiffeqSimulation;
 }
 
+export const methodTags = [
+  "direct-integration",
+  "initial-value-problem",
+  "separable",
+  "autonomous",
+  "phase-line",
+  "linear-first-order",
+  "integrating-factor",
+  "exact-equation",
+  "bernoulli",
+  "substitution",
+  "characteristic-equation",
+  "undetermined-coefficients",
+  "variation-of-parameters",
+  "reduction-of-order",
+  "cauchy-euler",
+  "matrix-exponential",
+  "laplace-transform",
+  "euler-method",
+  "runge-kutta",
+] as const;
+
+export const conceptTags = [
+  "power-rule",
+  "polynomial-antiderivative",
+  "exponential-antiderivative",
+  "trigonometric-antiderivative",
+  "inverse-trig-pattern",
+  "logarithmic-antiderivative",
+  "chain-rule-reversal",
+  "u-substitution",
+  "solution-family",
+  "constant-of-integration",
+  "domain-restriction",
+  "singularity",
+  "equilibrium",
+  "stability",
+  "growth",
+  "decay",
+  "oscillation",
+  "resonance",
+  "damping",
+  "forcing",
+  "superposition",
+  "eigenvalues",
+  "eigenvectors",
+  "phase-plane",
+  "numerical-error",
+] as const;
+
+export type MethodTag = (typeof methodTags)[number];
+export type ConceptTag = (typeof conceptTags)[number];
+
+export interface DiffeqEntryTags {
+  method: MethodTag[];
+  concept: ConceptTag[];
+}
+
 export interface DiffeqSimulation {
   title: string;
   language: "Python" | "MATLAB";
   downloadPath: string;
-  previewPath: string;
 }
 
 const directIntegrationTakeaway =
@@ -38,7 +95,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     category: "Direct integration equations",
     solution: "y = x^2 + C",
     solutionLatex: "y = x^2 + C",
-    tags: [],
+    tags: { method: [], concept: [] },
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/001-direct-integration/work.pdf",
     completed: true,
@@ -46,7 +103,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/001-direct-integration/001_simulation.py",
-      previewPath: "/diffeq/entries/001-direct-integration/001_simulation.html",
     },
   },
   {
@@ -60,7 +116,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     category: "Direct integration equations",
     solution: "y = x^3 + C",
     solutionLatex: "y = x^3 + C",
-    tags: [],
+    tags: { method: [], concept: [] },
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/002-direct-integration/work.pdf",
     completed: true,
@@ -68,7 +124,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/002-direct-integration/002_simulation.py",
-      previewPath: "/diffeq/entries/002-direct-integration/002_simulation.html",
     },
   },
   {
@@ -82,7 +137,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     category: "Direct integration equations",
     solution: "y = x^5 - x^2 + 7x + C",
     solutionLatex: "y = x^5 - x^2 + 7x + C",
-    tags: [],
+    tags: { method: [], concept: [] },
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/003-direct-integration/work.pdf",
     completed: true,
@@ -90,7 +145,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/003-direct-integration/003_simulation.py",
-      previewPath: "/diffeq/entries/003-direct-integration/003_simulation.html",
     },
   },
   {
@@ -104,7 +158,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     category: "Direct integration equations",
     solution: "y = -1/x + C",
     solutionLatex: "y = -\\frac{1}{x} + C",
-    tags: [],
+    tags: { method: [], concept: [] },
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/004-direct-integration/work.pdf",
     completed: true,
@@ -112,7 +166,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/004-direct-integration/004_simulation.py",
-      previewPath: "/diffeq/entries/004-direct-integration/004_simulation.html",
     },
   },
   {
@@ -126,7 +179,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     category: "Direct integration equations",
     solution: "y = (8/3)x^(3/2) + C",
     solutionLatex: "y = \\frac{8}{3}x^{3/2} + C",
-    tags: [],
+    tags: { method: [], concept: [] },
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/005-direct-integration/work.pdf",
     completed: true,
@@ -134,7 +187,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/005-direct-integration/005_simulation.py",
-      previewPath: "/diffeq/entries/005-direct-integration/005_simulation.html",
     },
   },
   {
@@ -148,7 +200,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     category: "Direct integration equations",
     solution: "y = 2sqrt(x) + C",
     solutionLatex: "y = 2\\sqrt{x} + C",
-    tags: [],
+    tags: { method: [], concept: [] },
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/006-direct-integration/work.pdf",
     completed: true,
@@ -156,7 +208,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/006-direct-integration/006_simulation.py",
-      previewPath: "/diffeq/entries/006-direct-integration/006_simulation.html",
     },
   },
   {
@@ -170,7 +221,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     category: "Direct integration equations",
     solution: "y = 2x^3 - 4ln|x| + C",
     solutionLatex: "y = 2x^3 - 4\\ln|x| + C",
-    tags: [],
+    tags: { method: [], concept: [] },
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/007-direct-integration/work.pdf",
     completed: true,
@@ -178,7 +229,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/007-direct-integration/007_simulation.py",
-      previewPath: "/diffeq/entries/007-direct-integration/007_simulation.html",
     },
   },
   {
@@ -192,7 +242,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     category: "Direct integration equations",
     solution: "y = e^x + C",
     solutionLatex: "y = e^x + C",
-    tags: [],
+    tags: { method: [], concept: [] },
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/008-direct-integration/work.pdf",
     completed: true,
@@ -200,7 +250,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/008-direct-integration/008_simulation.py",
-      previewPath: "/diffeq/entries/008-direct-integration/008_simulation.html",
     },
   },
   {
@@ -214,7 +263,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     category: "Direct integration equations",
     solution: "y = e^(2x) + C",
     solutionLatex: "y = e^{2x} + C",
-    tags: [],
+    tags: { method: [], concept: [] },
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/009-direct-integration/work.pdf",
     completed: true,
@@ -222,7 +271,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/009-direct-integration/009_simulation.py",
-      previewPath: "/diffeq/entries/009-direct-integration/009_simulation.html",
     },
   },
   {
@@ -236,7 +284,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     category: "Direct integration equations",
     solution: "y = -1/3*e^(-3x) + C",
     solutionLatex: "y = -\\frac{1}{3}e^{-3x} + C",
-    tags: [],
+    tags: { method: [], concept: [] },
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/010-direct-integration/work.pdf",
     completed: true,
@@ -244,7 +292,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/010-direct-integration/010_simulation.py",
-      previewPath: "/diffeq/entries/010-direct-integration/010_simulation.html",
     },
   },
   {
@@ -258,7 +305,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     category: "Direct integration equations",
     solution: "y = -cos(x) + C",
     solutionLatex: "y = -\\cos x + C",
-    tags: [],
+    tags: { method: [], concept: [] },
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/011-direct-integration/work.pdf",
     completed: true,
@@ -266,7 +313,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/011-direct-integration/011_simulation.py",
-      previewPath: "/diffeq/entries/011-direct-integration/011_simulation.html",
     },
   },
   {
@@ -280,7 +326,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     category: "Direct integration equations",
     solution: "y = 4sin(x) + C",
     solutionLatex: "y = 4\\sin x + C",
-    tags: [],
+    tags: { method: [], concept: [] },
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/012-direct-integration/work.pdf",
     completed: true,
@@ -288,7 +334,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/012-direct-integration/012_simulation.py",
-      previewPath: "/diffeq/entries/012-direct-integration/012_simulation.html",
     },
   },
   {
@@ -302,7 +347,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     category: "Direct integration equations",
     solution: "y = 3tan(x) + C",
     solutionLatex: "y = 3\\tan x + C",
-    tags: [],
+    tags: { method: [], concept: [] },
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/013-direct-integration/work.pdf",
     completed: true,
@@ -310,7 +355,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/013-direct-integration/013_simulation.py",
-      previewPath: "/diffeq/entries/013-direct-integration/013_simulation.html",
     },
   },
   {
@@ -324,7 +368,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     category: "Direct integration equations",
     solution: "y = -2csc(x) + C",
     solutionLatex: "y = -2\\csc x + C",
-    tags: [],
+    tags: { method: [], concept: [] },
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/014-direct-integration/work.pdf",
     completed: true,
@@ -332,7 +376,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/014-direct-integration/014_simulation.py",
-      previewPath: "/diffeq/entries/014-direct-integration/014_simulation.html",
     },
   },
   {
@@ -346,7 +389,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     category: "Direct integration equations",
     solution: "y = x^4/4 + e^x + C",
     solutionLatex: "y = \\frac{x^4}{4} + e^x + C",
-    tags: [],
+    tags: { method: [], concept: [] },
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/015-direct-integration/work.pdf",
     completed: true,
@@ -354,7 +397,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/015-direct-integration/015_simulation.py",
-      previewPath: "/diffeq/entries/015-direct-integration/015_simulation.html",
     },
   },
   {
@@ -368,7 +410,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     category: "Direct integration equations",
     solution: "y = x^2 + cos(x) + C",
     solutionLatex: "y = x^2 + \\cos x + C",
-    tags: [],
+    tags: { method: [], concept: [] },
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/016-direct-integration/work.pdf",
     completed: true,
@@ -376,7 +418,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/016-direct-integration/016_simulation.py",
-      previewPath: "/diffeq/entries/016-direct-integration/016_simulation.html",
     },
   },
   {
@@ -390,7 +431,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     category: "Direct integration equations",
     solution: "y = x^3/3 + 3sin(x) - 4e^x + C",
     solutionLatex: "y = \\frac{x^3}{3} + 3\\sin x - 4e^x + C",
-    tags: [],
+    tags: { method: [], concept: [] },
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/017-direct-integration/work.pdf",
     completed: true,
@@ -398,7 +439,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/017-direct-integration/017_simulation.py",
-      previewPath: "/diffeq/entries/017-direct-integration/017_simulation.html",
     },
   },
   {
@@ -412,7 +452,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     category: "Direct integration equations",
     solution: "y = ln|x| + C",
     solutionLatex: "y = \\ln|x| + C",
-    tags: [],
+    tags: { method: [], concept: [] },
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/018-direct-integration/work.pdf",
     completed: true,
@@ -420,7 +460,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/018-direct-integration/018_simulation.py",
-      previewPath: "/diffeq/entries/018-direct-integration/018_simulation.html",
     },
   },
   {
@@ -434,7 +473,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     category: "Direct integration equations",
     solution: "y = (3/2)ln|2x + 1| + C",
     solutionLatex: "y = \\frac{3}{2}\\ln|2x + 1| + C",
-    tags: [],
+    tags: { method: [], concept: [] },
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/019-direct-integration/work.pdf",
     completed: true,
@@ -442,7 +481,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/019-direct-integration/019_simulation.py",
-      previewPath: "/diffeq/entries/019-direct-integration/019_simulation.html",
     },
   },
   {
@@ -456,7 +494,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     category: "Direct integration equations",
     solution: "y = (1/2)ln|x^2 + 1| + C",
     solutionLatex: "y = \\frac{1}{2}\\ln|x^2 + 1| + C",
-    tags: [],
+    tags: { method: [], concept: [] },
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/020-direct-integration/work.pdf",
     completed: true,
@@ -464,7 +502,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/020-direct-integration/020_simulation.py",
-      previewPath: "/diffeq/entries/020-direct-integration/020_simulation.html",
     },
   },
   {
@@ -478,7 +515,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     category: "Direct integration equations",
     solution: "y = ln|x^2 + 5| + C",
     solutionLatex: "y = \\ln|x^2 + 5| + C",
-    tags: [],
+    tags: { method: [], concept: [] },
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/021-direct-integration/work.pdf",
     completed: true,
@@ -486,7 +523,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/021-direct-integration/021_simulation.py",
-      previewPath: "/diffeq/entries/021-direct-integration/021_simulation.html",
     },
   },
   {
@@ -500,7 +536,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     category: "Direct integration equations",
     solution: "y = arctan(x) + C",
     solutionLatex: "y = \\arctan x + C",
-    tags: [],
+    tags: { method: [], concept: [] },
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/022-direct-integration/work.pdf",
     completed: true,
@@ -508,7 +544,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/022-direct-integration/022_simulation.py",
-      previewPath: "/diffeq/entries/022-direct-integration/022_simulation.html",
     },
   },
   {
@@ -522,7 +557,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     category: "Direct integration equations",
     solution: "y = arcsin(x) + C",
     solutionLatex: "y = \\arcsin x + C",
-    tags: [],
+    tags: { method: [], concept: [] },
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/023-direct-integration/work.pdf",
     completed: true,
@@ -530,7 +565,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/023-direct-integration/023_simulation.py",
-      previewPath: "/diffeq/entries/023-direct-integration/023_simulation.html",
     },
   },
   {
@@ -544,7 +578,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     category: "Direct integration equations",
     solution: "y = (1/3)e^(x^3) + C",
     solutionLatex: "y = \\frac{1}{3}e^{x^3} + C",
-    tags: [],
+    tags: { method: [], concept: [] },
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/024-direct-integration/work.pdf",
     completed: true,
@@ -552,7 +586,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/024-direct-integration/024_simulation.py",
-      previewPath: "/diffeq/entries/024-direct-integration/024_simulation.html",
     },
   },
   {
@@ -566,7 +599,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     category: "Direct integration equations",
     solution: "y = sin(x^2) + C",
     solutionLatex: "y = \\sin(x^2) + C",
-    tags: [],
+    tags: { method: [], concept: [] },
     takeaway: directIntegrationTakeaway,
     pdf: "/diffeq/entries/025-direct-integration/work.pdf",
     completed: true,
@@ -574,7 +607,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/025-direct-integration/025_simulation.py",
-      previewPath: "/diffeq/entries/025-direct-integration/025_simulation.html",
     },
   },
 ];
