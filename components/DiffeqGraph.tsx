@@ -263,13 +263,13 @@ export default function DiffeqGraph({ graph }: DiffeqGraphProps) {
       <div className="mb-5 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
-            Graph
+            Visualization
           </p>
           <h2
             id="graph-title"
             className="mt-2 text-2xl font-semibold tracking-tight text-text"
           >
-            Solution and Derivative
+            Solution and derivative
           </h2>
         </div>
 

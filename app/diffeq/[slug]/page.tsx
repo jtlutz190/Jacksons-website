@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { readFile } from "node:fs/promises";
 import path from "node:path";
+import type { ReactNode } from "react";
 import DiffeqGraph from "@/components/DiffeqGraph";
 import Latex from "@/components/Latex";
 import {
@@ -28,6 +29,23 @@ async function getSimulationCode(downloadPath: string) {
   } catch {
     return null;
   }
+}
+
+function EntrySection({
+  title,
+  children,
+}: {
+  title: string;
+  children: ReactNode;
+}) {
+  return (
+    <section className="border-t border-border py-6">
+      <h2 className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
+        {title}
+      </h2>
+      <div className="mt-3 text-base leading-7 text-soft">{children}</div>
+    </section>
+  );
 }
 
 export async function generateMetadata({ params }: DiffeqEntryPageProps) {
@@ -79,68 +97,57 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
           #{formatEntryNumber(entry.number)}
         </h1>
 
-        <div className="mt-8 grid gap-4 md:grid-cols-2">
-          <div className="card card-plain rounded-lg bg-surface p-5">
-            <dl className="space-y-5 text-sm leading-6">
-              <div>
-                <dt className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
-                  Equation
-                </dt>
-                <dd className="mt-1 text-lg text-text">
-                  <Latex math={entry.equationLatex} className="latex-display-inline" />
-                </dd>
-              </div>
-              <div>
-                <dt className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
-                  Classification
-                </dt>
-                <dd className="mt-1 text-soft">{entry.classification}</dd>
-              </div>
-              <div>
-                <dt className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
-                  Method
-                </dt>
-                <dd className="mt-1 text-soft">{entry.method}</dd>
-              </div>
-              <div>
-                <dt className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
-                  Solution
-                </dt>
-                <dd className="mt-1 text-text">
-                  <Latex math={entry.solutionLatex} className="latex-display-inline" />
-                </dd>
-              </div>
-            </dl>
-          </div>
+        <div className="mt-10">
+          <EntrySection title="Problem">
+            <Latex math={entry.equationLatex} className="latex-display-inline text-xl text-text" />
+          </EntrySection>
 
-          <div className="card card-plain rounded-lg bg-surface p-5">
-            <h2 className="text-lg font-medium text-text">Takeaway</h2>
-            <p className="mt-3 text-sm leading-6 text-soft">
-              Direct integration equations of the form{" "}
-              <Latex math="y' = f(x)" className="latex-inline" /> tell us that
-              the slope of the solution changes with respect to x only.
+          <EntrySection title="Classification">
+            <p>{entry.classification}</p>
+          </EntrySection>
+
+          <EntrySection title="Method">
+            <p>{entry.method}</p>
+          </EntrySection>
+
+          <EntrySection title="Solution">
+            <Latex math={entry.solutionLatex} className="latex-display-inline text-xl text-text" />
+          </EntrySection>
+
+          <EntrySection title="Behavior / interpretation">
+            <p>
+              Since the derivative only depends on{" "}
+              <Latex math="x" className="latex-inline" />, every solution curve
+              is only a vertical shift of an antiderivative.
             </p>
-          </div>
+          </EntrySection>
         </div>
 
-        {!entry.simulation && entry.graph ? <DiffeqGraph graph={entry.graph} /> : null}
+        {entry.graph ? <DiffeqGraph graph={entry.graph} /> : null}
 
-        {entry.simulation ? (
-          <details className="mt-8 overflow-hidden rounded-lg border border-border bg-surface">
+        <section className="mt-8" aria-labelledby="code-title">
+          <h2
+            id="code-title"
+            className="text-2xl font-semibold tracking-tight text-text"
+          >
+            Code
+          </h2>
+
+          <details className="mt-5 overflow-hidden rounded-lg border border-border bg-surface">
             <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-text marker:hidden">
               <span>
                 <span className="block font-mono text-xs uppercase tracking-[0.18em] text-accent">
-                  Computational simulation
+                  Computational work
                 </span>
                 <span className="mt-2 block text-2xl font-semibold tracking-tight">
-                  {entry.simulation.title}
+                  {entry.simulation?.title ?? "Simulation code"}
                 </span>
               </span>
               <span className="font-mono text-sm text-muted">Open</span>
             </summary>
 
             <div className="border-t border-border p-5">
-              {entry.simulation.imagePath ? (
+              {entry.simulation?.imagePath ? (
                 <div className="mb-5 overflow-hidden rounded-lg border border-border bg-white">
                   <img
                     src={entry.simulation.imagePath}
@@ -150,13 +157,15 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
                 </div>
               ) : null}
 
-              <a
-                href={entry.simulation.downloadPath}
-                download
-                className="mb-4 inline-flex min-h-10 w-fit items-center rounded-md border border-mint/45 bg-mint/10 px-4 text-sm font-medium text-text hover:border-mint hover:bg-mint/15"
-              >
-                Download .py file
-              </a>
+              {entry.simulation ? (
+                <a
+                  href={entry.simulation.downloadPath}
+                  download
+                  className="mb-4 inline-flex min-h-10 w-fit items-center rounded-md border border-mint/45 bg-mint/10 px-4 text-sm font-medium text-text hover:border-mint hover:bg-mint/15"
+                >
+                  Download .py file
+                </a>
+              ) : null}
 
               <div className="overflow-hidden rounded-lg border border-border bg-[#071018]">
                 {simulationCode ? (
@@ -165,14 +174,13 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
                   </pre>
                 ) : (
                   <div className="p-4 text-sm text-muted">
-                    Simulation code preview unavailable. Use the download link
-                    to view the {entry.simulation.language} file.
+                    Simulation code has not been added for this entry yet.
                   </div>
                 )}
               </div>
             </div>
           </details>
-        ) : null}
+        </section>
 
         <section className="mt-8" aria-labelledby="handwritten-work-title">
           <div className="mb-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -180,7 +188,7 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
               id="handwritten-work-title"
               className="text-2xl font-semibold tracking-tight text-text"
             >
-              Handwritten Work
+              Handwritten derivation
             </h2>
             <a
               href={entry.pdf}
@@ -203,6 +211,16 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
               </div>
             </object>
           </div>
+        </section>
+
+        <section className="mt-8 border-t border-border pt-6" aria-labelledby="takeaway-title">
+          <h2
+            id="takeaway-title"
+            className="text-2xl font-semibold tracking-tight text-text"
+          >
+            Takeaway
+          </h2>
+          <p className="mt-3 text-base leading-7 text-soft">{entry.takeaway}</p>
         </section>
 
         <nav
