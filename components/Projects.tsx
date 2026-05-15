@@ -35,14 +35,12 @@ const projects = [
     accentClass: "card-cyan",
   },
   {
-    title: "Portfolio Repository",
-    status: "Public code",
+    title: "General Projects / GitHub",
+    status: "Work in progress",
     description:
-      "The source for this site, maintained as a public Next.js portfolio and a place to continue improving design, accessibility, and technical presentation.",
-    tags: ["Next.js", "React", "TypeScript", "Technical Portfolio"],
-    link: "https://github.com/jtlutz190/Jacksons-website",
-    linkLabel: "View repository",
-    accentClass: "card-violet",
+      "A growing collection of code, experiments, notes, and technical projects.",
+    tags: ["Code", "Experiments", "Notes", "Technical Projects"],
+    accentClass: "card-cobalt",
   },
 ];
 
