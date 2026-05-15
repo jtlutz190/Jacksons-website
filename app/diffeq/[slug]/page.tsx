@@ -145,13 +145,31 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
 
             <div className="border-t border-border p-5">
               {entry.simulation ? (
-                <a
-                  href={entry.simulation.downloadPath}
-                  download
-                  className="mb-4 inline-flex min-h-10 w-fit items-center rounded-md border border-mint/45 bg-mint/10 px-4 text-sm font-medium text-text hover:border-mint hover:bg-mint/15"
-                >
-                  Download .py file
-                </a>
+                <>
+                  <div className="mb-5 overflow-hidden rounded-lg border border-border bg-white">
+                    <iframe
+                      src={entry.simulation.previewPath}
+                      title={`Interactive simulation preview for #${formatEntryNumber(entry.number)}`}
+                      className="h-[28rem] w-full"
+                    />
+                  </div>
+
+                  <div className="mb-4 flex flex-wrap gap-3">
+                    <a
+                      href={entry.simulation.previewPath}
+                      className="inline-flex min-h-10 w-fit items-center rounded-md border border-cyan/45 bg-cyan/10 px-4 text-sm font-medium text-text hover:border-cyan hover:bg-cyan/15"
+                    >
+                      Open interactive preview
+                    </a>
+                    <a
+                      href={entry.simulation.downloadPath}
+                      download
+                      className="inline-flex min-h-10 w-fit items-center rounded-md border border-mint/45 bg-mint/10 px-4 text-sm font-medium text-text hover:border-mint hover:bg-mint/15"
+                    >
+                      Download .py file
+                    </a>
+                  </div>
+                </>
               ) : null}
 
               <div className="overflow-hidden rounded-lg border border-border bg-[#071018]">

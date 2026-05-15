@@ -20,6 +20,7 @@ export interface DiffeqSimulation {
   title: string;
   language: "Python" | "MATLAB";
   downloadPath: string;
+  previewPath: string;
 }
 
 const directIntegrationTakeaway =
@@ -45,6 +46,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/001-direct-integration/001_simulation.py",
+      previewPath: "/diffeq/entries/001-direct-integration/001_simulation.html",
     },
   },
   {
@@ -66,6 +68,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/002-direct-integration/002_simulation.py",
+      previewPath: "/diffeq/entries/002-direct-integration/002_simulation.html",
     },
   },
   {
@@ -87,6 +90,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/003-direct-integration/003_simulation.py",
+      previewPath: "/diffeq/entries/003-direct-integration/003_simulation.html",
     },
   },
   {
@@ -108,6 +112,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/004-direct-integration/004_simulation.py",
+      previewPath: "/diffeq/entries/004-direct-integration/004_simulation.html",
     },
   },
   {
@@ -129,6 +134,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/005-direct-integration/005_simulation.py",
+      previewPath: "/diffeq/entries/005-direct-integration/005_simulation.html",
     },
   },
   {
@@ -150,6 +156,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/006-direct-integration/006_simulation.py",
+      previewPath: "/diffeq/entries/006-direct-integration/006_simulation.html",
     },
   },
   {
@@ -171,6 +178,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/007-direct-integration/007_simulation.py",
+      previewPath: "/diffeq/entries/007-direct-integration/007_simulation.html",
     },
   },
   {
@@ -192,6 +200,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/008-direct-integration/008_simulation.py",
+      previewPath: "/diffeq/entries/008-direct-integration/008_simulation.html",
     },
   },
   {
@@ -213,6 +222,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/009-direct-integration/009_simulation.py",
+      previewPath: "/diffeq/entries/009-direct-integration/009_simulation.html",
     },
   },
   {
@@ -234,6 +244,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/010-direct-integration/010_simulation.py",
+      previewPath: "/diffeq/entries/010-direct-integration/010_simulation.html",
     },
   },
   {
@@ -255,6 +266,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/011-direct-integration/011_simulation.py",
+      previewPath: "/diffeq/entries/011-direct-integration/011_simulation.html",
     },
   },
   {
@@ -276,6 +288,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/012-direct-integration/012_simulation.py",
+      previewPath: "/diffeq/entries/012-direct-integration/012_simulation.html",
     },
   },
   {
@@ -297,6 +310,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/013-direct-integration/013_simulation.py",
+      previewPath: "/diffeq/entries/013-direct-integration/013_simulation.html",
     },
   },
   {
@@ -318,6 +332,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/014-direct-integration/014_simulation.py",
+      previewPath: "/diffeq/entries/014-direct-integration/014_simulation.html",
     },
   },
   {
@@ -339,6 +354,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/015-direct-integration/015_simulation.py",
+      previewPath: "/diffeq/entries/015-direct-integration/015_simulation.html",
     },
   },
   {
@@ -360,6 +376,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/016-direct-integration/016_simulation.py",
+      previewPath: "/diffeq/entries/016-direct-integration/016_simulation.html",
     },
   },
   {
@@ -381,6 +398,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/017-direct-integration/017_simulation.py",
+      previewPath: "/diffeq/entries/017-direct-integration/017_simulation.html",
     },
   },
   {
@@ -402,6 +420,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/018-direct-integration/018_simulation.py",
+      previewPath: "/diffeq/entries/018-direct-integration/018_simulation.html",
     },
   },
   {
@@ -423,6 +442,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/019-direct-integration/019_simulation.py",
+      previewPath: "/diffeq/entries/019-direct-integration/019_simulation.html",
     },
   },
   {
@@ -444,6 +464,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/020-direct-integration/020_simulation.py",
+      previewPath: "/diffeq/entries/020-direct-integration/020_simulation.html",
     },
   },
   {
@@ -465,6 +486,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/021-direct-integration/021_simulation.py",
+      previewPath: "/diffeq/entries/021-direct-integration/021_simulation.html",
     },
   },
   {
@@ -486,6 +508,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/022-direct-integration/022_simulation.py",
+      previewPath: "/diffeq/entries/022-direct-integration/022_simulation.html",
     },
   },
   {
@@ -507,6 +530,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/023-direct-integration/023_simulation.py",
+      previewPath: "/diffeq/entries/023-direct-integration/023_simulation.html",
     },
   },
   {
@@ -528,6 +552,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/024-direct-integration/024_simulation.py",
+      previewPath: "/diffeq/entries/024-direct-integration/024_simulation.html",
     },
   },
   {
@@ -549,6 +574,7 @@ export const diffeqEntries: DiffeqEntry[] = [
       title: "Simulation",
       language: "Python",
       downloadPath: "/diffeq/entries/025-direct-integration/025_simulation.py",
+      previewPath: "/diffeq/entries/025-direct-integration/025_simulation.html",
     },
   },
 ];

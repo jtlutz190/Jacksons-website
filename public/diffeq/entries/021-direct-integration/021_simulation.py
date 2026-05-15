@@ -1,5 +1,7 @@
 import numpy as np
-import matplotlib.pyplot as plt
+import plotly.graph_objects as go
+
+HTML_OUTPUT = "021_simulation.html"
 
 x = np.linspace(-6, 6, 800)
 
@@ -7,22 +9,25 @@ with np.errstate(divide="ignore", invalid="ignore", over="ignore"):
     y = np.log(np.abs(x**2 + 5))
     y_prime = (2*x)/(x**2 + 5)
 
+fig = go.Figure()
+fig.add_trace(go.Scatter(x=x, y=y, mode="lines", name='y = ln|x^2 + 5| + C'))
+fig.add_trace(
+    go.Scatter(
+        x=x,
+        y=y_prime,
+        mode="lines",
+        name="y' = (2x)/(x^2 + 5)",
+        line=dict(dash="dash"),
+    )
+)
 
-def clean(values, limit=100):
-    values = np.asarray(values, dtype=float)
-    return np.where(np.isfinite(values) & (np.abs(values) <= limit), values, np.nan)
+fig.update_layout(
+    title="Entry #021: solution and derivative",
+    xaxis_title="x",
+    yaxis_title="value",
+    template="plotly_white",
+    hovermode="x unified",
+)
 
-
-y = clean(y)
-y_prime = clean(y_prime)
-
-plt.figure(figsize=(8, 5))
-plt.plot(x, y, label="y = ln|x^2 + 5| + C", linewidth=2)
-plt.plot(x, y_prime, label="y' = (2x)/(x^2 + 5)", linewidth=2, linestyle="--")
-plt.title("Entry #021: solution and derivative")
-plt.xlabel("x")
-plt.ylabel("value")
-plt.grid(True, alpha=0.35)
-plt.legend()
-plt.tight_layout()
-plt.show()
+fig.write_html(HTML_OUTPUT, include_plotlyjs="cdn", full_html=True)
+fig.show()
