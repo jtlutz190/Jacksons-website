@@ -9,7 +9,7 @@ with np.errstate(divide="ignore", invalid="ignore", over="ignore"):
 
 plt.figure(figsize=(8, 5))
 plt.plot(x, y, label="y = sin(x^2) + C", linewidth=2)
-plt.plot(x, y_prime, label="y' = 2xcos(x^2)", linewidth=2, linestyle="--")
+plt.plot(x, y_prime, label="y' = 2xcos(x^2)", linewidth=2, color="red")
 plt.title("Entry #025: solution and derivative")
 plt.xlabel("x")
 plt.ylabel("value")

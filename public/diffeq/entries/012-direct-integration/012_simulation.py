@@ -9,7 +9,7 @@ with np.errstate(divide="ignore", invalid="ignore", over="ignore"):
 
 plt.figure(figsize=(8, 5))
 plt.plot(x, y, label="y = 4sin(x) + C", linewidth=2)
-plt.plot(x, y_prime, label="y' = 4cos(x)", linewidth=2, linestyle="--")
+plt.plot(x, y_prime, label="y' = 4cos(x)", linewidth=2, color="red")
 plt.title("Entry #012: solution and derivative")
 plt.xlabel("x")
 plt.ylabel("value")
