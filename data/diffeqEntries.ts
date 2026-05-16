@@ -709,6 +709,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/026-direct-integration-ivp/work.pdf",
     completed: true,
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/026-direct-integration-ivp/026_simulation.py",
+    },
   },
   {
     number: 27,
@@ -728,6 +733,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/027-direct-integration-ivp/work.pdf",
     completed: true,
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/027-direct-integration-ivp/027_simulation.py",
+    },
   },
   {
     number: 28,
@@ -747,6 +757,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/028-direct-integration-ivp/work.pdf",
     completed: true,
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/028-direct-integration-ivp/028_simulation.py",
+    },
   },
   {
     number: 29,
@@ -766,6 +781,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/029-direct-integration-ivp/work.pdf",
     completed: true,
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/029-direct-integration-ivp/029_simulation.py",
+    },
   },
   {
     number: 30,
@@ -785,6 +805,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/030-direct-integration-ivp/work.pdf",
     completed: true,
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/030-direct-integration-ivp/030_simulation.py",
+    },
   },
   {
     number: 31,
@@ -804,6 +829,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/031-direct-integration-ivp/work.pdf",
     completed: true,
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/031-direct-integration-ivp/031_simulation.py",
+    },
   },
   {
     number: 32,
@@ -823,6 +853,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/032-direct-integration-ivp/work.pdf",
     completed: true,
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/032-direct-integration-ivp/032_simulation.py",
+    },
   },
   {
     number: 33,
@@ -842,6 +877,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/033-direct-integration-ivp/work.pdf",
     completed: true,
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/033-direct-integration-ivp/033_simulation.py",
+    },
   },
   {
     number: 34,
@@ -861,6 +901,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/034-direct-integration-ivp/work.pdf",
     completed: true,
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/034-direct-integration-ivp/034_simulation.py",
+    },
   },
   {
     number: 35,
@@ -880,6 +925,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/035-direct-integration-ivp/work.pdf",
     completed: true,
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/035-direct-integration-ivp/035_simulation.py",
+    },
   },
   {
     number: 36,
@@ -899,6 +949,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/036-direct-integration-ivp/work.pdf",
     completed: true,
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/036-direct-integration-ivp/036_simulation.py",
+    },
   },
   {
     number: 37,
@@ -918,6 +973,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/037-direct-integration-ivp/work.pdf",
     completed: true,
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/037-direct-integration-ivp/037_simulation.py",
+    },
   },
   {
     number: 38,
@@ -937,6 +997,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/038-direct-integration-ivp/work.pdf",
     completed: true,
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/038-direct-integration-ivp/038_simulation.py",
+    },
   },
   {
     number: 39,
@@ -956,6 +1021,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/039-direct-integration-ivp/work.pdf",
     completed: true,
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/039-direct-integration-ivp/039_simulation.py",
+    },
   },
   {
     number: 40,
@@ -975,6 +1045,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/040-direct-integration-ivp/work.pdf",
     completed: true,
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/040-direct-integration-ivp/040_simulation.py",
+    },
   },
   {
     number: 41,
@@ -994,6 +1069,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/041-direct-integration-ivp/work.pdf",
     completed: true,
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/041-direct-integration-ivp/041_simulation.py",
+    },
   },
   {
     number: 42,
@@ -1016,6 +1096,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/042-direct-integration-ivp/work.pdf",
     completed: true,
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/042-direct-integration-ivp/042_simulation.py",
+    },
   },
   {
     number: 43,
@@ -1035,6 +1120,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/043-direct-integration-ivp/work.pdf",
     completed: true,
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/043-direct-integration-ivp/043_simulation.py",
+    },
   },
   {
     number: 44,
@@ -1054,6 +1144,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/044-direct-integration-ivp/work.pdf",
     completed: true,
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/044-direct-integration-ivp/044_simulation.py",
+    },
   },
   {
     number: 45,
@@ -1073,6 +1168,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/045-direct-integration-ivp/work.pdf",
     completed: true,
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/045-direct-integration-ivp/045_simulation.py",
+    },
   },
   {
     number: 46,
@@ -1092,6 +1192,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/046-direct-integration-ivp/work.pdf",
     completed: true,
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/046-direct-integration-ivp/046_simulation.py",
+    },
   },
   {
     number: 47,
@@ -1111,6 +1216,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/047-direct-integration-ivp/work.pdf",
     completed: true,
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/047-direct-integration-ivp/047_simulation.py",
+    },
   },
   {
     number: 48,
@@ -1130,6 +1240,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/048-direct-integration-ivp/work.pdf",
     completed: true,
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/048-direct-integration-ivp/048_simulation.py",
+    },
   },
   {
     number: 49,
@@ -1153,6 +1268,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/049-direct-integration-ivp/work.pdf",
     completed: true,
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/049-direct-integration-ivp/049_simulation.py",
+    },
   },
   {
     number: 50,
@@ -1172,6 +1292,11 @@ export const diffeqEntries: DiffeqEntry[] = [
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/050-direct-integration-ivp/work.pdf",
     completed: true,
+    simulation: {
+      title: "Simulation",
+      language: "Python",
+      downloadPath: "/diffeq/entries/050-direct-integration-ivp/050_simulation.py",
+    },
   },
 ];
 
