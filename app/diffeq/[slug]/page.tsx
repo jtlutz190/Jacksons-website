@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { access, readFile } from "node:fs/promises";
+import { createHash } from "node:crypto";
+import { readFile } from "node:fs/promises";
 import path from "node:path";
 import type { ReactNode } from "react";
 import Latex from "@/components/Latex";
@@ -35,8 +36,9 @@ async function getSimulationPreviewPath(downloadPath: string) {
   const relativePath = previewPath.replace(/^\//, "");
 
   try {
-    await access(path.join(process.cwd(), "public", relativePath));
-    return previewPath;
+    const file = await readFile(path.join(process.cwd(), "public", relativePath));
+    const version = createHash("sha256").update(file).digest("hex").slice(0, 12);
+    return `${previewPath}?v=${version}`;
   } catch {
     return null;
   }
