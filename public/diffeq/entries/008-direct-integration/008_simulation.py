@@ -8,7 +8,7 @@ with np.errstate(divide="ignore", invalid="ignore", over="ignore"):
     y_prime = np.exp(x)
 
 plt.figure(figsize=(8, 5))
-plt.plot(x, y, label="y = e^x + C", linewidth=2)
+plt.plot(x, y, label="y = e^x", linewidth=2)
 plt.plot(x, y_prime, label="y' = e^x", linewidth=2, color="red")
 plt.title("Entry #008: solution and derivative")
 plt.xlabel("x")

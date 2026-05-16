@@ -8,7 +8,7 @@ with np.errstate(divide="ignore", invalid="ignore", over="ignore"):
     y_prime = 5*x**4 - 2*x + 7
 
 plt.figure(figsize=(8, 5))
-plt.plot(x, y, label="y = x^5 - x^2 + 7x + C", linewidth=2)
+plt.plot(x, y, label="y = x^5 - x^2 + 7x", linewidth=2)
 plt.plot(x, y_prime, label="y' = 5x^4 - 2x + 7", linewidth=2, color="red")
 plt.title("Entry #003: solution and derivative")
 plt.xlabel("x")

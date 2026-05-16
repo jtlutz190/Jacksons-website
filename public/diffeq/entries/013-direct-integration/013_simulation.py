@@ -14,7 +14,7 @@ def mask(values, limit=100):
 y = mask(y)
 y_prime = mask(y_prime)
 plt.figure(figsize=(8, 5))
-plt.plot(x, y, label="y = 3tan(x) + C", linewidth=2)
+plt.plot(x, y, label="y = 3tan(x)", linewidth=2)
 plt.plot(x, y_prime, label="y' = 3sec^2(x)", linewidth=2, color="red")
 plt.title("Entry #013: solution and derivative")
 plt.xlabel("x")

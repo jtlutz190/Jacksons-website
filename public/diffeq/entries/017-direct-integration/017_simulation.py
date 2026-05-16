@@ -8,7 +8,7 @@ with np.errstate(divide="ignore", invalid="ignore", over="ignore"):
     y_prime = x**2 + 3*np.cos(x) - 4*np.exp(x)
 
 plt.figure(figsize=(8, 5))
-plt.plot(x, y, label="y = x^3/3 + 3sin(x) - 4e^x + C", linewidth=2)
+plt.plot(x, y, label="y = x^3/3 + 3sin(x) - 4e^x", linewidth=2)
 plt.plot(x, y_prime, label="y' = x^2 + 3cos(x) - 4e^x", linewidth=2, color="red")
 plt.title("Entry #017: solution and derivative")
 plt.xlabel("x")

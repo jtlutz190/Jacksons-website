@@ -8,7 +8,7 @@ with np.errstate(divide="ignore", invalid="ignore", over="ignore"):
     y_prime = x/(x**2 + 1)
 
 plt.figure(figsize=(8, 5))
-plt.plot(x, y, label="y = (1/2)ln|x^2 + 1| + C", linewidth=2)
+plt.plot(x, y, label="y = (1/2)ln|x^2 + 1|", linewidth=2)
 plt.plot(x, y_prime, label="y' = x/(x^2 + 1)", linewidth=2, color="red")
 plt.title("Entry #020: solution and derivative")
 plt.xlabel("x")

@@ -8,7 +8,7 @@ with np.errstate(divide="ignore", invalid="ignore", over="ignore"):
     y_prime = 1/np.sqrt(x)
 
 plt.figure(figsize=(8, 5))
-plt.plot(x, y, label="y = 2sqrt(x) + C", linewidth=2)
+plt.plot(x, y, label="y = 2sqrt(x)", linewidth=2)
 plt.plot(x, y_prime, label="y' = 1/sqrt(x)", linewidth=2, color="red")
 plt.title("Entry #006: solution and derivative")
 plt.xlabel("x")
