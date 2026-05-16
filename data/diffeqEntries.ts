@@ -91,7 +91,6 @@ export const conceptTags = [
   "jordan-form",
   "laplace-domain",
   "inverse-laplace-transform",
-  "initial-conditions",
   "boundary-conditions",
 ] as const;
 
@@ -933,7 +932,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     solutionLatex: "y = 3\\tan x",
     tags: {
       method: ["direct-integration", "initial-value-problem"],
-      concept: ["trigonometric-antiderivative"],
+      concept: ["trigonometric-antiderivative", "singularity"],
     },
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/038-direct-integration-ivp/work.pdf",
@@ -952,7 +951,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     solutionLatex: "y = -2\\csc x + 3",
     tags: {
       method: ["direct-integration", "initial-value-problem"],
-      concept: ["trigonometric-antiderivative"],
+      concept: ["trigonometric-antiderivative", "singularity"],
     },
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/039-direct-integration-ivp/work.pdf",
@@ -1012,7 +1011,6 @@ export const diffeqEntries: DiffeqEntry[] = [
       concept: [
         "u-substitution",
         "logarithmic-antiderivative",
-        "domain-restriction",
       ],
     },
     takeaway: directIntegrationIvpTakeaway,
@@ -1127,7 +1125,7 @@ export const diffeqEntries: DiffeqEntry[] = [
     solutionLatex: "y = \\arcsin(3x) + 4",
     tags: {
       method: ["direct-integration", "initial-value-problem"],
-      concept: ["inverse-trig-pattern", "u-substitution"],
+      concept: ["inverse-trig-pattern", "u-substitution", "domain-restriction"],
     },
     takeaway: directIntegrationIvpTakeaway,
     pdf: "/diffeq/entries/048-direct-integration-ivp/work.pdf",

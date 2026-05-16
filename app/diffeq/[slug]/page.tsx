@@ -257,7 +257,7 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
             id="takeaway-title"
             className="text-2xl font-semibold tracking-tight text-text"
           >
-            Takeaway and Interpretation
+            Takeaway & Interpretation
           </h2>
           <p className="mt-3 text-base leading-7 text-soft">{entry.takeaway}</p>
         </section>

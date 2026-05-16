@@ -27,7 +27,7 @@ export default function DirectIntegrationEquationsNotesPage() {
 
         <div className="mt-10 space-y-6 border-t border-border pt-6 text-base leading-8 text-soft">
           <p>
-            So far, these are extremely introductory ODE&apos;s that one can
+            So far, these are extremely introductory ODEs that one can
             solve with direct integration.
           </p>
 
@@ -43,7 +43,7 @@ export default function DirectIntegrationEquationsNotesPage() {
             solution is the function itself (plus a constant). This fact gives
             rise to plenty of interesting machinery to come regarding
             integrating factors, bases for linear, constant-coefficient
-            ODE&apos;s and much more.
+            ODEs and much more.
           </p>
         </div>
       </article>
