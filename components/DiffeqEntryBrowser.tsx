@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Fragment, useMemo, useState } from "react";
 import katex from "katex";
 import Link from "next/link";
 import type { ConceptTag, DiffeqEntry, MethodTag } from "@/data/diffeqEntries";
@@ -193,7 +193,7 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
   const pageStartIndex = (page - 1) * ENTRIES_PER_PAGE;
   const pageEndIndex = Math.min(pageStartIndex + ENTRIES_PER_PAGE, filteredEntries.length);
   const paginatedEntries = filteredEntries.slice(pageStartIndex, pageEndIndex);
-  const showDirectIntegrationNotesCard = page === 1 && activeTags.length === 0;
+  const showDirectIntegrationNotesCard = activeTags.length === 0;
 
   const changePage = (pageNumber: number) => {
     setCurrentPage(Math.min(Math.max(pageNumber, 1), totalPages));
@@ -347,31 +347,35 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-              {showDirectIntegrationNotesCard ? <DirectIntegrationNotesCard /> : null}
-
               {paginatedEntries.map((entry) => (
-                <article key={entry.slug}>
-                  <Link
-                    href={`/diffeq/${entry.slug}`}
-                    className={`card ${getChapterAccentClass(entry.number)} ${
-                      entry.featured
-                        ? "border-gold shadow-[0_0_0_1px_rgba(244,199,107,0.48),0_18px_44px_rgba(244,199,107,0.12)]"
-                        : ""
-                    } relative flex min-h-20 flex-col justify-between rounded-md bg-surface px-3 py-2.5 hover:bg-surface-2`}
-                  >
-                    {entry.featured ? (
-                      <span className="absolute right-3 top-3">
-                        <FeaturedBadge compact />
-                      </span>
-                    ) : null}
-                    <h3 className="font-mono text-sm font-semibold text-gold">
-                      #{formatEntryNumber(entry.number)}
-                    </h3>
-                    <p className="mt-2 text-sm leading-5 text-text">
-                      <LatexText math={entry.equationLatex} />
-                    </p>
-                  </Link>
-                </article>
+                <Fragment key={entry.slug}>
+                  <article>
+                    <Link
+                      href={`/diffeq/${entry.slug}`}
+                      className={`card ${getChapterAccentClass(entry.number)} ${
+                        entry.featured
+                          ? "border-gold shadow-[0_0_0_1px_rgba(244,199,107,0.48),0_18px_44px_rgba(244,199,107,0.12)]"
+                          : ""
+                      } relative flex min-h-20 flex-col justify-between rounded-md bg-surface px-3 py-2.5 hover:bg-surface-2`}
+                    >
+                      {entry.featured ? (
+                        <span className="absolute right-3 top-3">
+                          <FeaturedBadge compact />
+                        </span>
+                      ) : null}
+                      <h3 className="font-mono text-sm font-semibold text-gold">
+                        #{formatEntryNumber(entry.number)}
+                      </h3>
+                      <p className="mt-2 text-sm leading-5 text-text">
+                        <LatexText math={entry.equationLatex} />
+                      </p>
+                    </Link>
+                  </article>
+
+                  {showDirectIntegrationNotesCard && entry.number === 25 ? (
+                    <DirectIntegrationNotesCard />
+                  ) : null}
+                </Fragment>
               ))}
             </div>
 
