@@ -313,6 +313,30 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
           </div>
         </div>
 
+        <aside className="card card-gold mb-6 rounded-lg border border-gold/45 bg-surface p-5 shadow-[0_18px_48px_rgba(244,199,107,0.10)]">
+          <h3 className="font-mono text-sm font-semibold uppercase tracking-[0.16em] text-gold">
+            Direct integration equations notes
+          </h3>
+          <div className="mt-4 space-y-3 text-sm leading-6 text-soft sm:text-base sm:leading-7">
+            <p>
+              So far, these are extremely introductory ODE&apos;s that one can
+              solve with direct integration.
+            </p>
+            <p>
+              Notice that since the slope of the solution curve(s) only depend
+              on x, the family of solutions are only shifted vertically by a
+              constant.
+            </p>
+            <p>
+              Some interesting entries so far include y&apos;=e^x (#008) since
+              the solution is the function itself (plus a constant). This fact
+              gives rise to plenty of interesting machinery to come regarding
+              integrating factors, bases for linear, constant-coefficient
+              ODE&apos;s and much more.
+            </p>
+          </div>
+        </aside>
+
         {filteredEntries.length > 0 ? (
           <>
             <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
