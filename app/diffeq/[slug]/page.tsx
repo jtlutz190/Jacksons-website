@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { readFile } from "node:fs/promises";
+import { access, readFile } from "node:fs/promises";
 import path from "node:path";
 import type { ReactNode } from "react";
 import Latex from "@/components/Latex";
@@ -25,6 +25,18 @@ async function getSimulationCode(downloadPath: string) {
   try {
     const relativePath = downloadPath.replace(/^\//, "");
     return await readFile(path.join(process.cwd(), "public", relativePath), "utf8");
+  } catch {
+    return null;
+  }
+}
+
+async function getSimulationPreviewPath(downloadPath: string) {
+  const previewPath = downloadPath.replace(/\.py$/, ".png");
+  const relativePath = previewPath.replace(/^\//, "");
+
+  try {
+    await access(path.join(process.cwd(), "public", relativePath));
+    return previewPath;
   } catch {
     return null;
   }
@@ -106,6 +118,9 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
   const simulationCode = entry.simulation
     ? await getSimulationCode(entry.simulation.downloadPath)
     : null;
+  const simulationPreviewPath = entry.simulation
+    ? await getSimulationPreviewPath(entry.simulation.downloadPath)
+    : null;
 
   return (
     <main className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
@@ -179,6 +194,16 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
             </summary>
 
             <div className="border-t border-border p-5">
+              {simulationPreviewPath ? (
+                <figure className="mb-5 overflow-hidden rounded-lg border border-border bg-white">
+                  <img
+                    src={simulationPreviewPath}
+                    alt={`Graph visualization for entry #${formatEntryNumber(entry.number)}`}
+                    className="h-auto w-full"
+                  />
+                </figure>
+              ) : null}
+
               {entry.simulation ? (
                 <a
                   href={entry.simulation.downloadPath}

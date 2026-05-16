@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "simulations:previews": "python scripts/generate_simulation_previews.py",
     "lint": "next lint"
   },
   "dependencies": {
