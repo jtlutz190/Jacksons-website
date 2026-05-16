@@ -17,6 +17,8 @@ const cardAccentClasses = [
   "card-cyan",
 ];
 
+const ENTRIES_PER_PAGE = 100;
+
 function getChapterAccentClass(entryNumber: number) {
   if (entryNumber <= 100) {
     return cardAccentClasses[0];
@@ -109,6 +111,44 @@ function TagCheckbox({
   );
 }
 
+function PaginationControls({
+  currentPage,
+  totalPages,
+  onPageChange,
+}: {
+  currentPage: number;
+  totalPages: number;
+  onPageChange: (page: number) => void;
+}) {
+  if (totalPages <= 1) {
+    return null;
+  }
+
+  return (
+    <div className="flex items-center gap-2">
+      <button
+        type="button"
+        onClick={() => onPageChange(currentPage - 1)}
+        disabled={currentPage === 1}
+        className="inline-flex min-h-9 items-center rounded-md border border-border bg-surface px-3 text-sm font-medium text-text hover:border-accent-dim disabled:cursor-not-allowed disabled:opacity-45"
+      >
+        Previous
+      </button>
+      <span className="font-mono text-xs uppercase tracking-[0.14em] text-muted">
+        Page {currentPage} / {totalPages}
+      </span>
+      <button
+        type="button"
+        onClick={() => onPageChange(currentPage + 1)}
+        disabled={currentPage === totalPages}
+        className="inline-flex min-h-9 items-center rounded-md border border-border bg-surface px-3 text-sm font-medium text-text hover:border-accent-dim disabled:cursor-not-allowed disabled:opacity-45"
+      >
+        Next
+      </button>
+    </div>
+  );
+}
+
 interface DiffeqEntryBrowserProps {
   entries: DiffeqEntry[];
 }
@@ -117,6 +157,7 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [activeMethodTags, setActiveMethodTags] = useState<MethodTag[]>([]);
   const [activeConceptTags, setActiveConceptTags] = useState<ConceptTag[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
 
   const activeTags = [...activeMethodTags, ...activeConceptTags];
   const filteredEntries = useMemo(() => {
@@ -129,9 +170,19 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
       activeConceptTags.every((tag) => entry.tags.concept.includes(tag)),
     );
   }, [activeConceptTags, activeMethodTags, activeTags.length, entries]);
+  const totalPages = Math.max(1, Math.ceil(filteredEntries.length / ENTRIES_PER_PAGE));
+  const page = Math.min(currentPage, totalPages);
+  const pageStartIndex = (page - 1) * ENTRIES_PER_PAGE;
+  const pageEndIndex = Math.min(pageStartIndex + ENTRIES_PER_PAGE, filteredEntries.length);
+  const paginatedEntries = filteredEntries.slice(pageStartIndex, pageEndIndex);
+
+  const changePage = (pageNumber: number) => {
+    setCurrentPage(Math.min(Math.max(pageNumber, 1), totalPages));
+  };
 
   const toggleMethodTag = (tag: MethodTag | ConceptTag) => {
     const methodTag = tag as MethodTag;
+    setCurrentPage(1);
     setActiveMethodTags((current) =>
       current.includes(methodTag)
         ? current.filter((item) => item !== methodTag)
@@ -141,6 +192,7 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
 
   const toggleConceptTag = (tag: MethodTag | ConceptTag) => {
     const conceptTag = tag as ConceptTag;
+    setCurrentPage(1);
     setActiveConceptTags((current) =>
       current.includes(conceptTag)
         ? current.filter((item) => item !== conceptTag)
@@ -149,6 +201,7 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
   };
 
   const clearTags = () => {
+    setCurrentPage(1);
     setActiveMethodTags([]);
     setActiveConceptTags([]);
   };
@@ -261,32 +314,54 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
         </div>
 
         {filteredEntries.length > 0 ? (
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-            {filteredEntries.map((entry) => (
-              <article key={entry.slug}>
-                <Link
-                  href={`/diffeq/${entry.slug}`}
-                  className={`card ${getChapterAccentClass(entry.number)} ${
-                    entry.featured
-                      ? "border-gold shadow-[0_0_0_1px_rgba(244,199,107,0.48),0_18px_44px_rgba(244,199,107,0.12)]"
-                      : ""
-                  } relative flex min-h-20 flex-col justify-between rounded-md bg-surface px-3 py-2.5 hover:bg-surface-2`}
-                >
-                  {entry.featured ? (
-                    <span className="absolute right-3 top-3">
-                      <FeaturedBadge compact />
-                    </span>
-                  ) : null}
-                  <h3 className="font-mono text-sm font-semibold text-gold">
-                    #{formatEntryNumber(entry.number)}
-                  </h3>
-                  <p className="mt-2 text-sm leading-5 text-text">
-                    <LatexText math={entry.equationLatex} />
-                  </p>
-                </Link>
-              </article>
-            ))}
-          </div>
+          <>
+            <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+              <p className="text-sm text-muted">
+                Showing {pageStartIndex + 1}-{pageEndIndex} of{" "}
+                {filteredEntries.length} entries
+              </p>
+              <PaginationControls
+                currentPage={page}
+                totalPages={totalPages}
+                onPageChange={changePage}
+              />
+            </div>
+
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+              {paginatedEntries.map((entry) => (
+                <article key={entry.slug}>
+                  <Link
+                    href={`/diffeq/${entry.slug}`}
+                    className={`card ${getChapterAccentClass(entry.number)} ${
+                      entry.featured
+                        ? "border-gold shadow-[0_0_0_1px_rgba(244,199,107,0.48),0_18px_44px_rgba(244,199,107,0.12)]"
+                        : ""
+                    } relative flex min-h-20 flex-col justify-between rounded-md bg-surface px-3 py-2.5 hover:bg-surface-2`}
+                  >
+                    {entry.featured ? (
+                      <span className="absolute right-3 top-3">
+                        <FeaturedBadge compact />
+                      </span>
+                    ) : null}
+                    <h3 className="font-mono text-sm font-semibold text-gold">
+                      #{formatEntryNumber(entry.number)}
+                    </h3>
+                    <p className="mt-2 text-sm leading-5 text-text">
+                      <LatexText math={entry.equationLatex} />
+                    </p>
+                  </Link>
+                </article>
+              ))}
+            </div>
+
+            <div className="mt-5 flex justify-end">
+              <PaginationControls
+                currentPage={page}
+                totalPages={totalPages}
+                onPageChange={changePage}
+              />
+            </div>
+          </>
         ) : (
           <div className="rounded-lg border border-border bg-surface p-5 text-sm leading-6 text-muted">
             No entries match the active tags yet. Once tags are assigned to
