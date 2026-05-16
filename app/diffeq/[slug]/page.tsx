@@ -152,25 +152,15 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
           </EntrySection>
 
           <EntrySection title="Classification">
-            <p>{entry.classification}</p>
             <TagChips tags={entry.tags.concept} />
           </EntrySection>
 
           <EntrySection title="Method">
-            <p>{entry.method}</p>
             <TagChips tags={entry.tags.method} />
           </EntrySection>
 
           <EntrySection title="Solution">
             <Latex math={entry.solutionLatex} className="latex-display-inline text-xl text-text" />
-          </EntrySection>
-
-          <EntrySection title="Behavior / interpretation">
-            <p>
-              Since the derivative only depends on{" "}
-              <Latex math="x" className="latex-inline" />, every solution curve
-              is only a vertical shift of an antiderivative.
-            </p>
           </EntrySection>
         </div>
 
@@ -267,7 +257,7 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
             id="takeaway-title"
             className="text-2xl font-semibold tracking-tight text-text"
           >
-            Takeaway
+            Takeaway and Interpretation
           </h2>
           <p className="mt-3 text-base leading-7 text-soft">{entry.takeaway}</p>
         </section>
