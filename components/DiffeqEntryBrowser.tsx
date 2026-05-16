@@ -70,6 +70,24 @@ function FeaturedBadge({ compact = false }: { compact?: boolean }) {
   );
 }
 
+function DirectIntegrationNotesCard() {
+  return (
+    <article>
+      <Link
+        href="/diffeq/direct-integration-equations-notes"
+        className="card card-gold relative flex min-h-20 flex-col justify-between rounded-md border border-gold/45 bg-surface px-3 py-2.5 shadow-[0_0_0_1px_rgba(244,199,107,0.20),0_16px_36px_rgba(244,199,107,0.10)] hover:bg-surface-2"
+      >
+        <h3 className="font-mono text-sm font-semibold uppercase tracking-[0.12em] text-gold">
+          Notes
+        </h3>
+        <p className="mt-2 text-sm font-semibold leading-5 text-text">
+          Direct integration equations notes
+        </p>
+      </Link>
+    </article>
+  );
+}
+
 function LatexText({ math }: { math: string }) {
   const html = useMemo(
     () =>
@@ -175,6 +193,7 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
   const pageStartIndex = (page - 1) * ENTRIES_PER_PAGE;
   const pageEndIndex = Math.min(pageStartIndex + ENTRIES_PER_PAGE, filteredEntries.length);
   const paginatedEntries = filteredEntries.slice(pageStartIndex, pageEndIndex);
+  const showDirectIntegrationNotesCard = page === 1 && activeTags.length === 0;
 
   const changePage = (pageNumber: number) => {
     setCurrentPage(Math.min(Math.max(pageNumber, 1), totalPages));
@@ -313,30 +332,6 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
           </div>
         </div>
 
-        <aside className="card card-gold mb-6 rounded-lg border border-gold/45 bg-surface p-5 shadow-[0_18px_48px_rgba(244,199,107,0.10)]">
-          <h3 className="font-mono text-sm font-semibold uppercase tracking-[0.16em] text-gold">
-            Direct integration equations notes
-          </h3>
-          <div className="mt-4 space-y-3 text-sm leading-6 text-soft sm:text-base sm:leading-7">
-            <p>
-              So far, these are extremely introductory ODE&apos;s that one can
-              solve with direct integration.
-            </p>
-            <p>
-              Notice that since the slope of the solution curve(s) only depend
-              on x, the family of solutions are only shifted vertically by a
-              constant.
-            </p>
-            <p>
-              Some interesting entries so far include y&apos;=e^x (#008) since
-              the solution is the function itself (plus a constant). This fact
-              gives rise to plenty of interesting machinery to come regarding
-              integrating factors, bases for linear, constant-coefficient
-              ODE&apos;s and much more.
-            </p>
-          </div>
-        </aside>
-
         {filteredEntries.length > 0 ? (
           <>
             <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
@@ -352,6 +347,8 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
+              {showDirectIntegrationNotesCard ? <DirectIntegrationNotesCard /> : null}
+
               {paginatedEntries.map((entry) => (
                 <article key={entry.slug}>
                   <Link
