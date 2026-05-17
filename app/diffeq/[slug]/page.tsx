@@ -7,6 +7,7 @@ import type { ReactNode } from "react";
 import Latex from "@/components/Latex";
 import {
   diffeqEntries,
+  formatDiffeqTag,
   formatEntryNumber,
   getEntrySimulation,
 } from "@/data/diffeqEntries";
@@ -74,7 +75,7 @@ function TagChips({ tags }: { tags: readonly string[] }) {
           key={tag}
           className="color-chip rounded border px-2.5 py-1 font-mono text-xs"
         >
-          {tag.replaceAll("-", " ")}
+          {formatDiffeqTag(tag)}
         </li>
       ))}
     </ul>
@@ -170,18 +171,15 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
             Simulation & Code
           </h2>
 
-          <details className="mt-5 overflow-hidden rounded-lg border border-border bg-surface">
-            <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 text-text marker:hidden">
-              <span>
-                <span className="block font-mono text-xs uppercase tracking-[0.18em] text-accent">
-                  Computational work
-                </span>
-                <span className="mt-2 block text-2xl font-semibold tracking-tight">
-                  {simulation.title}
-                </span>
+          <div className="mt-5 overflow-hidden rounded-lg border border-border bg-surface">
+            <div className="px-5 py-4 text-text">
+              <span className="block font-mono text-xs uppercase tracking-[0.18em] text-accent">
+                Computational work
               </span>
-              <span className="font-mono text-sm text-muted">Open</span>
-            </summary>
+              <span className="mt-2 block text-2xl font-semibold tracking-tight">
+                {simulation.title}
+              </span>
+            </div>
 
             <div className="border-t border-border p-5">
               {simulationPreviewPath ? (
@@ -204,19 +202,27 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
                 </a>
               ) : null}
 
-              <div className="overflow-hidden rounded-lg border border-border bg-[#071018]">
-                {simulationCode ? (
-                  <pre className="max-h-[38rem] overflow-x-auto overflow-y-auto p-4 text-xs leading-6 text-soft sm:text-sm">
-                    <code>{simulationCode}</code>
-                  </pre>
-                ) : (
-                  <div className="p-4 text-sm text-muted">
-                    Simulation code has not been added for this entry yet.
-                  </div>
-                )}
-              </div>
+              <details className="overflow-hidden rounded-lg border border-border bg-[#071018]">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-4 py-3 text-text marker:hidden">
+                  <span className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
+                    Python code
+                  </span>
+                  <span className="font-mono text-sm text-muted">Open</span>
+                </summary>
+                <div className="border-t border-border">
+                  {simulationCode ? (
+                    <pre className="max-h-[38rem] overflow-x-auto overflow-y-auto p-4 text-xs leading-6 text-soft sm:text-sm">
+                      <code>{simulationCode}</code>
+                    </pre>
+                  ) : (
+                    <div className="p-4 text-sm text-muted">
+                      Simulation code has not been added for this entry yet.
+                    </div>
+                  )}
+                </div>
+              </details>
             </div>
-          </details>
+          </div>
         </section>
 
         <section className="mt-8" aria-labelledby="handwritten-work-title">

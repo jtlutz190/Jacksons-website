@@ -4,7 +4,12 @@ import { Fragment, useMemo, useState } from "react";
 import katex from "katex";
 import Link from "next/link";
 import type { ConceptTag, DiffeqEntry, MethodTag } from "@/data/diffeqEntries";
-import { conceptTags, formatEntryNumber, methodTags } from "@/data/diffeqEntries";
+import {
+  conceptTags,
+  formatDiffeqTag,
+  formatEntryNumber,
+  methodTags,
+} from "@/data/diffeqEntries";
 
 const cardAccentClasses = [
   "card-cobalt",
@@ -49,10 +54,6 @@ function getChapterAccentClass(entryNumber: number) {
   }
 
   return cardAccentClasses[7];
-}
-
-function formatTag(tag: string) {
-  return tag.replaceAll("-", " ");
 }
 
 function FeaturedBadge({ compact = false }: { compact?: boolean }) {
@@ -124,7 +125,7 @@ function TagCheckbox({
         onChange={() => onChange(tag)}
         className="size-4 accent-cyan"
       />
-      <span>{formatTag(tag)}</span>
+      <span>{formatDiffeqTag(tag)}</span>
     </label>
   );
 }

@@ -5,10 +5,14 @@ export const methodTags = [
   "autonomous",
   "phase-line",
   "linear-first-order",
+  "homogeneous-linear",
+  "nonhomogeneous-linear",
   "integrating-factor",
   "exact-equation",
   "bernoulli",
   "substitution",
+  "operator-method",
+  "annihilator-method",
   "characteristic-equation",
   "undetermined-coefficients",
   "variation-of-parameters",
@@ -23,6 +27,8 @@ export const methodTags = [
   "boundary-value-problem",
   "linear-system",
   "nonlinear",
+  "qualitative-analysis",
+  "green-function",
   "partial-fractions",
   "convolution",
   "power-series-method",
@@ -37,12 +43,18 @@ export const conceptTags = [
   "u-substitution",
   "solution-family",
   "constant-of-integration",
+  "initial-condition",
   "domain-restriction",
   "singularity",
   "equilibrium",
   "stability",
   "growth",
   "decay",
+  "long-term-behavior",
+  "finite-time-blow-up",
+  "bifurcation",
+  "conserved-quantity",
+  "parameter-dependence",
   "oscillation",
   "resonance",
   "damping",
@@ -77,3 +89,22 @@ export const conceptTags = [
 
 export type MethodTag = (typeof methodTags)[number];
 export type ConceptTag = (typeof conceptTags)[number];
+
+const tagLabels: Record<string, string> = {
+  "annihilator-method": "annihilator method",
+  "cauchy-euler": "Cauchy-Euler equation",
+  "euler-method": "Euler\u2019s method",
+  "green-function": "green's function",
+  "homogeneous-first-order": "homogeneous first-order",
+  "laplace-domain": "Laplace domain",
+  "laplace-transform": "Laplace transform",
+  "linear-first-order": "linear first-order",
+  "operator-method": "operator method",
+  "runge-kutta": "Runge-Kutta",
+  "substitution": "ODE substitution",
+  "u-substitution": "integration substitution",
+};
+
+export function formatDiffeqTag(tag: string) {
+  return tagLabels[tag] ?? tag.replaceAll("-", " ");
+}

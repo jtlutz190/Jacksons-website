@@ -45,11 +45,7 @@ body {
   position: relative;
   min-height: 100vh;
   margin: 0;
-  background:
-    linear-gradient(rgba(122, 167, 255, 0.07) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(34, 211, 238, 0.045) 1px, transparent 1px),
-    linear-gradient(90deg, transparent 0 5.5rem, rgba(122, 167, 255, 0.12) 5.5rem 5.57rem, transparent 5.57rem);
-  background-size: 48px 48px;
+  background: transparent;
   color: #edf2f7;
   font-family: var(--font-sans);
   line-height: 1.6;

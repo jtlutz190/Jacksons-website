@@ -9,7 +9,7 @@ export type {
   DiffeqSimulation,
 } from "./types";
 
-export { conceptTags, methodTags } from "./tags";
+export { conceptTags, formatDiffeqTag, methodTags } from "./tags";
 export type { ConceptTag, MethodTag } from "./tags";
 export {
   defineDiffeqEntry,
