@@ -99,20 +99,7 @@ section[id] {
 }
 
 .tagline-glow {
-  position: relative;
-  isolation: isolate;
   overflow-wrap: anywhere;
-}
-
-.tagline-glow::before {
-  position: absolute;
-  inset: -0.55rem -0.9rem;
-  z-index: -1;
-  content: "";
-  background:
-    linear-gradient(90deg, rgba(122, 167, 255, 0.22), rgba(34, 211, 238, 0.16), rgba(181, 156, 255, 0.14));
-  filter: blur(9px);
-  opacity: 0.78;
 }
 
 .latex-inline .katex,
