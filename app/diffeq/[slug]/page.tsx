@@ -8,6 +8,7 @@ import Latex from "@/components/Latex";
 import {
   diffeqEntries,
   formatEntryNumber,
+  getEntrySimulation,
 } from "@/data/diffeqEntries";
 
 interface DiffeqEntryPageProps {
@@ -61,7 +62,7 @@ function EntrySection({
   );
 }
 
-function TagChips({ tags }: { tags: string[] }) {
+function TagChips({ tags }: { tags: readonly string[] }) {
   if (tags.length === 0) {
     return null;
   }
@@ -83,7 +84,7 @@ function TagChips({ tags }: { tags: string[] }) {
 function FeaturedBadge() {
   return (
     <span className="inline-flex items-center gap-2 rounded-full border border-gold bg-gold/15 px-3 py-1.5 font-mono text-xs uppercase tracking-[0.14em] text-gold">
-      <span aria-hidden="true">★</span>
+      <span aria-hidden="true">{"\u2605"}</span>
       Featured
     </span>
   );
@@ -117,12 +118,9 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
   const previousEntry = entryIndex > 0 ? diffeqEntries[entryIndex - 1] : null;
   const nextEntry =
     entryIndex < diffeqEntries.length - 1 ? diffeqEntries[entryIndex + 1] : null;
-  const simulationCode = entry.simulation
-    ? await getSimulationCode(entry.simulation.downloadPath)
-    : null;
-  const simulationPreviewPath = entry.simulation
-    ? await getSimulationPreviewPath(entry.simulation.downloadPath)
-    : null;
+  const simulation = getEntrySimulation(entry);
+  const simulationCode = await getSimulationCode(simulation.downloadPath);
+  const simulationPreviewPath = await getSimulationPreviewPath(simulation.downloadPath);
 
   return (
     <main className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
@@ -179,7 +177,7 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
                   Computational work
                 </span>
                 <span className="mt-2 block text-2xl font-semibold tracking-tight">
-                  {entry.simulation?.title ?? "Simulation code"}
+                  {simulation.title}
                 </span>
               </span>
               <span className="font-mono text-sm text-muted">Open</span>
@@ -196,9 +194,9 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
                 </figure>
               ) : null}
 
-              {entry.simulation ? (
+              {simulationCode ? (
                 <a
-                  href={entry.simulation.downloadPath}
+                  href={simulation.downloadPath}
                   download
                   className="mb-4 inline-flex min-h-10 w-fit items-center rounded-md border border-mint/45 bg-mint/10 px-4 text-sm font-medium text-text hover:border-mint hover:bg-mint/15"
                 >

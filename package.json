@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "diffeq:scaffold": "python scripts/scaffold_diffeq_entry.py",
     "simulations:previews": "python scripts/generate_simulation_previews.py",
     "simulations:previews:force": "python scripts/generate_simulation_previews.py --force",
     "lint": "next lint"
