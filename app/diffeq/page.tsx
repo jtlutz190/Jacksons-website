@@ -40,7 +40,7 @@ const demonstratedSkills = [
   },
   {
     skill: "Long-term execution",
-    evidence: "1,000-entry roadmap with progress tracking",
+    evidence: "1,000-entry roadmap with completed-entry tracking",
   },
 ];
 
@@ -83,26 +83,15 @@ export default function DiffeqArchivePage() {
       <section className="py-12">
         <div className="max-w-3xl">
           <p className="font-mono text-xs uppercase tracking-[0.18em] text-muted">
-            Growing archive
+            Working archive
           </p>
-          <h1 className="mt-3 text-4xl font-semibold tracking-tight text-text sm:text-5xl">
+          <h1 className="mt-3 text-3xl font-semibold leading-tight tracking-tight text-text sm:text-5xl">
             1000 Ordinary Differential Equations
           </h1>
-          <figure className="mt-8 border-l-2 border-accent-dim pl-5">
-            <blockquote className="font-serif text-2xl leading-9 text-text drop-shadow-[0_0_18px_rgba(237,242,247,0.12)] sm:text-3xl sm:leading-10">
-              &ldquo;Once you learn the concept of a differential equation, you
-              see differential equations all over, no matter what you do.&rdquo;
-            </blockquote>
-            <figcaption className="mt-3 font-mono text-xs uppercase tracking-[0.18em] text-accent">
-              &mdash; Gian-Carlo Rota
-            </figcaption>
-          </figure>
           <div className="mt-6 space-y-4 text-base leading-7 text-soft">
             <p>
-              Differential equations have become one of the central threads of
-              my mathematical interests. To study them seriously, I&apos;m
-              building a long-term archive of 1,000 ordinary differential
-              equations, including solutions, classifications, graphical
+              A long-term archive of 1,000 ordinary differential equations,
+              organized by structure, solution method, verification, graphical
               behavior, computational experiments, and key takeaways.
             </p>
             <p className="text-sm leading-6 text-muted">
@@ -111,37 +100,47 @@ export default function DiffeqArchivePage() {
               unless noted otherwise.
             </p>
           </div>
+          <div className="mt-6 grid gap-3 border-y border-border py-5 text-sm sm:grid-cols-3">
+            <p>
+              <span className="block font-mono text-xs uppercase tracking-[0.16em] text-muted">
+                Status
+              </span>
+              <strong className="mt-1 block text-base text-text">
+                {completedCount}/1000 Entries complete
+              </strong>
+            </p>
+            <p>
+              <span className="block font-mono text-xs uppercase tracking-[0.16em] text-muted">
+                Format
+              </span>
+              <strong className="mt-1 block text-base text-text">
+                Work, graph, simulation
+              </strong>
+            </p>
+            <p>
+              <span className="block font-mono text-xs uppercase tracking-[0.16em] text-muted">
+                Current focus
+              </span>
+              <strong className="mt-1 block text-base text-text">
+                Direct integration
+              </strong>
+            </p>
+          </div>
           <div className="mt-5 max-w-3xl">
             <h2 className="text-lg font-semibold tracking-tight text-text">
-              What this project demonstrates:
+              Project scope
             </h2>
             <p className="mt-3 text-base leading-7 text-soft">
-              This archive is a long-term technical project combining
-              differential equations, mathematical writing, computational
-              visualization, and web development. Each entry includes
-              classification, solution method, verification, graphical behavior,
-              and eventually Python/MATLAB simulation code. The goal is not just
-              to solve ODEs, but to build a searchable, computationally enriched
-              reference system.
+              This is a technical project combining differential equations,
+              mathematical writing, computational visualization, and web
+              development. The goal is to build a searchable, computationally
+              enriched reference system, not just a list of solved problems.
             </p>
-          </div>
-        </div>
-
-        <div className="notebook-rule mt-8 max-w-xl rounded-lg border border-gold/35 bg-surface p-5">
-          <div className="flex items-center justify-between gap-4">
-            <p className="font-mono text-sm text-gold">
-              Progress: {completedCount} / 1000 completed
-            </p>
-            <p className="text-sm text-muted">Only completed entries are listed below.</p>
-          </div>
-          <div className="mt-4 h-2 overflow-hidden rounded-full bg-bg">
-            <div
-              className="h-full rounded-full bg-gradient-to-r from-cobalt via-mint to-gold"
-              style={{ width: `${(completedCount / 1000) * 100}%` }}
-            />
           </div>
         </div>
       </section>
+
+      <DiffeqEntryBrowser entries={diffeqEntries} />
 
       <section className="py-10" aria-labelledby="roadmap-title">
         <div className="mb-8">
@@ -175,8 +174,6 @@ export default function DiffeqArchivePage() {
           ))}
         </div>
       </section>
-
-      <DiffeqEntryBrowser entries={diffeqEntries} />
 
       <section className="py-10" aria-labelledby="skills-title">
         <div className="mb-8">
@@ -221,6 +218,16 @@ export default function DiffeqArchivePage() {
             </tbody>
           </table>
         </div>
+      </section>
+
+      <section className="pt-6 pb-12 text-sm leading-6 text-muted">
+        <p>
+          &ldquo;Once you learn the concept of a differential equation, you see
+          differential equations all over, no matter what you do.&rdquo;
+        </p>
+        <p className="mt-2 font-mono text-xs uppercase tracking-[0.16em]">
+          Gian-Carlo Rota
+        </p>
       </section>
     </main>
   );
