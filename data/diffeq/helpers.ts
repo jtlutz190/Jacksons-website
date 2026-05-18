@@ -8,7 +8,7 @@ import type {
 const directIntegrationTakeaway =
   "Direct integration equations of the form y' = f(x) tell us that the slope of the solution changes with respect to x only.";
 const directIntegrationIvpTakeaway =
-  "An initial condition selects one curve from the direct integration solution family by fixing the constant of integration.";
+  "An initial condition selects one curve from the direct integration solution family.";
 
 export const directIntegrationTemplate = {
   slugSuffix: "direct-integration",

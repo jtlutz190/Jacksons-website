@@ -42,7 +42,6 @@ export const conceptTags = [
   "logarithmic-antiderivative",
   "u-substitution",
   "solution-family",
-  "constant-of-integration",
   "initial-condition",
   "domain-restriction",
   "singularity",
