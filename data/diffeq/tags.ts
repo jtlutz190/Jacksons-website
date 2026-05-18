@@ -40,7 +40,7 @@ export const conceptTags = [
   "trigonometric-antiderivative",
   "inverse-trig-pattern",
   "logarithmic-antiderivative",
-  "u-substitution",
+  "integration-substitution",
   "solution-family",
   "initial-condition",
   "domain-restriction",
@@ -101,7 +101,6 @@ const tagLabels: Record<string, string> = {
   "operator-method": "operator method",
   "runge-kutta": "Runge-Kutta",
   "substitution": "ODE substitution",
-  "u-substitution": "integration substitution",
 };
 
 export function formatDiffeqTag(tag: string) {

@@ -112,7 +112,17 @@ export function directIntegrationEntry(draft: DiffeqEntryDraft) {
 }
 
 export function directIntegrationIvpEntry(draft: DiffeqEntryDraft) {
-  return defineDiffeqEntry(directIntegrationIvpTemplate, draft);
+  const entry = defineDiffeqEntry(directIntegrationIvpTemplate, draft);
+
+  return {
+    ...entry,
+    tags: {
+      ...entry.tags,
+      concept: Array.from(
+        new Set([...entry.tags.concept, "initial-condition" as const]),
+      ),
+    },
+  };
 }
 
 export function autonomousEntry(draft: DiffeqEntryDraft) {

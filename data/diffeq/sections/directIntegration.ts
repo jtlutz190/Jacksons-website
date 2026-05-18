@@ -31,7 +31,10 @@ export const directIntegrationEntries = [
     equationLatex: "y' = x^{-2}",
     solution: "y = -1/x + C",
     solutionLatex: "y = -\\frac{1}{x} + C",
-    tags: { method: ["direct-integration"], concept: ["power-rule"] },
+    tags: {
+      method: ["direct-integration"],
+      concept: ["power-rule", "domain-restriction", "singularity"],
+    },
   }),
   directIntegrationEntry({
     number: 5,
@@ -56,7 +59,12 @@ export const directIntegrationEntries = [
     solution: "y = 2x^3 - 4ln|x| + C",
     solutionLatex: "y = 2x^3 - 4\\ln|x| + C",
     tags: {
-      concept: ["power-rule", "logarithmic-antiderivative"],
+      concept: [
+        "power-rule",
+        "logarithmic-antiderivative",
+        "domain-restriction",
+        "singularity",
+      ],
     },
   }),
   directIntegrationEntry({
@@ -126,7 +134,11 @@ export const directIntegrationEntries = [
     solution: "y = -2csc(x) + C",
     solutionLatex: "y = -2\\csc x + C",
     tags: {
-      concept: ["trigonometric-antiderivative"],
+      concept: [
+        "trigonometric-antiderivative",
+        "domain-restriction",
+        "singularity",
+      ],
     },
   }),
   directIntegrationEntry({
@@ -170,7 +182,11 @@ export const directIntegrationEntries = [
     solution: "y = ln|x| + C",
     solutionLatex: "y = \\ln|x| + C",
     tags: {
-      concept: ["logarithmic-antiderivative"],
+      concept: [
+        "logarithmic-antiderivative",
+        "domain-restriction",
+        "singularity",
+      ],
     },
   }),
   directIntegrationEntry({
@@ -179,7 +195,10 @@ export const directIntegrationEntries = [
     equationLatex: "y' = \\frac{3}{2x + 1}",
     solution: "y = (3/2)ln|2x + 1| + C",
     solutionLatex: "y = \\frac{3}{2}\\ln|2x + 1| + C",
-    tags: { method: ["direct-integration"], concept: ["u-substitution"] },
+    tags: {
+      method: ["direct-integration"],
+      concept: ["integration-substitution", "logarithmic-antiderivative"],
+    },
   }),
   directIntegrationEntry({
     number: 20,
@@ -187,7 +206,10 @@ export const directIntegrationEntries = [
     equationLatex: "y' = \\frac{x}{x^2 + 1}",
     solution: "y = (1/2)ln|x^2 + 1| + C",
     solutionLatex: "y = \\frac{1}{2}\\ln|x^2 + 1| + C",
-    tags: { method: ["direct-integration"], concept: ["u-substitution"] },
+    tags: {
+      method: ["direct-integration"],
+      concept: ["integration-substitution", "logarithmic-antiderivative"],
+    },
   }),
   directIntegrationEntry({
     number: 21,
@@ -195,7 +217,10 @@ export const directIntegrationEntries = [
     equationLatex: "y' = \\frac{2x}{x^2 + 5}",
     solution: "y = ln|x^2 + 5| + C",
     solutionLatex: "y = \\ln|x^2 + 5| + C",
-    tags: { method: ["direct-integration"], concept: ["u-substitution"] },
+    tags: {
+      method: ["direct-integration"],
+      concept: ["integration-substitution", "logarithmic-antiderivative"],
+    },
   }),
   directIntegrationEntry({
     number: 22,
@@ -214,7 +239,7 @@ export const directIntegrationEntries = [
     solution: "y = arcsin(x) + C",
     solutionLatex: "y = \\arcsin x + C",
     tags: {
-      concept: ["inverse-trig-pattern"],
+      concept: ["inverse-trig-pattern", "domain-restriction", "singularity"],
     },
   }),
   directIntegrationEntry({
@@ -224,7 +249,7 @@ export const directIntegrationEntries = [
     solution: "y = (1/3)e^(x^3) + C",
     solutionLatex: "y = \\frac{1}{3}e^{x^3} + C",
     tags: {
-      concept: ["u-substitution", "exponential-antiderivative"],
+      concept: ["integration-substitution", "exponential-antiderivative"],
     },
   }),
   directIntegrationEntry({
@@ -234,7 +259,7 @@ export const directIntegrationEntries = [
     solution: "y = sin(x^2) + C",
     solutionLatex: "y = \\sin(x^2) + C",
     tags: {
-      concept: ["u-substitution", "trigonometric-antiderivative"],
+      concept: ["integration-substitution", "trigonometric-antiderivative"],
     },
   }),
 ];

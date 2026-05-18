@@ -169,7 +169,7 @@ export const directIntegrationIvpEntries = [
     solutionLatex: "y = \\ln|x^2 + 4| + 1 - \\ln 4",
     tags: {
       concept: [
-        "u-substitution",
+        "integration-substitution",
         "logarithmic-antiderivative",
       ],
     },
@@ -201,7 +201,7 @@ export const directIntegrationIvpEntries = [
     solution: "y = -cos(x^2) + 4",
     solutionLatex: "y = -\\cos(x^2) + 4",
     tags: {
-      concept: ["u-substitution", "trigonometric-antiderivative"],
+      concept: ["integration-substitution", "trigonometric-antiderivative"],
     },
   }),
   directIntegrationIvpEntry({
@@ -211,7 +211,7 @@ export const directIntegrationIvpEntries = [
     solution: "y = (1/3)e^(x^3) - 1/3",
     solutionLatex: "y = \\frac{1}{3}e^{x^3} - \\frac{1}{3}",
     tags: {
-      concept: ["u-substitution", "exponential-antiderivative"],
+      concept: ["integration-substitution", "exponential-antiderivative"],
     },
   }),
   directIntegrationIvpEntry({
@@ -221,7 +221,7 @@ export const directIntegrationIvpEntries = [
     solution: "y = (1/2)arctan(2x) - 1",
     solutionLatex: "y = \\frac{1}{2}\\arctan(2x) - 1",
     tags: {
-      concept: ["inverse-trig-pattern", "u-substitution"],
+      concept: ["inverse-trig-pattern", "integration-substitution"],
     },
   }),
   directIntegrationIvpEntry({
@@ -231,7 +231,11 @@ export const directIntegrationIvpEntries = [
     solution: "y = arcsin(3x) + 4",
     solutionLatex: "y = \\arcsin(3x) + 4",
     tags: {
-      concept: ["inverse-trig-pattern", "u-substitution", "domain-restriction"],
+      concept: [
+        "inverse-trig-pattern",
+        "integration-substitution",
+        "domain-restriction",
+      ],
     },
   }),
   directIntegrationIvpEntry({
@@ -255,7 +259,7 @@ export const directIntegrationIvpEntries = [
     solution: "y = sqrt(x^2 + 1) + 1",
     solutionLatex: "y = \\sqrt{x^2 + 1} + 1",
     tags: {
-      concept: ["u-substitution", "power-rule"],
+      concept: ["integration-substitution", "power-rule"],
     },
   }),
 ];
