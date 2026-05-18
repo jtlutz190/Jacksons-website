@@ -98,7 +98,17 @@ export function defineDiffeqEntry(
 }
 
 export function directIntegrationEntry(draft: DiffeqEntryDraft) {
-  return defineDiffeqEntry(directIntegrationTemplate, draft);
+  const entry = defineDiffeqEntry(directIntegrationTemplate, draft);
+
+  return {
+    ...entry,
+    tags: {
+      ...entry.tags,
+      concept: Array.from(
+        new Set([...entry.tags.concept, "solution-family" as const]),
+      ),
+    },
+  };
 }
 
 export function directIntegrationIvpEntry(draft: DiffeqEntryDraft) {
