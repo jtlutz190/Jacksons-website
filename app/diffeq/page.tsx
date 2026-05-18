@@ -100,7 +100,7 @@ export default function DiffeqArchivePage() {
               unless noted otherwise.
             </p>
           </div>
-          <div className="mt-6 grid gap-3 border-y border-border py-5 text-sm sm:grid-cols-3">
+          <div className="mt-6 grid gap-3 border-y border-border py-5 text-sm sm:grid-cols-2">
             <p>
               <span className="block font-mono text-xs uppercase tracking-[0.16em] text-muted">
                 Status
@@ -115,14 +115,6 @@ export default function DiffeqArchivePage() {
               </span>
               <strong className="mt-1 block text-base text-text">
                 Work, graph, simulation
-              </strong>
-            </p>
-            <p>
-              <span className="block font-mono text-xs uppercase tracking-[0.16em] text-muted">
-                Current focus
-              </span>
-              <strong className="mt-1 block text-base text-text">
-                Direct integration
               </strong>
             </p>
           </div>
