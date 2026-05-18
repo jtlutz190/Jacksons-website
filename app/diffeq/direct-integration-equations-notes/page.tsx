@@ -27,24 +27,72 @@ export default function DirectIntegrationEquationsNotesPage() {
 
         <div className="mt-10 space-y-6 border-t border-border pt-6 text-base leading-8 text-soft">
           <p>
-            So far, these are extremely introductory ODEs that one can
-            solve with direct integration.
+            Direct integration is one of the simplest types of differential
+            equation solving, taking on the form{" "}
+            <Latex math="y' = f(x)" className="latex-inline" />. One can solve
+            these types of equations with direct integration:
+          </p>
+
+          <div className="rounded-lg border border-border bg-surface p-5 text-center text-xl text-text">
+            <Latex math="y = \\int f(x)\\,dx" display />
+          </div>
+
+          <p>
+            Since antiderivatives are not unique, we include a constant of
+            integration <Latex math="C" className="latex-inline" />:
+          </p>
+
+          <div className="rounded-lg border border-border bg-surface p-5 text-center text-xl text-text">
+            <Latex math="y = F(x) + C" display />
+          </div>
+
+          <p>
+            This is consistent since the slope of the solution curve only
+            depends on <Latex math="x" className="latex-inline" />, not{" "}
+            <Latex math="y" className="latex-inline" />. As a result, the
+            solution family only differs by a vertical shift, represented by{" "}
+            <Latex math="+C" className="latex-inline" />. In essence, since we
+            are only given the slope of <Latex math="y" className="latex-inline" />,
+            we are able to recover the overall shape of the solution, but not
+            the initial height. That comes in the next chapter.
           </p>
 
           <p>
-            Notice that since the slope of the solution curve(s) only depend on{" "}
-            <Latex math="x" className="latex-inline" />, the family of
-            solutions are only shifted vertically by a constant.
+            It is important to note that solution families like this will show
+            up everywhere in the rest of the archive. This is because
+            differentiation is homogeneous, for example{" "}
+            <Latex
+              math="\\frac{d}{dx}[3f(x)] = 3f'(x)"
+              className="latex-inline"
+            />
+            , and taking derivatives kills constants. Thus, many different
+            functions can collapse to the same derivative because constants
+            disappear. Take note of the{" "}
+            <span className="color-chip rounded border px-2.5 py-1 font-mono text-xs">
+              solution family
+            </span>{" "}
+            tag.
           </p>
 
-          <p>
-            Some interesting entries so far include{" "}
-            <Latex math="y' = e^x" className="latex-inline" /> (#008) since the
-            solution is the function itself (plus a constant). This fact gives
-            rise to plenty of interesting machinery to come regarding
-            integrating factors, bases for linear, constant-coefficient
-            ODEs and much more.
-          </p>
+          <section className="rounded-lg border border-cyan/35 bg-cyan/10 p-5">
+            <h2 className="font-mono text-xs uppercase tracking-[0.18em] text-cyan">
+              Interesting entry
+            </h2>
+            <p className="mt-4 text-base leading-8 text-soft">
+              One interesting entry to note is{" "}
+              <Latex math="y' = e^x" className="latex-inline" />{" "}
+              <Link
+                href="/diffeq/008-direct-integration"
+                className="font-mono text-sm text-accent hover:text-text"
+              >
+                #008
+              </Link>
+              . Since the non-constant solution is the function itself, this
+              function gives rise to plenty of interesting machinery to come,
+              including integrating factors, bases for linear
+              constant-coefficient ODEs, and much more.
+            </p>
+          </section>
         </div>
       </article>
     </main>
