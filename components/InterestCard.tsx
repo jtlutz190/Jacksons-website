@@ -24,10 +24,13 @@ export default function InterestCard({
         href={link}
         target="_blank"
         rel="noreferrer"
-        className={`card ${accentClass} block rounded-lg bg-surface p-5 no-underline transition-colors hover:bg-surface-2 focus:outline-none focus:ring-2 focus:ring-accent-dim focus:ring-offset-2 focus:ring-offset-bg`}
+        className={`card ${accentClass} flex h-full flex-col rounded-lg bg-surface p-5 no-underline transition-colors hover:bg-surface-2 focus:outline-none focus:ring-2 focus:ring-accent-dim focus:ring-offset-2 focus:ring-offset-bg`}
         aria-label={`${title}: open link`}
       >
         {cardContent}
+        <span className="mt-auto pt-5 font-mono text-xs uppercase tracking-[0.12em] text-accent">
+          Click to see more -&gt;
+        </span>
       </a>
     );
   }
