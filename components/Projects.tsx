@@ -22,7 +22,7 @@ const projects = [
     title: "1000 Differential Equations",
     status: "Active archive",
     description:
-      "A long-term handwritten and computational archive of ordinary differential equations, organized by structure, method, and mathematical idea.",
+      "A long-term handwritten and computational archive of ordinary differential equations, organized by structure, method, and mathematical idea. Hosted on this website!",
     tags: [
       "Differential Equations",
       "ODEs",

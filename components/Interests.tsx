@@ -6,6 +6,7 @@ const interests = [
     title: "Reading",
     description:
       "Books are part of the notebook too: math, ideas, and whatever helps the world feel more legible.",
+    link: "https://hardcover.app/@Jlutz/stats",
     accentClass: "card-mint",
   },
   {
@@ -21,9 +22,10 @@ const interests = [
     accentClass: "card-mint",
   },
   {
-    title: "Visual math",
+    title: "Visual math content",
     description:
       "Short visual explanations that make mathematical ideas easier to see, test, and remember.",
+    link: "https://www.tiktok.com/@fish.maths",
     accentClass: "card-mint",
   },
 ];
