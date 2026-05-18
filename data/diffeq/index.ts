@@ -1,5 +1,6 @@
 import { directIntegrationEntries } from "./sections/directIntegration";
 import { directIntegrationIvpEntries } from "./sections/directIntegrationIvp";
+import { autonomousEntries } from "./sections/autonomous";
 
 export type {
   DiffeqEntry,
@@ -13,6 +14,8 @@ export { conceptTags, formatDiffeqTag, methodTags } from "./tags";
 export type { ConceptTag, MethodTag } from "./tags";
 export {
   defineDiffeqEntry,
+  autonomousEntry,
+  autonomousTemplate,
   directIntegrationEntry,
   directIntegrationIvpEntry,
   directIntegrationIvpTemplate,
@@ -28,4 +31,5 @@ export { diffeqRoadmap } from "./roadmap";
 export const diffeqEntries = [
   ...directIntegrationEntries,
   ...directIntegrationIvpEntries,
+  ...autonomousEntries,
 ].sort((first, second) => first.number - second.number);

@@ -28,6 +28,15 @@ export const directIntegrationIvpTemplate = {
   methodTags: ["direct-integration", "initial-value-problem"],
 } satisfies DiffeqEntryTemplate;
 
+export const autonomousTemplate = {
+  slugSuffix: "autonomous",
+  classification: "Autonomous equation",
+  method: "Separation of variables and qualitative analysis",
+  category: "Autonomous equations",
+  takeaway: "",
+  methodTags: ["autonomous", "separable"],
+} satisfies DiffeqEntryTemplate;
+
 export function formatEntryNumber(number: number) {
   return number.toString().padStart(3, "0");
 }
@@ -94,4 +103,8 @@ export function directIntegrationEntry(draft: DiffeqEntryDraft) {
 
 export function directIntegrationIvpEntry(draft: DiffeqEntryDraft) {
   return defineDiffeqEntry(directIntegrationIvpTemplate, draft);
+}
+
+export function autonomousEntry(draft: DiffeqEntryDraft) {
+  return defineDiffeqEntry(autonomousTemplate, draft);
 }
