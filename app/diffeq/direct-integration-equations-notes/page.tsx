@@ -30,20 +30,19 @@ export default function DirectIntegrationEquationsNotesPage() {
             Direct integration is one of the simplest types of differential
             equation solving, taking on the form{" "}
             <Latex math="y' = f(x)" className="latex-inline" />. One can solve
-            these types of equations with direct integration:
-          </p>
-
-          <p className="text-center text-lg text-text">
-            <Latex math="y = \\int f(x)\\,dx" display />
+            these types of equations with direct integration, giving{" "}
+            <Latex
+              math={String.raw`y = \int f(x)\,dx`}
+              className="latex-inline"
+            />
+            .
           </p>
 
           <p>
             Since antiderivatives are not unique, we include a constant of
-            integration <Latex math="C" className="latex-inline" />:
-          </p>
-
-          <p className="text-center text-lg text-text">
-            <Latex math="y = F(x) + C" display />
+            integration <Latex math="C" className="latex-inline" />, so the
+            solution family is{" "}
+            <Latex math={String.raw`y = F(x) + C`} className="latex-inline" />.
           </p>
 
           <p>
@@ -62,7 +61,7 @@ export default function DirectIntegrationEquationsNotesPage() {
             up everywhere in the rest of the archive. This is because
             differentiation is homogeneous, for example{" "}
             <Latex
-              math="\\frac{d}{dx}[3f(x)] = 3f'(x)"
+              math={String.raw`\frac{d}{dx}[3f(x)] = 3f'(x)`}
               className="latex-inline"
             />
             , and taking derivatives kills constants. Thus, many different

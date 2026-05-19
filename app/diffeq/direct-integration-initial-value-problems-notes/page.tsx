@@ -29,11 +29,12 @@ export default function DirectIntegrationInitialValueProblemsNotesPage() {
           <p>
             Direct integration with initial value problems is the next step in
             complexity from direct integration ODEs. We have essentially added a
-            constraint to the ODE by defining a point on the solution curve:
-          </p>
-
-          <p className="text-center text-lg text-text">
-            <Latex math="y' = f(x),\\quad y(x_0)=a" display />
+            constraint to the ODE by defining a point on the solution curve,{" "}
+            <Latex
+              math={String.raw`y' = f(x),\quad y(x_0)=a`}
+              className="latex-inline"
+            />
+            .
           </p>
 
           <p>
@@ -43,14 +44,12 @@ export default function DirectIntegrationInitialValueProblemsNotesPage() {
           </p>
 
           <p>
-            Then, we use our other constraint to pin the answer:
-          </p>
-
-          <p className="text-center text-lg text-text">
+            Then, we use our other constraint to pin the answer:{" "}
             <Latex
-              math="y(x_0) = F(x_0) + C,\\quad C = y(x_0) - F(x_0)"
-              display
+              math={String.raw`y(x_0) = F(x_0) + C,\quad C = y(x_0) - F(x_0)`}
+              className="latex-inline"
             />
+            .
           </p>
 
           <p>
@@ -66,7 +65,7 @@ export default function DirectIntegrationInitialValueProblemsNotesPage() {
             given a condition{" "}
             <Latex math="y(t_0)=y_0" className="latex-inline" /> when{" "}
             <Latex
-              math="\\frac{\\partial f}{\\partial y}"
+              math={String.raw`\frac{\partial f}{\partial y}`}
               className="latex-inline"
             />{" "}
             is continuous around this point. We will observe more uses of this
