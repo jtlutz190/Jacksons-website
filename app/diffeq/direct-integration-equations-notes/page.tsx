@@ -33,18 +33,18 @@ export default function DirectIntegrationEquationsNotesPage() {
             these types of equations with direct integration:
           </p>
 
-          <div className="rounded-lg border border-border bg-surface p-5 text-center text-xl text-text">
+          <p className="text-center text-lg text-text">
             <Latex math="y = \\int f(x)\\,dx" display />
-          </div>
+          </p>
 
           <p>
             Since antiderivatives are not unique, we include a constant of
             integration <Latex math="C" className="latex-inline" />:
           </p>
 
-          <div className="rounded-lg border border-border bg-surface p-5 text-center text-xl text-text">
+          <p className="text-center text-lg text-text">
             <Latex math="y = F(x) + C" display />
-          </div>
+          </p>
 
           <p>
             This is consistent since the slope of the solution curve only
@@ -67,32 +67,33 @@ export default function DirectIntegrationEquationsNotesPage() {
             />
             , and taking derivatives kills constants. Thus, many different
             functions can collapse to the same derivative because constants
-            disappear. Take note of the{" "}
-            <span className="color-chip rounded border px-2.5 py-1 font-mono text-xs">
-              solution family
-            </span>{" "}
-            tag.
+            disappear.
           </p>
 
-          <section className="rounded-lg border border-cyan/35 bg-cyan/10 p-5">
-            <h2 className="font-mono text-xs uppercase tracking-[0.18em] text-cyan">
-              Interesting entry
-            </h2>
-            <p className="mt-4 text-base leading-8 text-soft">
-              One interesting entry to note is{" "}
-              <Latex math="y' = e^x" className="latex-inline" />{" "}
-              <Link
-                href="/diffeq/008-direct-integration"
-                className="font-mono text-sm text-accent hover:text-text"
-              >
-                #008
-              </Link>
-              . Since the non-constant solution is the function itself, this
-              function gives rise to plenty of interesting machinery to come,
-              including integrating factors, bases for linear
-              constant-coefficient ODEs, and much more.
-            </p>
-          </section>
+          <p>
+            One interesting entry to note is{" "}
+            <Latex math="y' = e^x" className="latex-inline" />{" "}
+            <Link
+              href="/diffeq/008-direct-integration"
+              className="font-mono text-sm text-accent hover:text-text"
+            >
+              #008
+            </Link>
+            . Since the non-constant solution is the function itself, this
+            function gives rise to plenty of interesting machinery to come,
+            including integrating factors, bases for linear
+            constant-coefficient ODEs, and much more.
+          </p>
+
+          <p>
+            Applications from this form of ODE are not super useful yet.
+            However, we do know that from this form of equation we can recover
+            the function-derivative relationship from a given ODE. For example,
+            if we knew a particle&apos;s velocity, we could recover how it might
+            move over time. Unfortunately the big restriction here is that we
+            are not given an initial condition yet, so we cannot get an exact
+            answer. That comes in the next chapter.
+          </p>
         </div>
       </article>
     </main>

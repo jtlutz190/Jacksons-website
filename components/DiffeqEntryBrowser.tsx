@@ -71,18 +71,24 @@ function FeaturedBadge({ compact = false }: { compact?: boolean }) {
   );
 }
 
-function DirectIntegrationNotesCard() {
+function SectionNotesCard({
+  href,
+  title,
+}: {
+  href: string;
+  title: string;
+}) {
   return (
     <article>
       <Link
-        href="/diffeq/direct-integration-equations-notes"
+        href={href}
         className="card card-gold relative flex min-h-20 flex-col justify-between rounded-md border border-gold/45 bg-surface px-3 py-2.5 shadow-[0_0_0_1px_rgba(244,199,107,0.20),0_16px_36px_rgba(244,199,107,0.10)] hover:bg-surface-2"
       >
         <h3 className="font-mono text-sm font-semibold uppercase tracking-[0.12em] text-gold">
           Notes
         </h3>
         <p className="mt-2 text-sm font-semibold leading-5 text-text">
-          Direct integration equations notes
+          {title}
         </p>
       </Link>
     </article>
@@ -194,7 +200,7 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
   const pageStartIndex = (page - 1) * ENTRIES_PER_PAGE;
   const pageEndIndex = Math.min(pageStartIndex + ENTRIES_PER_PAGE, filteredEntries.length);
   const paginatedEntries = filteredEntries.slice(pageStartIndex, pageEndIndex);
-  const showDirectIntegrationNotesCard = activeTags.length === 0;
+  const showSectionNotesCards = activeTags.length === 0;
 
   const changePage = (pageNumber: number) => {
     setCurrentPage(Math.min(Math.max(pageNumber, 1), totalPages));
@@ -373,8 +379,18 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
                     </Link>
                   </article>
 
-                  {showDirectIntegrationNotesCard && entry.number === 25 ? (
-                    <DirectIntegrationNotesCard />
+                  {showSectionNotesCards && entry.number === 25 ? (
+                    <SectionNotesCard
+                      href="/diffeq/direct-integration-equations-notes"
+                      title="Direct integration equations notes"
+                    />
+                  ) : null}
+
+                  {showSectionNotesCards && entry.number === 50 ? (
+                    <SectionNotesCard
+                      href="/diffeq/direct-integration-initial-value-problems-notes"
+                      title="Direct integration initial value problems notes"
+                    />
                   ) : null}
                 </Fragment>
               ))}
