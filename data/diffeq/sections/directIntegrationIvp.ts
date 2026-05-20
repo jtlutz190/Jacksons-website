@@ -1,5 +1,15 @@
 import { directIntegrationIvpEntry } from "../helpers";
 
+function directIntegrationIvpTakeaway(
+  slopeFunction: string,
+  initialCondition: string,
+  extra = "",
+) {
+  const base = `The differential equation tells us that the slope is ${slopeFunction}. After using integration, we can pinpoint the solution because the initial condition tells us ${initialCondition}.`;
+
+  return extra ? `${base} ${extra}` : base;
+}
+
 export const directIntegrationIvpEntries = [
   directIntegrationIvpEntry({
     number: 26,
@@ -7,6 +17,7 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = 2x,\\quad y(0)=3",
     solution: "y = x^2 + 3",
     solutionLatex: "y = x^2 + 3",
+    takeaway: directIntegrationIvpTakeaway("2x", "y(0)=3"),
     tags: {
       concept: ["power-rule"],
     },
@@ -17,6 +28,7 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = 3x^2,\\quad y(1)=5",
     solution: "y = x^3 + 4",
     solutionLatex: "y = x^3 + 4",
+    takeaway: directIntegrationIvpTakeaway("3x^2", "y(1)=5"),
     tags: {
       concept: ["power-rule"],
     },
@@ -27,6 +39,7 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = 5x^4 - 2x + 7,\\quad y(0)=-1",
     solution: "y = x^5 - x^2 + 7x - 1",
     solutionLatex: "y = x^5 - x^2 + 7x - 1",
+    takeaway: directIntegrationIvpTakeaway("5x^4 - 2x + 7", "y(0)=-1"),
     tags: {
       concept: ["power-rule"],
     },
@@ -37,6 +50,11 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = x^{-2},\\quad y(1)=0",
     solution: "y = -1/x + 1",
     solutionLatex: "y = -\\frac{1}{x} + 1",
+    takeaway: directIntegrationIvpTakeaway(
+      "x^(-2)",
+      "y(1)=0",
+      "This differential equation has a singularity at x=0.",
+    ),
     tags: {
       concept: ["power-rule", "domain-restriction"],
     },
@@ -47,6 +65,11 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = 4\\sqrt{x},\\quad y(0)=2",
     solution: "y = (8/3)x^(3/2) + 2",
     solutionLatex: "y = \\frac{8}{3}x^{3/2} + 2",
+    takeaway: directIntegrationIvpTakeaway(
+      "4sqrt(x)",
+      "y(0)=2",
+      "This differential equation only takes positive values, this means the slope of the solution is always positive.",
+    ),
     tags: {
       concept: ["power-rule"],
     },
@@ -57,6 +80,11 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = \\frac{1}{\\sqrt{x}},\\quad y(1)=4",
     solution: "y = 2sqrt(x) + 2",
     solutionLatex: "y = 2\\sqrt{x} + 2",
+    takeaway: directIntegrationIvpTakeaway(
+      "1/sqrt(x)",
+      "y(1)=4",
+      "This differential equation only takes positive values, this means the slope of the solution is always positive.",
+    ),
     tags: {
       concept: ["power-rule"],
     },
@@ -67,6 +95,11 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = 6x^2 - 4x^{-1},\\quad y(1)=0",
     solution: "y = 2x^3 - 4ln|x| - 2",
     solutionLatex: "y = 2x^3 - 4\\ln|x| - 2",
+    takeaway: directIntegrationIvpTakeaway(
+      "6x^2 - 4x^-1",
+      "y(1)=0",
+      "This differential equation has a singularity at x=0.",
+    ),
     tags: {
       concept: ["power-rule", "logarithmic-antiderivative"],
     },
@@ -77,6 +110,7 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = e^x,\\quad y(0)=1",
     solution: "y = e^x",
     solutionLatex: "y = e^x",
+    takeaway: directIntegrationIvpTakeaway("e^x", "y(0)=1"),
     tags: {
       concept: ["exponential-antiderivative"],
     },
@@ -87,6 +121,7 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = 2e^{2x},\\quad y(0)=3",
     solution: "y = e^(2x) + 2",
     solutionLatex: "y = e^{2x} + 2",
+    takeaway: directIntegrationIvpTakeaway("2e^(2x)", "y(0)=3"),
     tags: {
       concept: ["exponential-antiderivative"],
     },
@@ -97,6 +132,7 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = e^{-3x},\\quad y(0)=0",
     solution: "y = -1/3*e^(-3x) + 1/3",
     solutionLatex: "y = -\\frac{1}{3}e^{-3x} + \\frac{1}{3}",
+    takeaway: directIntegrationIvpTakeaway("e^(-3x)", "y(0)=0"),
     tags: {
       concept: ["exponential-antiderivative"],
     },
@@ -107,6 +143,7 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = \\sin x,\\quad y(0)=2",
     solution: "y = -cos(x) + 3",
     solutionLatex: "y = -\\cos x + 3",
+    takeaway: directIntegrationIvpTakeaway("sin(x)", "y(0)=2"),
     tags: {
       concept: ["trigonometric-antiderivative"],
     },
@@ -117,6 +154,7 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = 4\\cos x,\\quad y(0)=-1",
     solution: "y = 4sin(x) - 1",
     solutionLatex: "y = 4\\sin x - 1",
+    takeaway: directIntegrationIvpTakeaway("4cos(x)", "y(0)=-1"),
     tags: {
       concept: ["trigonometric-antiderivative"],
     },
@@ -127,6 +165,11 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = 3\\sec^2 x,\\quad y(0)=0",
     solution: "y = 3tan(x)",
     solutionLatex: "y = 3\\tan x",
+    takeaway: directIntegrationIvpTakeaway(
+      "3sec^2(x)",
+      "y(0)=0",
+      "This differential equation has periodic singularities due to the nature of tan(x).",
+    ),
     tags: {
       concept: ["trigonometric-antiderivative", "singularity"],
     },
@@ -137,6 +180,11 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = 2\\csc x\\cot x,\\quad y(\\pi/2)=1",
     solution: "y = -2csc(x) + 3",
     solutionLatex: "y = -2\\csc x + 3",
+    takeaway: directIntegrationIvpTakeaway(
+      "2csc(x)cot(x)",
+      "y(pi/2)=1",
+      "This differential equation also has periodic singularities, like #038.",
+    ),
     tags: {
       concept: ["trigonometric-antiderivative", "singularity"],
     },
@@ -147,6 +195,7 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = 4x^3 - 6x + 2,\\quad y(1)=0",
     solution: "y = x^4 - 3x^2 + 2x",
     solutionLatex: "y = x^4 - 3x^2 + 2x",
+    takeaway: directIntegrationIvpTakeaway("4x^3 - 6x + 2", "y(1)=0"),
     tags: {
       concept: ["power-rule"],
     },
@@ -157,6 +206,7 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = 3\\sqrt{x} + 2e^x,\\quad y(0)=5",
     solution: "y = 2x^(3/2) + 2e^x + 3",
     solutionLatex: "y = 2x^{3/2} + 2e^x + 3",
+    takeaway: directIntegrationIvpTakeaway("3sqrt(x) + 2e^x", "y(0)=5"),
     tags: {
       concept: ["power-rule", "exponential-antiderivative"],
     },
@@ -167,6 +217,7 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = \\frac{2x}{x^2 + 4},\\quad y(0)=1",
     solution: "y = ln|x^2 + 4| + 1 - ln(4)",
     solutionLatex: "y = \\ln|x^2 + 4| + 1 - \\ln 4",
+    takeaway: directIntegrationIvpTakeaway("2x/(x^2 + 4)", "y(0)=1"),
     tags: {
       concept: [
         "integration-substitution",
@@ -180,6 +231,11 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = \\frac{1}{x + 2},\\quad y(0)=0",
     solution: "y = ln|x + 2| - ln(2)",
     solutionLatex: "y = \\ln|x + 2| - \\ln 2",
+    takeaway: directIntegrationIvpTakeaway(
+      "1/(x + 2)",
+      "y(0)=0",
+      "This differential equation has a shifted singularity at x=-2.",
+    ),
     tags: {
       concept: ["logarithmic-antiderivative", "domain-restriction"],
     },
@@ -190,6 +246,7 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = 5\\cos(5x),\\quad y(0)=2",
     solution: "y = sin(5x) + 2",
     solutionLatex: "y = \\sin(5x) + 2",
+    takeaway: directIntegrationIvpTakeaway("5cos(5x)", "y(0)=2"),
     tags: {
       concept: ["trigonometric-antiderivative"],
     },
@@ -200,6 +257,7 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = 2x\\sin(x^2),\\quad y(0)=3",
     solution: "y = -cos(x^2) + 4",
     solutionLatex: "y = -\\cos(x^2) + 4",
+    takeaway: directIntegrationIvpTakeaway("2xsin(x^2)", "y(0)=3"),
     tags: {
       concept: ["integration-substitution", "trigonometric-antiderivative"],
     },
@@ -210,6 +268,7 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = x^2e^{x^3},\\quad y(0)=0",
     solution: "y = (1/3)e^(x^3) - 1/3",
     solutionLatex: "y = \\frac{1}{3}e^{x^3} - \\frac{1}{3}",
+    takeaway: directIntegrationIvpTakeaway("x^2e^(x^3)", "y(0)=0"),
     tags: {
       concept: ["integration-substitution", "exponential-antiderivative"],
     },
@@ -220,6 +279,7 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = \\frac{1}{1 + 4x^2},\\quad y(0)=-1",
     solution: "y = (1/2)arctan(2x) - 1",
     solutionLatex: "y = \\frac{1}{2}\\arctan(2x) - 1",
+    takeaway: directIntegrationIvpTakeaway("1/(1 + 4x^2)", "y(0)=-1"),
     tags: {
       concept: ["inverse-trig-pattern", "integration-substitution"],
     },
@@ -230,6 +290,7 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = \\frac{3}{\\sqrt{1 - 9x^2}},\\quad y(0)=4",
     solution: "y = arcsin(3x) + 4",
     solutionLatex: "y = \\arcsin(3x) + 4",
+    takeaway: directIntegrationIvpTakeaway("3/sqrt(1 - 9x^2)", "y(0)=4"),
     tags: {
       concept: [
         "inverse-trig-pattern",
@@ -244,6 +305,7 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = e^x + \\cos x + 2x,\\quad y(0)=0",
     solution: "y = e^x + sin(x) + x^2 - 1",
     solutionLatex: "y = e^x + \\sin x + x^2 - 1",
+    takeaway: directIntegrationIvpTakeaway("e^x + cos(x) + 2x", "y(0)=0"),
     tags: {
       concept: [
         "exponential-antiderivative",
@@ -258,6 +320,7 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = \\frac{x}{\\sqrt{x^2 + 1}},\\quad y(0)=2",
     solution: "y = sqrt(x^2 + 1) + 1",
     solutionLatex: "y = \\sqrt{x^2 + 1} + 1",
+    takeaway: directIntegrationIvpTakeaway("x/sqrt(x^2 + 1)", "y(0)=2"),
     tags: {
       concept: ["integration-substitution", "power-rule"],
     },
