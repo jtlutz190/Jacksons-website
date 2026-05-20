@@ -9,10 +9,13 @@ const posts = [
     accentClass: "card-violet",
   },
   {
-    title: "Making Fourier Transforms Intuitive",
+    title: "How Smooth Waves Build Sharp Corners: Making Fourier Series Intuitive",
     description:
-      "A future explainer connecting signals, frequency-domain thinking, and visual reasoning for readers with mixed math backgrounds.",
-    accentClass: "card-violet",
+      "A square wave looks simple, but hidden inside is a carefully weighted stack of sine waves.",
+    href: "/blog/making-fourier-intuitive",
+    cta: "Click to see",
+    status: "Active" as const,
+    accentClass: "card-cyan",
   },
   {
     title:
