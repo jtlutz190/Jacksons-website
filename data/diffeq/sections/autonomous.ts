@@ -8,7 +8,7 @@ export const autonomousEntries = [
     solution: "y = Ce^x",
     solutionLatex: "y = Ce^x",
     tags: {
-      concept: ["growth", "equilibrium", "stability", "long-term-behavior"],
+      concept: ["growth", "equilibrium"],
     },
     takeaway: "",
   }),
@@ -19,7 +19,7 @@ export const autonomousEntries = [
     solution: "y = Ce^(-2x)",
     solutionLatex: "y = Ce^{-2x}",
     tags: {
-      concept: ["decay", "equilibrium", "stability"],
+      concept: ["decay", "equilibrium"],
     },
     takeaway: "",
   }),
@@ -41,13 +41,7 @@ export const autonomousEntries = [
     solution: "y = Ce^x - 4",
     solutionLatex: "y = Ce^x - 4",
     tags: {
-      concept: [
-        "equilibrium",
-        "growth",
-        "decay",
-        "stability",
-        "long-term-behavior",
-      ],
+      concept: ["equilibrium", "growth", "decay"],
     },
     takeaway: "",
   }),
@@ -58,7 +52,7 @@ export const autonomousEntries = [
     solution: "y = 5 - Ce^(-x)",
     solutionLatex: "y = 5 - Ce^{-x}",
     tags: {
-      concept: ["equilibrium", "stability", "long-term-behavior"],
+      concept: ["equilibrium"],
     },
     takeaway: "",
   }),
@@ -70,14 +64,7 @@ export const autonomousEntries = [
     solutionLatex: "y = \\frac{1}{-x + C}",
     tags: {
       method: ["autonomous", "separable", "nonlinear"],
-      concept: [
-        "finite-time-blow-up",
-        "equilibrium",
-        "stability",
-        "long-term-behavior",
-        "domain-restriction",
-        "singularity",
-      ],
+      concept: ["equilibrium", "domain-restriction", "singularity"],
     },
     takeaway: "",
   }),
@@ -89,14 +76,7 @@ export const autonomousEntries = [
     solutionLatex: "y = \\frac{1}{x + C}",
     tags: {
       method: ["autonomous", "separable", "nonlinear"],
-      concept: [
-        "decay",
-        "equilibrium",
-        "long-term-behavior",
-        "finite-time-blow-up",
-        "domain-restriction",
-        "singularity",
-      ],
+      concept: ["decay", "equilibrium", "domain-restriction", "singularity"],
     },
     takeaway: "",
   }),
@@ -108,7 +88,7 @@ export const autonomousEntries = [
     solutionLatex: "y = \\frac{1}{Ce^{-x} + 1}",
     tags: {
       method: ["autonomous", "separable", "nonlinear"],
-      concept: ["equilibrium", "stability", "long-term-behavior", "growth"],
+      concept: ["equilibrium", "growth"],
     },
     takeaway: "",
   }),
@@ -120,7 +100,7 @@ export const autonomousEntries = [
     solutionLatex: "y = \\frac{3}{Ce^{-6x} + 1}",
     tags: {
       method: ["autonomous", "separable", "nonlinear"],
-      concept: ["equilibrium", "stability", "growth", "long-term-behavior"],
+      concept: ["equilibrium", "growth"],
     },
     takeaway: "",
   }),
@@ -132,13 +112,7 @@ export const autonomousEntries = [
     solutionLatex: "y = \\frac{4}{1 - Ce^{4x}}",
     tags: {
       method: ["autonomous", "separable", "nonlinear"],
-      concept: [
-        "equilibrium",
-        "stability",
-        "finite-time-blow-up",
-        "long-term-behavior",
-        "singularity",
-      ],
+      concept: ["equilibrium", "singularity"],
     },
     takeaway: "",
   }),

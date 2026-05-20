@@ -71,7 +71,7 @@ export const directIntegrationIvpEntries = [
       "This differential equation only takes positive values, this means the slope of the solution is always positive.",
     ),
     tags: {
-      concept: ["power-rule"],
+      concept: ["power-rule", "domain-restriction"],
     },
   }),
   directIntegrationIvpEntry({
