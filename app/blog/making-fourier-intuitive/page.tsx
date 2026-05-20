@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import Latex from "@/components/Latex";
 import Footer from "@/components/Footer";
 
@@ -17,14 +18,27 @@ function Equation({ math }: { math: string }) {
   );
 }
 
-function FigurePlaceholder({ label }: { label: string }) {
+function ArticleFigure({
+  src,
+  alt,
+  caption,
+}: {
+  src: string;
+  alt: string;
+  caption: ReactNode;
+}) {
   return (
-    <figure className="my-8 rounded-lg border border-dashed border-accent/55 bg-surface/70 p-5">
-      <div className="notebook-rule flex min-h-56 items-center justify-center rounded-md border border-border/80 bg-bg/55 px-5 py-12 text-center">
-        <figcaption className="max-w-md font-mono text-xs uppercase tracking-[0.18em] text-accent">
-          Image placeholder: {label}
-        </figcaption>
+    <figure className="my-8 rounded-lg border border-cobalt/25 bg-surface/78 p-3 shadow-xl shadow-black/20 sm:p-4">
+      <div className="overflow-hidden rounded-md border border-border/70 bg-paper p-1">
+        <img
+          src={src}
+          alt={alt}
+          className="h-auto w-full rounded object-contain"
+        />
       </div>
+      <figcaption className="mt-3 text-center font-mono text-xs leading-5 text-accent">
+        {caption}
+      </figcaption>
     </figure>
   );
 }
@@ -78,7 +92,11 @@ export default function MakingFourierIntuitivePage() {
                 and curvy while the square wave has an "on and off" behavior.
               </p>
 
-              <FigurePlaceholder label="square wave and sine wave overlaid" />
+              <ArticleFigure
+                src="/images/blog/fourier/blog1.png"
+                alt="A sine wave and square wave plotted on the same axes."
+                caption="Sine wave and square wave overlaid"
+              />
 
               <p>
                 Having both of these in mind, a natural question arises. Is
@@ -102,7 +120,16 @@ export default function MakingFourierIntuitivePage() {
                 </p>
               </div>
 
-              <FigurePlaceholder label="first sine approximation to a square wave" />
+              <ArticleFigure
+                src="/images/blog/fourier/blog2.png"
+                alt="The first sine approximation to a square wave."
+                caption={
+                  <Latex
+                    math="f(x)=\frac{4}{\pi}\sin(x)"
+                    className="latex-inline"
+                  />
+                }
+              />
 
               <div className="space-y-6 text-base leading-8 text-soft">
                 <p>
@@ -118,6 +145,20 @@ export default function MakingFourierIntuitivePage() {
                 </p>
                 <Equation math="S_3(x)=\frac{4}{\pi}\left(\sin(x)+\frac{\sin(3x)}{3}\right)" />
                 <Equation math="S_5(x)=\frac{4}{\pi}\left(\sin(x)+\frac{\sin(3x)}{3}+\frac{\sin(5x)}{5}\right)" />
+                <ArticleFigure
+                  src="/images/blog/fourier/blog3.png"
+                  alt="The third Fourier partial sum for the square wave."
+                  caption={
+                    <Latex math="S_3(x)" className="latex-inline" />
+                  }
+                />
+                <ArticleFigure
+                  src="/images/blog/fourier/blog4.png"
+                  alt="The fifth Fourier partial sum for the square wave."
+                  caption={
+                    <Latex math="S_5(x)" className="latex-inline" />
+                  }
+                />
                 <p>
                   Why are we adding just odd harmonics like this? Each odd
                   harmonic shares a common behavior across{" "}
@@ -129,8 +170,6 @@ export default function MakingFourierIntuitivePage() {
                   to below at such points.
                 </p>
               </div>
-
-              <FigurePlaceholder label="odd harmonic sine waves building the square wave" />
 
               <div className="space-y-6 text-base leading-8 text-soft">
                 <p>
@@ -149,7 +188,21 @@ export default function MakingFourierIntuitivePage() {
                 <p>And take <InlineMath math="N" /> to infinity.</p>
               </div>
 
-              <FigurePlaceholder label="many Fourier partial sums approaching a square wave" />
+              <ArticleFigure
+                src="/images/blog/fourier/blog5.png"
+                alt="The eleventh Fourier partial sum for the square wave."
+                caption={<Latex math="S_{11}(x)" className="latex-inline" />}
+              />
+              <ArticleFigure
+                src="/images/blog/fourier/blog6.png"
+                alt="The twenty-fifth Fourier partial sum for the square wave."
+                caption={<Latex math="S_{25}(x)" className="latex-inline" />}
+              />
+              <ArticleFigure
+                src="/images/blog/fourier/blog7.png"
+                alt="The ninety-ninth Fourier partial sum for the square wave."
+                caption={<Latex math="S_{99}(x)" className="latex-inline" />}
+              />
 
               <div className="space-y-6 text-base leading-8 text-soft">
                 <p>
@@ -199,11 +252,31 @@ export default function MakingFourierIntuitivePage() {
                   this same approach. Here are some of my favorites:
                 </p>
                 <Equation math="C_N(x)=\sum_{n=1}^{N}\frac{\cos((2n-1)x)}{2n-1}" />
-                <FigurePlaceholder label="cosine with odd harmonics" />
+                <ArticleFigure
+                  src="/images/blog/fourier/blog8.png"
+                  alt="Cosine with odd harmonics plotted on a coordinate grid."
+                  caption="Cosine with odd harmonics"
+                />
                 <Equation math="G_N(x)=\sum_{n=1}^{N}\frac{\sin((2n-1)x)}{2n}" />
-                <FigurePlaceholder label="odd sine harmonics with even denominators" />
+                <ArticleFigure
+                  src="/images/blog/fourier/blog9.png"
+                  alt="A sine series using odd harmonics with even coefficients in the denominator."
+                  caption="Sine with odd harmonics inside sine but even coefficients in the denominator"
+                />
                 <Equation math="f_N(x)=2\sum_{n=1}^{N}(-1)^{n+1}\frac{\sin(nx)}{n}" />
-                <p className="font-mono text-sm text-accent">Sawtooth wave</p>
+                <ArticleFigure
+                  src="/images/blog/fourier/blog10.png"
+                  alt="A sawtooth wave approximation plotted on a coordinate grid."
+                  caption={
+                    <>
+                      <Latex
+                        math="2\sum_{n=1}^{70}(-1)^{n+1}\frac{\sin(nx)}{n}"
+                        className="latex-inline"
+                      />
+                      , known as "Sawtooth wave"
+                    </>
+                  }
+                />
               </div>
             </section>
           </div>
