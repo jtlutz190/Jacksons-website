@@ -25,7 +25,12 @@ const skillGroups = [
   },
   {
     title: "Hardware / lab",
-    skills: ["Microcontrollers", "Circuit Fundamentals", "Technical Documentation"],
+    skills: [
+      "Microcontrollers",
+      "Circuit Fundamentals",
+      "Soldering",
+      "Technical Documentation",
+    ],
     accentClass: "card-cyan",
   },
 ];
