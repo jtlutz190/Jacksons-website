@@ -88,12 +88,14 @@ export function defineDiffeqEntry(
     tags: {
       method: draft.tags?.method ?? template.methodTags,
       concept: draft.tags?.concept ?? [],
+      lab: draft.tags?.lab ?? [],
     },
     takeaway: draft.takeaway ?? template.takeaway,
     pdf: draft.pdf ?? getEntryPdfPath({ slug }),
     completed: draft.completed ?? true,
     featured: draft.featured,
     simulation: draft.simulation,
+    modelLab: draft.modelLab,
   };
 }
 

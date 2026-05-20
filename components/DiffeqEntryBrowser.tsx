@@ -3,11 +3,17 @@
 import { Fragment, useMemo, useState } from "react";
 import katex from "katex";
 import Link from "next/link";
-import type { ConceptTag, DiffeqEntry, MethodTag } from "@/data/diffeqEntries";
+import type {
+  ConceptTag,
+  DiffeqEntry,
+  LabTag,
+  MethodTag,
+} from "@/data/diffeqEntries";
 import {
   conceptTags,
   formatDiffeqTag,
   formatEntryNumber,
+  labTags,
   methodTags,
 } from "@/data/diffeqEntries";
 
@@ -71,6 +77,33 @@ function FeaturedBadge({ compact = false }: { compact?: boolean }) {
   );
 }
 
+function ModelLabIcon() {
+  return (
+    <svg
+      aria-hidden="true"
+      className="size-3.5"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+    >
+      <path d="M3 17c3-8 5-8 8 0s5 8 8 0" />
+      <path d="M3 5v14h18" />
+    </svg>
+  );
+}
+
+function ModelLabBadge() {
+  return (
+    <span className="inline-flex items-center gap-1.5 rounded-full border border-gold/70 bg-gold/15 px-2 py-1 font-mono text-[10px] uppercase tracking-[0.12em] text-gold">
+      <ModelLabIcon />
+      Model Lab
+    </span>
+  );
+}
+
 function SectionNotesCard({
   href,
   title,
@@ -119,9 +152,9 @@ function TagCheckbox({
   checked,
   onChange,
 }: {
-  tag: MethodTag | ConceptTag;
+  tag: MethodTag | ConceptTag | LabTag;
   checked: boolean;
-  onChange: (tag: MethodTag | ConceptTag) => void;
+  onChange: (tag: MethodTag | ConceptTag | LabTag) => void;
 }) {
   return (
     <label className="flex cursor-pointer items-center gap-2 rounded border border-border bg-bg/70 px-3 py-2 text-sm text-soft hover:border-accent-dim hover:text-text">
@@ -182,9 +215,10 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
   const [filtersOpen, setFiltersOpen] = useState(false);
   const [activeMethodTags, setActiveMethodTags] = useState<MethodTag[]>([]);
   const [activeConceptTags, setActiveConceptTags] = useState<ConceptTag[]>([]);
+  const [activeLabTags, setActiveLabTags] = useState<LabTag[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
 
-  const activeTags = [...activeMethodTags, ...activeConceptTags];
+  const activeTags = [...activeMethodTags, ...activeConceptTags, ...activeLabTags];
   const filteredEntries = useMemo(() => {
     if (activeTags.length === 0) {
       return entries;
@@ -192,9 +226,16 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
 
     return entries.filter((entry) =>
       activeMethodTags.every((tag) => entry.tags.method.includes(tag)) &&
-      activeConceptTags.every((tag) => entry.tags.concept.includes(tag)),
+      activeConceptTags.every((tag) => entry.tags.concept.includes(tag)) &&
+      activeLabTags.every((tag) => entry.tags.lab.includes(tag)),
     );
-  }, [activeConceptTags, activeMethodTags, activeTags.length, entries]);
+  }, [
+    activeConceptTags,
+    activeLabTags,
+    activeMethodTags,
+    activeTags.length,
+    entries,
+  ]);
   const totalPages = Math.max(1, Math.ceil(filteredEntries.length / ENTRIES_PER_PAGE));
   const page = Math.min(currentPage, totalPages);
   const pageStartIndex = (page - 1) * ENTRIES_PER_PAGE;
@@ -206,7 +247,7 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
     setCurrentPage(Math.min(Math.max(pageNumber, 1), totalPages));
   };
 
-  const toggleMethodTag = (tag: MethodTag | ConceptTag) => {
+  const toggleMethodTag = (tag: MethodTag | ConceptTag | LabTag) => {
     const methodTag = tag as MethodTag;
     setCurrentPage(1);
     setActiveMethodTags((current) =>
@@ -216,7 +257,7 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
     );
   };
 
-  const toggleConceptTag = (tag: MethodTag | ConceptTag) => {
+  const toggleConceptTag = (tag: MethodTag | ConceptTag | LabTag) => {
     const conceptTag = tag as ConceptTag;
     setCurrentPage(1);
     setActiveConceptTags((current) =>
@@ -226,10 +267,21 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
     );
   };
 
+  const toggleLabTag = (tag: MethodTag | ConceptTag | LabTag) => {
+    const labTag = tag as LabTag;
+    setCurrentPage(1);
+    setActiveLabTags((current) =>
+      current.includes(labTag)
+        ? current.filter((item) => item !== labTag)
+        : [...current, labTag],
+    );
+  };
+
   const clearTags = () => {
     setCurrentPage(1);
     setActiveMethodTags([]);
     setActiveConceptTags([]);
+    setActiveLabTags([]);
   };
 
   return (
@@ -270,7 +322,7 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
           </summary>
 
           <div className="border-t border-border p-5">
-            <div className="grid gap-6 lg:grid-cols-2">
+            <div className="grid gap-6 lg:grid-cols-3">
               <section aria-labelledby="method-tags-title">
                 <h3
                   id="method-tags-title"
@@ -304,6 +356,25 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
                       tag={tag}
                       checked={activeConceptTags.includes(tag)}
                       onChange={toggleConceptTag}
+                    />
+                  ))}
+                </div>
+              </section>
+
+              <section aria-labelledby="lab-tags-title">
+                <h3
+                  id="lab-tags-title"
+                  className="font-mono text-xs uppercase tracking-[0.18em] text-gold"
+                >
+                  Lab tags
+                </h3>
+                <div className="mt-3 grid gap-2">
+                  {labTags.map((tag) => (
+                    <TagCheckbox
+                      key={tag}
+                      tag={tag}
+                      checked={activeLabTags.includes(tag)}
+                      onChange={toggleLabTag}
                     />
                   ))}
                 </div>
@@ -354,46 +425,68 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-              {paginatedEntries.map((entry) => (
-                <Fragment key={entry.slug}>
-                  <article>
-                    <Link
-                      href={`/diffeq/${entry.slug}`}
-                      className={`card ${getChapterAccentClass(entry.number)} ${
-                        entry.featured
+              {paginatedEntries.map((entry) => {
+                const hasModelLab = entry.tags.lab.includes("simulated");
+                const labAnchor = entry.modelLab?.anchor ?? "ode-model-lab";
+
+                return (
+                  <Fragment key={entry.slug}>
+                    <article
+                      className={`card ${
+                        hasModelLab
+                          ? "card-gold border-gold/70 shadow-[0_0_0_1px_rgba(244,199,107,0.35),0_18px_44px_rgba(244,199,107,0.10)]"
+                          : getChapterAccentClass(entry.number)
+                      } ${
+                        entry.featured && !hasModelLab
                           ? "border-gold shadow-[0_0_0_1px_rgba(244,199,107,0.48),0_18px_44px_rgba(244,199,107,0.12)]"
                           : ""
-                      } relative flex min-h-20 flex-col justify-between rounded-md bg-surface px-3 py-2.5 hover:bg-surface-2`}
+                      } relative flex min-h-24 flex-col justify-between rounded-md bg-surface px-3 py-2.5 hover:bg-surface-2`}
                     >
-                      {entry.featured ? (
-                        <span className="absolute right-3 top-3">
+                      <div className="flex items-start justify-between gap-2">
+                        <Link
+                          href={`/diffeq/${entry.slug}`}
+                          className="font-mono text-sm font-semibold text-gold hover:text-text"
+                        >
+                          #{formatEntryNumber(entry.number)}
+                        </Link>
+                        {hasModelLab ? (
+                          <ModelLabBadge />
+                        ) : entry.featured ? (
                           <FeaturedBadge compact />
-                        </span>
-                      ) : null}
-                      <h3 className="font-mono text-sm font-semibold text-gold">
-                        #{formatEntryNumber(entry.number)}
-                      </h3>
-                      <p className="mt-2 text-sm leading-5 text-text">
+                        ) : null}
+                      </div>
+                      <Link
+                        href={`/diffeq/${entry.slug}`}
+                        className="mt-2 block text-sm leading-5 text-text hover:text-accent"
+                      >
                         <LatexText math={entry.equationLatex} />
-                      </p>
-                    </Link>
-                  </article>
+                      </Link>
+                      {hasModelLab ? (
+                        <Link
+                          href={`/diffeq#${labAnchor}`}
+                          className="mt-3 inline-flex min-h-8 items-center justify-center rounded-md border border-gold/55 bg-gold/10 px-2.5 font-mono text-[10px] uppercase tracking-[0.12em] text-gold hover:border-gold hover:bg-gold/15"
+                        >
+                          Open Model Lab
+                        </Link>
+                      ) : null}
+                    </article>
 
-                  {showSectionNotesCards && entry.number === 25 ? (
-                    <SectionNotesCard
-                      href="/diffeq/direct-integration-equations-notes"
-                      title="Direct integration equations notes"
-                    />
-                  ) : null}
+                    {showSectionNotesCards && entry.number === 25 ? (
+                      <SectionNotesCard
+                        href="/diffeq/direct-integration-equations-notes"
+                        title="Direct integration equations notes"
+                      />
+                    ) : null}
 
-                  {showSectionNotesCards && entry.number === 50 ? (
-                    <SectionNotesCard
-                      href="/diffeq/direct-integration-initial-value-problems-notes"
-                      title="Direct integration initial value problems notes"
-                    />
-                  ) : null}
-                </Fragment>
-              ))}
+                    {showSectionNotesCards && entry.number === 50 ? (
+                      <SectionNotesCard
+                        href="/diffeq/direct-integration-initial-value-problems-notes"
+                        title="Direct integration initial value problems notes"
+                      />
+                    ) : null}
+                  </Fragment>
+                );
+              })}
             </div>
 
             <div className="mt-5 flex justify-end">

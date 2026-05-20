@@ -83,8 +83,11 @@ export const conceptTags = [
   "boundary-conditions",
 ] as const;
 
+export const labTags = ["simulated"] as const;
+
 export type MethodTag = (typeof methodTags)[number];
 export type ConceptTag = (typeof conceptTags)[number];
+export type LabTag = (typeof labTags)[number];
 
 const tagLabels: Record<string, string> = {
   "annihilator-method": "annihilator method",
@@ -97,6 +100,7 @@ const tagLabels: Record<string, string> = {
   "linear-first-order": "linear first-order",
   "operator-method": "operator method",
   "runge-kutta": "Runge-Kutta",
+  simulated: "simulated",
   "substitution": "ODE substitution",
 };
 
