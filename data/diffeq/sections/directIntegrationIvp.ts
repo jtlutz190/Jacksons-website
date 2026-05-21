@@ -86,7 +86,7 @@ export const directIntegrationIvpEntries = [
       "This differential equation only takes positive values, this means the slope of the solution is always positive.",
     ),
     tags: {
-      concept: ["power-rule"],
+      concept: ["power-rule", "domain-restriction"],
     },
   }),
   directIntegrationIvpEntry({
@@ -145,7 +145,7 @@ export const directIntegrationIvpEntries = [
     solutionLatex: "y = -\\cos x + 3",
     takeaway: directIntegrationIvpTakeaway("sin(x)", "y(0)=2"),
     tags: {
-      concept: ["trigonometric-antiderivative"],
+      concept: ["trigonometric-antiderivative", "oscillation"],
     },
   }),
   directIntegrationIvpEntry({
@@ -156,7 +156,7 @@ export const directIntegrationIvpEntries = [
     solutionLatex: "y = 4\\sin x - 1",
     takeaway: directIntegrationIvpTakeaway("4cos(x)", "y(0)=-1"),
     tags: {
-      concept: ["trigonometric-antiderivative"],
+      concept: ["trigonometric-antiderivative", "oscillation"],
     },
   }),
   directIntegrationIvpEntry({
@@ -208,7 +208,7 @@ export const directIntegrationIvpEntries = [
     solutionLatex: "y = 2x^{3/2} + 2e^x + 3",
     takeaway: directIntegrationIvpTakeaway("3sqrt(x) + 2e^x", "y(0)=5"),
     tags: {
-      concept: ["power-rule", "exponential-antiderivative"],
+      concept: ["power-rule", "exponential-antiderivative", "domain-restriction"],
     },
   }),
   directIntegrationIvpEntry({
@@ -219,10 +219,12 @@ export const directIntegrationIvpEntries = [
     solutionLatex: "y = \\ln|x^2 + 4| + 1 - \\ln 4",
     takeaway: directIntegrationIvpTakeaway("2x/(x^2 + 4)", "y(0)=1"),
     tags: {
-      concept: [
+      method: [
+        "direct-integration",
+        "initial-value-problem",
         "integration-substitution",
-        "logarithmic-antiderivative",
       ],
+      concept: ["logarithmic-antiderivative"],
     },
   }),
   directIntegrationIvpEntry({
@@ -237,7 +239,11 @@ export const directIntegrationIvpEntries = [
       "This differential equation has a shifted singularity at x=-2.",
     ),
     tags: {
-      concept: ["logarithmic-antiderivative", "domain-restriction"],
+      concept: [
+        "logarithmic-antiderivative",
+        "domain-restriction",
+        "singularity",
+      ],
     },
   }),
   directIntegrationIvpEntry({
@@ -248,7 +254,7 @@ export const directIntegrationIvpEntries = [
     solutionLatex: "y = \\sin(5x) + 2",
     takeaway: directIntegrationIvpTakeaway("5cos(5x)", "y(0)=2"),
     tags: {
-      concept: ["trigonometric-antiderivative"],
+      concept: ["trigonometric-antiderivative", "oscillation"],
     },
   }),
   directIntegrationIvpEntry({
@@ -259,7 +265,12 @@ export const directIntegrationIvpEntries = [
     solutionLatex: "y = -\\cos(x^2) + 4",
     takeaway: directIntegrationIvpTakeaway("2xsin(x^2)", "y(0)=3"),
     tags: {
-      concept: ["integration-substitution", "trigonometric-antiderivative"],
+      method: [
+        "direct-integration",
+        "initial-value-problem",
+        "integration-substitution",
+      ],
+      concept: ["trigonometric-antiderivative", "oscillation"],
     },
   }),
   directIntegrationIvpEntry({
@@ -270,7 +281,12 @@ export const directIntegrationIvpEntries = [
     solutionLatex: "y = \\frac{1}{3}e^{x^3} - \\frac{1}{3}",
     takeaway: directIntegrationIvpTakeaway("x^2e^(x^3)", "y(0)=0"),
     tags: {
-      concept: ["integration-substitution", "exponential-antiderivative"],
+      method: [
+        "direct-integration",
+        "initial-value-problem",
+        "integration-substitution",
+      ],
+      concept: ["exponential-antiderivative", "growth"],
     },
   }),
   directIntegrationIvpEntry({
@@ -281,7 +297,12 @@ export const directIntegrationIvpEntries = [
     solutionLatex: "y = \\frac{1}{2}\\arctan(2x) - 1",
     takeaway: directIntegrationIvpTakeaway("1/(1 + 4x^2)", "y(0)=-1"),
     tags: {
-      concept: ["inverse-trig-pattern", "integration-substitution"],
+      method: [
+        "direct-integration",
+        "initial-value-problem",
+        "integration-substitution",
+      ],
+      concept: ["inverse-trig-pattern"],
     },
   }),
   directIntegrationIvpEntry({
@@ -292,11 +313,12 @@ export const directIntegrationIvpEntries = [
     solutionLatex: "y = \\arcsin(3x) + 4",
     takeaway: directIntegrationIvpTakeaway("3/sqrt(1 - 9x^2)", "y(0)=4"),
     tags: {
-      concept: [
-        "inverse-trig-pattern",
+      method: [
+        "direct-integration",
+        "initial-value-problem",
         "integration-substitution",
-        "domain-restriction",
       ],
+      concept: ["inverse-trig-pattern", "domain-restriction"],
     },
   }),
   directIntegrationIvpEntry({
@@ -322,7 +344,12 @@ export const directIntegrationIvpEntries = [
     solutionLatex: "y = \\sqrt{x^2 + 1} + 1",
     takeaway: directIntegrationIvpTakeaway("x/sqrt(x^2 + 1)", "y(0)=2"),
     tags: {
-      concept: ["integration-substitution", "power-rule"],
+      method: [
+        "direct-integration",
+        "initial-value-problem",
+        "integration-substitution",
+      ],
+      concept: ["power-rule"],
     },
   }),
 ];
