@@ -81,7 +81,10 @@ export const directIntegrationEntries = [
       "y = 2sqrt(x) + C",
       "This function only takes on positive values. Also, y' blows up at x=0, meaning the solution develops a vertical-tangent-type behavior near that point.",
     ),
-    tags: { method: ["direct-integration"], concept: ["power-rule"] },
+    tags: {
+      method: ["direct-integration"],
+      concept: ["power-rule", "domain-restriction"],
+    },
   }),
   directIntegrationEntry({
     number: 7,
@@ -159,7 +162,7 @@ export const directIntegrationEntries = [
       "This is the first trigonometric example: the oscillatory slope gives rise to an oscillatory solution.",
     ),
     tags: {
-      concept: ["trigonometric-antiderivative"],
+      concept: ["trigonometric-antiderivative", "oscillation"],
     },
   }),
   directIntegrationEntry({
@@ -173,7 +176,7 @@ export const directIntegrationEntries = [
       "y = 4sin(x) + C",
     ),
     tags: {
-      concept: ["trigonometric-antiderivative"],
+      concept: ["trigonometric-antiderivative", "oscillation"],
     },
   }),
   directIntegrationEntry({
@@ -188,7 +191,11 @@ export const directIntegrationEntries = [
       "This function has periodic singularities at x=pi/2 + pi k, where k is an integer, due to the undefined values of tan x.",
     ),
     tags: {
-      concept: ["trigonometric-antiderivative"],
+      concept: [
+        "trigonometric-antiderivative",
+        "domain-restriction",
+        "singularity",
+      ],
     },
   }),
   directIntegrationEntry({
@@ -286,8 +293,8 @@ export const directIntegrationEntries = [
       "y = (3/2)ln|2x + 1| + C",
     ),
     tags: {
-      method: ["direct-integration"],
-      concept: ["integration-substitution", "logarithmic-antiderivative"],
+      method: ["direct-integration", "integration-substitution"],
+      concept: ["logarithmic-antiderivative"],
     },
   }),
   directIntegrationEntry({
@@ -301,8 +308,8 @@ export const directIntegrationEntries = [
       "y = (1/2)ln|x^2 + 1| + C",
     ),
     tags: {
-      method: ["direct-integration"],
-      concept: ["integration-substitution", "logarithmic-antiderivative"],
+      method: ["direct-integration", "integration-substitution"],
+      concept: ["logarithmic-antiderivative"],
     },
   }),
   directIntegrationEntry({
@@ -316,8 +323,8 @@ export const directIntegrationEntries = [
       "y = ln|x^2 + 5| + C",
     ),
     tags: {
-      method: ["direct-integration"],
-      concept: ["integration-substitution", "logarithmic-antiderivative"],
+      method: ["direct-integration", "integration-substitution"],
+      concept: ["logarithmic-antiderivative"],
     },
   }),
   directIntegrationEntry({
@@ -345,7 +352,7 @@ export const directIntegrationEntries = [
       "y = arcsin(x) + C",
     ),
     tags: {
-      concept: ["inverse-trig-pattern", "domain-restriction", "singularity"],
+      concept: ["inverse-trig-pattern", "domain-restriction"],
     },
   }),
   directIntegrationEntry({
@@ -359,7 +366,8 @@ export const directIntegrationEntries = [
       "y = (1/3)e^(x^3) + C",
     ),
     tags: {
-      concept: ["integration-substitution", "exponential-antiderivative"],
+      method: ["direct-integration", "integration-substitution"],
+      concept: ["exponential-antiderivative"],
     },
   }),
   directIntegrationEntry({
@@ -373,7 +381,8 @@ export const directIntegrationEntries = [
       "y = sin(x^2) + C",
     ),
     tags: {
-      concept: ["integration-substitution", "trigonometric-antiderivative"],
+      method: ["direct-integration", "integration-substitution"],
+      concept: ["trigonometric-antiderivative"],
     },
   }),
 ];
