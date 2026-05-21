@@ -7,11 +7,12 @@ export type {
   DiffeqEntryDraft,
   DiffeqEntryTags,
   DiffeqEntryTemplate,
+  DiffeqModelLab,
   DiffeqSimulation,
 } from "./types";
 
-export { conceptTags, formatDiffeqTag, methodTags } from "./tags";
-export type { ConceptTag, MethodTag } from "./tags";
+export { conceptTags, formatDiffeqTag, labTags, methodTags } from "./tags";
+export type { ConceptTag, LabTag, MethodTag } from "./tags";
 export {
   defineDiffeqEntry,
   autonomousEntry,

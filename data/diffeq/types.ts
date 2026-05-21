@@ -1,14 +1,24 @@
-import type { ConceptTag, MethodTag } from "./tags";
+import type { ConceptTag, LabTag, MethodTag } from "./tags";
 
 export interface DiffeqEntryTags {
   method: readonly MethodTag[];
   concept: readonly ConceptTag[];
+  lab: readonly LabTag[];
 }
 
 export interface DiffeqSimulation {
   title: string;
   language: "Python" | "MATLAB";
   downloadPath: string;
+}
+
+export interface DiffeqModelLab {
+  status: "planned" | "active";
+  title: string;
+  category: string;
+  description: string;
+  anchor?: string;
+  features?: readonly string[];
 }
 
 export interface DiffeqEntry {
@@ -28,6 +38,7 @@ export interface DiffeqEntry {
   completed: boolean;
   featured?: boolean;
   simulation?: DiffeqSimulation;
+  modelLab?: DiffeqModelLab;
 }
 
 export interface DiffeqEntryTemplate {
@@ -56,4 +67,5 @@ export interface DiffeqEntryDraft {
   completed?: boolean;
   featured?: boolean;
   simulation?: DiffeqSimulation;
+  modelLab?: DiffeqModelLab;
 }

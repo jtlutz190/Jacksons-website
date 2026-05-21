@@ -18,7 +18,26 @@ export const directIntegrationEntries = [
     solution: "y = x^2 + C",
     solutionLatex: "y = x^2 + C",
     takeaway: directIntegrationTakeaway("2x", "y = x^2 + C"),
-    tags: { method: ["direct-integration"], concept: ["power-rule"] },
+    tags: {
+      method: ["direct-integration"],
+      concept: ["power-rule"],
+      lab: ["simulated"],
+    },
+    modelLab: {
+      status: "planned",
+      title: "Direct integration curve family",
+      category: "Direct integration",
+      description:
+        "A first visual model for connecting a slope field y' = 2x to the family of parabolic solution curves y = x^2 + C.",
+      anchor: "lab-001",
+      features: [
+        "Interactive simulation",
+        "Plots",
+        "Sliders",
+        "Why this matters",
+        "Model limitations",
+      ],
+    },
   }),
   directIntegrationEntry({
     number: 2,

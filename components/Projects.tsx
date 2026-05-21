@@ -22,12 +22,12 @@ const projects = [
     title: "1000 Differential Equations",
     status: "Active archive",
     description:
-      "A long-term handwritten and computational archive of ordinary differential equations, organized by structure, method, and mathematical idea. Hosted on this website!",
+      "A long-term archive of ordinary differential equations with analytical solutions, computational visualization, and selected Model Lab entries for interactive ODE interpretation.",
     tags: [
       "Differential Equations",
       "ODEs",
+      "Model Lab",
       "Mathematical Writing",
-      "Problem Solving",
     ],
     link: "/diffeq",
     linkLabel: "View archive",
