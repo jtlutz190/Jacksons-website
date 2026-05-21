@@ -34,7 +34,7 @@ export const autonomousTemplate = {
   method: "Separation of variables and qualitative analysis",
   category: "Autonomous equations",
   takeaway: "",
-  methodTags: ["autonomous", "separable"],
+  methodTags: ["separable"],
 } satisfies DiffeqEntryTemplate;
 
 export function formatEntryNumber(number: number) {
@@ -126,5 +126,15 @@ export function directIntegrationIvpEntry(draft: DiffeqEntryDraft) {
 }
 
 export function autonomousEntry(draft: DiffeqEntryDraft) {
-  return defineDiffeqEntry(autonomousTemplate, draft);
+  const entry = defineDiffeqEntry(autonomousTemplate, draft);
+
+  return {
+    ...entry,
+    tags: {
+      ...entry.tags,
+      concept: Array.from(
+        new Set([...entry.tags.concept, "autonomous" as const]),
+      ),
+    },
+  };
 }
