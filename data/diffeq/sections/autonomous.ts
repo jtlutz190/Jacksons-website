@@ -9,22 +9,6 @@ export const autonomousEntries = [
     solutionLatex: "y = Ce^x",
     tags: {
       concept: ["growth", "equilibrium"],
-      lab: ["simulated"],
-    },
-    modelLab: {
-      status: "planned",
-      title: "Exponential growth and decay baseline",
-      category: "Autonomous systems",
-      description:
-        "A simple autonomous model for comparing initial conditions, equilibrium behavior, and exponential sensitivity over time.",
-      anchor: "lab-051",
-      features: [
-        "Interactive simulation",
-        "Plots",
-        "Sliders",
-        "Why this matters",
-        "Model limitations",
-      ],
     },
     takeaway: "",
   }),
@@ -47,6 +31,22 @@ export const autonomousEntries = [
     solutionLatex: "y = Ce^{3x}",
     tags: {
       concept: ["growth", "equilibrium"],
+      lab: ["simulated"],
+    },
+    modelLab: {
+      status: "planned",
+      title: "Exponential growth sensitivity",
+      category: "Autonomous systems",
+      description:
+        "A simple autonomous model for comparing initial conditions, equilibrium behavior, and rapid exponential sensitivity over time.",
+      anchor: "lab-053",
+      features: [
+        "Interactive simulation",
+        "Plots",
+        "Sliders",
+        "Why this matters",
+        "Model limitations",
+      ],
     },
     takeaway: "",
   }),
@@ -116,22 +116,6 @@ export const autonomousEntries = [
     tags: {
       method: ["separable", "partial-fractions"],
       concept: ["nonlinear", "equilibrium", "growth"],
-      lab: ["simulated"],
-    },
-    modelLab: {
-      status: "planned",
-      title: "Logistic growth phase-line model",
-      category: "Population dynamics",
-      description:
-        "A planned logistic growth model focused on carrying capacity, stable equilibria, and qualitative interpretation of saturation.",
-      anchor: "lab-058",
-      features: [
-        "Interactive simulation",
-        "Plots",
-        "Sliders",
-        "Why this matters",
-        "Model limitations",
-      ],
     },
     takeaway: "",
   }),

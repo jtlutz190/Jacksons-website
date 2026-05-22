@@ -22,7 +22,7 @@ const projects = [
     title: "1000 Differential Equations",
     status: "Active archive",
     description:
-      "A long-term archive of ordinary differential equations with analytical solutions, computational visualization, and selected Model Lab entries for interactive ODE interpretation.",
+      "A long-term archive of ordinary differential equations with analytical solutions, computational visualization, and selected Model Lab entries for interactive ODE interpretation. Hosted on this site!",
     tags: [
       "Differential Equations",
       "ODEs",

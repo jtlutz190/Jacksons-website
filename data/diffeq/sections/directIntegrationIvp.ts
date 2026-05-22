@@ -42,6 +42,22 @@ export const directIntegrationIvpEntries = [
     takeaway: directIntegrationIvpTakeaway("5x^4 - 2x + 7", "y(0)=-1"),
     tags: {
       concept: ["power-rule"],
+      lab: ["simulated"],
+    },
+    modelLab: {
+      status: "planned",
+      title: "Initial-value polynomial trajectory",
+      category: "Initial value problems",
+      description:
+        "A planned model for showing how the initial condition y(0) = -1 selects one curve from the polynomial solution family.",
+      anchor: "lab-028",
+      features: [
+        "Interactive simulation",
+        "Plots",
+        "Sliders",
+        "Why this matters",
+        "Model limitations",
+      ],
     },
   }),
   directIntegrationIvpEntry({

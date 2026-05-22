@@ -122,6 +122,9 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
   const simulation = getEntrySimulation(entry);
   const simulationCode = await getSimulationCode(simulation.downloadPath);
   const simulationPreviewPath = await getSimulationPreviewPath(simulation.downloadPath);
+  const modelLabHref = entry.modelLab
+    ? `/diffeq#${entry.modelLab.anchor ?? "ode-model-lab"}`
+    : null;
 
   return (
     <main className="mx-auto max-w-4xl px-4 py-10 sm:px-6 lg:px-8">
@@ -147,7 +150,17 @@ export default async function DiffeqEntryPage({ params }: DiffeqEntryPageProps) 
 
         <div className="mt-10">
           <EntrySection title="Problem">
-            <Latex math={entry.equationLatex} className="latex-display-inline text-xl text-text" />
+            <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+              <Latex math={entry.equationLatex} className="latex-display-inline text-xl text-text" />
+              {modelLabHref ? (
+                <Link
+                  href={modelLabHref}
+                  className="inline-flex min-h-10 w-fit shrink-0 items-center rounded-md border border-gold/55 bg-gold/10 px-4 font-mono text-xs uppercase tracking-[0.12em] text-gold hover:border-gold hover:bg-gold/15"
+                >
+                  Open Model Lab
+                </Link>
+              ) : null}
+            </div>
           </EntrySection>
 
           <EntrySection title="Classification">

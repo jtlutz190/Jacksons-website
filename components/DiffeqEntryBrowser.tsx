@@ -427,11 +427,12 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
               {paginatedEntries.map((entry) => {
                 const hasModelLab = entry.tags.lab.includes("simulated");
-                const labAnchor = entry.modelLab?.anchor ?? "ode-model-lab";
 
                 return (
                   <Fragment key={entry.slug}>
-                    <article
+                    <Link
+                      href={`/diffeq/${entry.slug}`}
+                      aria-label={`Open entry #${formatEntryNumber(entry.number)}`}
                       className={`card ${
                         hasModelLab
                           ? "card-gold border-gold/70 shadow-[0_0_0_1px_rgba(244,199,107,0.35),0_18px_44px_rgba(244,199,107,0.10)]"
@@ -440,36 +441,22 @@ export default function DiffeqEntryBrowser({ entries }: DiffeqEntryBrowserProps)
                         entry.featured && !hasModelLab
                           ? "border-gold shadow-[0_0_0_1px_rgba(244,199,107,0.48),0_18px_44px_rgba(244,199,107,0.12)]"
                           : ""
-                      } relative flex min-h-24 flex-col justify-between rounded-md bg-surface px-3 py-2.5 hover:bg-surface-2`}
+                      } relative flex min-h-24 flex-col justify-between rounded-md bg-surface px-3 py-2.5 no-underline hover:bg-surface-2 focus:outline-none focus:ring-2 focus:ring-accent-dim focus:ring-offset-2 focus:ring-offset-bg`}
                     >
                       <div className="flex items-start justify-between gap-2">
-                        <Link
-                          href={`/diffeq/${entry.slug}`}
-                          className="font-mono text-sm font-semibold text-gold hover:text-text"
-                        >
+                        <span className="font-mono text-sm font-semibold text-gold">
                           #{formatEntryNumber(entry.number)}
-                        </Link>
+                        </span>
                         {hasModelLab ? (
                           <ModelLabBadge />
                         ) : entry.featured ? (
                           <FeaturedBadge compact />
                         ) : null}
                       </div>
-                      <Link
-                        href={`/diffeq/${entry.slug}`}
-                        className="mt-2 block text-sm leading-5 text-text hover:text-accent"
-                      >
+                      <span className="mt-2 block text-sm leading-5 text-text">
                         <LatexText math={entry.equationLatex} />
-                      </Link>
-                      {hasModelLab ? (
-                        <Link
-                          href={`/diffeq#${labAnchor}`}
-                          className="mt-3 inline-flex min-h-8 items-center justify-center rounded-md border border-gold/55 bg-gold/10 px-2.5 font-mono text-[10px] uppercase tracking-[0.12em] text-gold hover:border-gold hover:bg-gold/15"
-                        >
-                          Open Model Lab
-                        </Link>
-                      ) : null}
-                    </article>
+                      </span>
+                    </Link>
 
                     {showSectionNotesCards && entry.number === 25 ? (
                       <SectionNotesCard

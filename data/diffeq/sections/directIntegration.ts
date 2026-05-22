@@ -21,22 +21,6 @@ export const directIntegrationEntries = [
     tags: {
       method: ["direct-integration"],
       concept: ["power-rule"],
-      lab: ["simulated"],
-    },
-    modelLab: {
-      status: "planned",
-      title: "Direct integration curve family",
-      category: "Direct integration",
-      description:
-        "A first visual model for connecting a slope field y' = 2x to the family of parabolic solution curves y = x^2 + C.",
-      anchor: "lab-001",
-      features: [
-        "Interactive simulation",
-        "Plots",
-        "Sliders",
-        "Why this matters",
-        "Model limitations",
-      ],
     },
   }),
   directIntegrationEntry({
@@ -46,7 +30,10 @@ export const directIntegrationEntries = [
     solution: "y = x^3 + C",
     solutionLatex: "y = x^3 + C",
     takeaway: directIntegrationTakeaway("3x^2", "y = x^3 + C"),
-    tags: { method: ["direct-integration"], concept: ["power-rule"] },
+    tags: {
+      method: ["direct-integration"],
+      concept: ["power-rule"],
+    },
   }),
   directIntegrationEntry({
     number: 3,
@@ -58,7 +45,26 @@ export const directIntegrationEntries = [
       "5x^4 - 2x + 7",
       "y = x^5 - x^2 + 7x + C",
     ),
-    tags: { method: ["direct-integration"], concept: ["power-rule"] },
+    tags: {
+      method: ["direct-integration"],
+      concept: ["power-rule"],
+      lab: ["simulated"],
+    },
+    modelLab: {
+      status: "planned",
+      title: "Polynomial slope curve family",
+      category: "Direct integration",
+      description:
+        "A visual model for connecting the polynomial slope field y' = 5x^4 - 2x + 7 to its shifted family of solution curves.",
+      anchor: "lab-003",
+      features: [
+        "Interactive simulation",
+        "Plots",
+        "Sliders",
+        "Why this matters",
+        "Model limitations",
+      ],
+    },
   }),
   directIntegrationEntry({
     number: 4,
