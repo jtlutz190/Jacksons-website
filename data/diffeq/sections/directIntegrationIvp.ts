@@ -358,7 +358,8 @@ export const directIntegrationIvpEntries = [
     equationLatex: "y' = \\frac{x}{\\sqrt{x^2 + 1}},\\quad y(0)=2",
     solution: "y = sqrt(x^2 + 1) + 1",
     solutionLatex: "y = \\sqrt{x^2 + 1} + 1",
-    takeaway: directIntegrationIvpTakeaway("x/sqrt(x^2 + 1)", "y(0)=2"),
+    takeaway:
+      "The slope is controlled by x/sqrt(x^2+1). It is negative for x<0, zero at x=0, and positive for x>0, so the solution decreases into x=0 and increases after it. The IVP selects one specific curve with a smooth minimum at x=0.",
     tags: {
       method: [
         "direct-integration",

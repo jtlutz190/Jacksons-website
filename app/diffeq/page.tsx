@@ -100,8 +100,8 @@ export default function DiffeqArchivePage() {
             </p>
             <p className="text-sm leading-6 text-muted">
               Problems are adapted from textbooks, course materials, and
-              generative AI. All solutions and explanations are done by me
-              unless noted otherwise.
+              generative AI. All written solutions and explanations are done by
+              me unless noted otherwise.
             </p>
           </div>
           <div className="mt-6 grid gap-3 border-y border-border py-5 text-sm sm:grid-cols-2">
