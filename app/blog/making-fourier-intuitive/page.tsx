@@ -169,6 +169,11 @@ export default function MakingFourierIntuitivePage() {
                   summed, they constructively make a wave that goes from above
                   to below at such points.
                 </p>
+                <ArticleFigure
+                  src="/images/blog/fourier/blog11.png"
+                  alt="The first, third, and fifth sine harmonics crossing x equals pi from positive to negative."
+                  caption="Odd harmonics cross together at the sign change"
+                />
               </div>
 
               <div className="space-y-6 text-base leading-8 text-soft">
@@ -267,15 +272,7 @@ export default function MakingFourierIntuitivePage() {
                 <ArticleFigure
                   src="/images/blog/fourier/blog10.png"
                   alt="A sawtooth wave approximation plotted on a coordinate grid."
-                  caption={
-                    <>
-                      <Latex
-                        math="2\sum_{n=1}^{70}(-1)^{n+1}\frac{\sin(nx)}{n}"
-                        className="latex-inline"
-                      />
-                      , known as "Sawtooth wave"
-                    </>
-                  }
+                  caption="known as Sawtooth wave"
                 />
               </div>
             </section>
