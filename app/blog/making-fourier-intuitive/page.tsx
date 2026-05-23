@@ -87,9 +87,9 @@ export default function MakingFourierIntuitivePage() {
           <div className="px-5 py-10 sm:px-8 lg:px-10">
             <div className="space-y-6 text-base leading-8 text-soft">
               <p>
-                It is obvious to see that a sine wave and a square wave behave
-                differently. While both are periodic, the sine wave is smooth
-                and curvy while the square wave has an "on and off" behavior.
+                A sine wave and a square wave behave very differently. While
+                both are periodic, the sine wave is smooth and curvy while the
+                square wave has an "on and off" behavior.
               </p>
 
               <ArticleFigure
@@ -99,11 +99,11 @@ export default function MakingFourierIntuitivePage() {
               />
 
               <p>
-                Having both of these in mind, a natural question arises. Is
-                there a way to use the periodicity of the sine wave in order to
-                produce a square wave? This leads us to Fourier's trick, which
-                has underpinned signal processing, circuits, image compression,
-                and so much more since its discovery.
+                With both shapes in mind, a natural question arises. Is there a
+                way to use the periodicity of the sine wave in order to produce
+                a square wave? This leads us to Fourier's trick, which has
+                underpinned signal processing, circuits, image compression, and
+                so much more since its discovery.
               </p>
             </div>
 
@@ -112,7 +112,7 @@ export default function MakingFourierIntuitivePage() {
                 Making The Square Wave
               </h2>
               <div className="mt-5 space-y-6 text-base leading-8 text-soft">
-                <p>Let us make the first and most simple approach. Start with</p>
+                <p>Let's start with the simplest approximation.</p>
                 <Equation math="S_1(x)=\frac{4}{\pi}\sin(x)" />
                 <p>
                   This is our foundation. It does not look like a square wave
@@ -143,8 +143,8 @@ export default function MakingFourierIntuitivePage() {
                   harmonics. A harmonic is just a sine wave whose frequency is
                   an integer multiple of the original:
                 </p>
-                <Equation math="S_3(x)=\frac{4}{\pi}\left(\sin(x)+\frac{\sin(3x)}{3}\right)" />
-                <Equation math="S_5(x)=\frac{4}{\pi}\left(\sin(x)+\frac{\sin(3x)}{3}+\frac{\sin(5x)}{5}\right)" />
+                <Equation math="S_3(x)=\frac{4}{\pi}\left(\sin(x)+\frac{1}{3}\sin(3x)\right)" />
+                <Equation math="S_5(x)=\frac{4}{\pi}\left(\sin(x)+\frac{1}{3}\sin(3x)+\frac{1}{5}\sin(5x)\right)" />
                 <ArticleFigure
                   src="/images/blog/fourier/blog3.png"
                   alt="The third Fourier partial sum for the square wave."
@@ -185,8 +185,12 @@ export default function MakingFourierIntuitivePage() {
                   bottom, which does not hold for even harmonics. So, in order
                   to constructively help make the square wave, we omit the even
                   harmonics and stick to odd. If you are wondering why this is
-                  true, notice that <InlineMath math="f(x+\pi)=-f(x)" /> for odd
-                  harmonics, but not even ones.
+                  true, notice that for <InlineMath math="\sin(kx)" />, shifting
+                  by <InlineMath math="\pi" /> gives{" "}
+                  <InlineMath math="\sin(k(x+\pi))=(-1)^k\sin(kx)" />. Odd{" "}
+                  <InlineMath math="k" /> terms flip sign, matching the square
+                  wave's half-period sign flip, while even{" "}
+                  <InlineMath math="k" /> terms do not.
                 </p>
                 <p>Now, let us generalize the approximation:</p>
                 <Equation math="S_N(x)=\frac{4}{\pi}\sum_{n=1}^{N}\frac{\sin((2n-1)x)}{2n-1}" />
@@ -234,11 +238,13 @@ export default function MakingFourierIntuitivePage() {
                   It is also important to note that the{" "}
                   <InlineMath math="\frac{4}{\pi}" /> included in the series is
                   important to normalize the function. Without the coefficient,
-                  the sum would converge to <InlineMath math="\frac{\pi}{4}" />.
-                  In order to make it jump from 1 to -1 and so on, we multiply
-                  by <InlineMath math="\frac{4}{\pi}" />. Once you realize a
-                  wave is controlled by its frequency recipe, the natural next
-                  move is to start changing this recipe.
+                  the odd-harmonic sine sum converges to{" "}
+                  <InlineMath math="\frac{\pi}{4}" /> on the positive plateau.
+                  To scale the wave to jump between <InlineMath math="1" /> and{" "}
+                  <InlineMath math="-1" />, we multiply by{" "}
+                  <InlineMath math="\frac{4}{\pi}" />. Once you realize a wave
+                  is controlled by its frequency recipe, the natural next move
+                  is to start changing this recipe.
                 </p>
               </div>
             </section>
@@ -359,6 +365,15 @@ export default function MakingFourierIntuitivePage() {
                   signals using bandwidth, as well as how to reduce those
                   limitations.
                 </p>
+                <p>
+                  The deeper lesson is not just that sine waves can build a
+                  square wave. It is that shape can be understood through
+                  frequency. Once a signal is described by its frequency recipe,
+                  questions about noise, filtering, bandwidth, and compression
+                  become much more natural. This is where Fourier series stops
+                  feeling like a trick and starts feeling like signal
+                  processing.
+                </p>
               </div>
 
               <ArticleFigure
@@ -366,8 +381,9 @@ export default function MakingFourierIntuitivePage() {
                 alt="Oscilloscope capture of a low bandwidth square wave with rounded rising and falling edges."
                 caption={
                   <>
-                    Low bandwidth square wave. Image credit: Electronics Stack
-                    Exchange user Zhenek, licensed under CC BY-SA. Source:{" "}
+                    Low bandwidth square wave. Image adapted from Electronics
+                    Stack Exchange user Zhenek, licensed under CC BY-SA.
+                    Source:{" "}
                     <a
                       href="https://electronics.stackexchange.com/questions/455356/cheap-oscilloscope-showing-16-mhz-square-wave"
                       className="text-gold underline decoration-gold/40 underline-offset-4 hover:text-accent"
@@ -378,6 +394,38 @@ export default function MakingFourierIntuitivePage() {
                   </>
                 }
               />
+            </section>
+
+            <section className="mt-12 border-t border-cobalt/20 pt-10">
+              <h2 className="text-2xl font-semibold tracking-tight text-text">
+                Sources / Further Reading
+              </h2>
+              <div className="mt-5 space-y-4 text-base leading-8 text-soft">
+                <p>
+                  Daniel A. Russell's{" "}
+                  <a
+                    href="https://www.acs.psu.edu/drussell/demos/Fourier/Fourier.html"
+                    className="text-gold underline decoration-gold/40 underline-offset-4 hover:text-accent"
+                  >
+                    Fourier Synthesis of Periodic Signals
+                  </a>
+                  , Keysight's{" "}
+                  <a
+                    href="https://www.keysight.com/used/us/en/knowledge/glossary/oscilloscopes/what-is-oscilloscope-bandwith"
+                    className="text-gold underline decoration-gold/40 underline-offset-4 hover:text-accent"
+                  >
+                    oscilloscope bandwidth note
+                  </a>
+                  , and the standard reference on the{" "}
+                  <a
+                    href="https://en.wikipedia.org/wiki/Gibbs_phenomenon"
+                    className="text-gold underline decoration-gold/40 underline-offset-4 hover:text-accent"
+                  >
+                    Gibbs phenomenon
+                  </a>
+                  .
+                </p>
+              </div>
             </section>
           </div>
         </article>
