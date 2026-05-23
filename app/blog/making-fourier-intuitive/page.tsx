@@ -276,6 +276,109 @@ export default function MakingFourierIntuitivePage() {
                 />
               </div>
             </section>
+
+            <section className="mt-12 border-t border-cobalt/20 pt-10">
+              <p className="font-mono text-xs uppercase tracking-[0.18em] text-accent">
+                Part 2
+              </p>
+              <h2 className="mt-3 text-2xl font-semibold tracking-tight text-text">
+                Applications in Electronics
+              </h2>
+              <div className="mt-5 space-y-6 text-base leading-8 text-soft">
+                <p>
+                  In the first section, we built a square wave with smooth sine
+                  waves. While this is surprising, it is not the overarching
+                  idea behind Fourier approximations, especially in electronic
+                  signaling.
+                </p>
+                <p>
+                  The overarching idea is actually the other way around:
+                  complicated signals can be broken down into frequency
+                  components. This is where Fourier approximations can become
+                  less math and more physics and engineering.
+                </p>
+                <p>
+                  Let us start in the digital world. Here, a transmitter usually
+                  sends information to a receiver by switching between 0s and
+                  1s: 0 is low voltage, and 1 is high voltage. A clean way to
+                  transmit this information would be with a square wave. The
+                  highs would represent 1s, and the lows would represent 0s.
+                  This is what would take place in a perfect, idealized digital
+                  world.
+                </p>
+                <p>
+                  Physically, however, something very different is happening.
+                  These electrical signals interact with conductors, face
+                  capacitance and resistance, interact with noise, and much
+                  more. In reality, a signal can never be transmitted perfectly
+                  to another device. Digital information is discrete in theory
+                  but analog in reality. This creates a new way to interpret the
+                  square wave from earlier.
+                </p>
+                <p>
+                  From the first section, we know that the square wave's general
+                  shape is made from low frequencies, while high frequencies
+                  sharpen it out. However, due to real conditions, the higher
+                  frequencies can get weakened, distorted, or reflected.
+                  According to our approximations, a square wave without the
+                  high frequencies would appear rounded and not very discrete.
+                </p>
+                <p>
+                  This idea is known as <strong>bandwidth</strong>. Bandwidth is
+                  the range of frequencies that are able to be transmitted to
+                  another device. Ideally, infinite bandwidth would help us
+                  produce perfect square waves at the receiver. But in reality,
+                  the square waves can appear flat and smoothed out.
+                </p>
+                <p>
+                  To sum up so far, signals can be broken down into frequency
+                  components. However, because of real conditions like
+                  capacitance, resistance, and noise, higher frequencies can be
+                  distorted. Thus, square waves are going to appear more smooth
+                  and rounded than an ideal square wave.
+                </p>
+                <p>
+                  At low clock speeds, this low bandwidth is okay, since the
+                  waves have enough time to rise and fall and thus be processed.
+                  However, at high clock speeds, this can make or break a
+                  system. If a smoothed-out wave does not have enough time to
+                  drop before another wave comes in, the receiver cannot tell
+                  when the lows and highs actually happened.
+                </p>
+                <p>
+                  So, how does one increase bandwidth? You can start by reducing
+                  what caused reduced bandwidth in the first place. That means
+                  reducing capacitance, reducing length, having less
+                  resistance/impedance to interact with, and using stronger
+                  drivers that change voltage more quickly.
+                </p>
+                <p>
+                  In this whole blog post, we have learned how signals are
+                  approximated using sums of frequencies, and how the
+                  applications of this helped us learn the limitations of
+                  signals using bandwidth, as well as how to reduce those
+                  limitations.
+                </p>
+              </div>
+
+              <ArticleFigure
+                src="/images/blog/fourier/low-bandwidth-square-wave.gif"
+                alt="Oscilloscope capture of a low bandwidth square wave with rounded rising and falling edges."
+                caption={
+                  <>
+                    Low bandwidth square wave. Image credit: Electronics Stack
+                    Exchange user Zhenek, licensed under CC BY-SA. Source:{" "}
+                    <a
+                      href="https://electronics.stackexchange.com/questions/455356/cheap-oscilloscope-showing-16-mhz-square-wave"
+                      className="text-gold underline decoration-gold/40 underline-offset-4 hover:text-accent"
+                    >
+                      Electronics Stack Exchange
+                    </a>
+                    .
+                  </>
+                }
+              />
+            </section>
           </div>
         </article>
       </main>
